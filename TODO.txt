@@ -1,0 +1,9 @@
+TODO
+
+HANDWRITING RECOGNITION
+https://pub.dev/packages/learning_digital_ink_recognition/score
+
+
+DICTIONARIES
+https://github.com/CallumBeaney/rensou-kanji-hinge/tree/master/dictionaries
+
