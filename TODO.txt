@@ -1,9 +1,48 @@
-TODO
+____________TODO
+
+DEFINE CANVAS AS SQUARE INPUT BOX
+MOVE RESULTS INTO BUTTONS ATOP CANVAS
+DEFINE "PRESENT KANJI" CLASS
+DEFINE , . BUTTONS                                  steve
+DEFINE "LIST BOX" CLASS
+FIND HOW TO PARSE JSON OR LIKE DICTIONARY FORMAT
+FIND HOW TO INSERT OVERLAY WITH KANJI INFO          steve
+DICTIONARY SORTOUT
+
+
+____________NEW FEATURES
+
+HOWTO: LOG SESSION AND STORE INFO
+OVERLAY WITH ARROWS TO SHOW USAGE
+IDENTIFY RARELY USED HANZI
+
+
+____________INFORMATION
 
 HANDWRITING RECOGNITION
-https://pub.dev/packages/learning_digital_ink_recognition/score
+
+    GOOGLE: https://developers.google.cn/ml-kit/vision/digital-ink-recognition
+    
+        ^ PACKAGE:  https://pub.dev/packages/google_mlkit_digital_ink_recognition
+        ^ SETUP:    https://pub.dev/documentation/google_mlkit_digital_ink_recognition/latest/
+        ^ EXAMPLE:  https://github.com/bharat-biradar/Google-Ml-Kit-plugin/blob/master/packages/google_ml_kit/example/lib/vision_detector_views/digital_ink_recognizer_view.dart
+        ^ SOURCE:   https://github.com/bharat-biradar/Google-Ml-Kit-plugin/blob/master/packages/google_mlkit_digital_ink_recognition/lib/src/digital_ink_recognizer.dart
+        ^ EXTERNAL: https://github.com/thisiskritartha/Digit-Ink-Recognition-Flutter
+        
+    SIMPLE (DEPRECATED): https://pub.dev/packages/learning_digital_ink_recognition
+
+        ^ EXAMPLE:  https://github.com/salkuadrat/learning/blob/master/packages/learning_digital_ink_recognition/example/lib/main.dart
+
+
+HOW TO INSTALL LANGUAGE MODEL
+
+    HERE: https://developers.google.com/ml-kit/tips/installation-paths#how_to_choose_between_bundled_and_unbundled
 
 
 DICTIONARIES
-https://github.com/CallumBeaney/rensou-kanji-hinge/tree/master/dictionaries
+
+    JAPANESE VERSION:   https://github.com/CallumBeaney/rensou-kanji-hinge/tree/master/dictionaries
+    CHINESE VERSION:    https://github.com/kfcd/chaizi
+    ..
+    ALT CHINESE WEBAPI: http://ccdb.hemiola.com
 

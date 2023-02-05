@@ -1,115 +1,205 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Ink;
+import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
+import './activity_indicator/activity_indicator.dart';
+import 'locator.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> checkAndDownloadModel(String model, DigitalInkRecognizerModelManager manager) async {
+  final bool response = await manager.isModelDownloaded(model);
+  // print("\n\n_____Language Model status: $response");  // for debugging purposes
+  if (response == false) {
+    // print('_____Model Not Downloaded; downloading');  // for debugging purposes
+
+    // TODO:
+    //Toast().show('Downloading model...', locator<DigitalInkRecognizerModelManager>().downloadModel('ja').then((value) => value ? 'success' : 'failed'), context, this);
+
+    final result = await manager.downloadModel(model).then((value) => value ? 'successfully downloaded!' : 'failed to download the language model');
+    // print("_____download status: $result \n\n");  // for debugging purposes
+  }
+}
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  setup();
+  checkAndDownloadModel('ja', locator.get<DigitalInkRecognizerModelManager>());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      home: DigitalInkView(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
+class DigitalInkView extends StatefulWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<DigitalInkView> createState() => _DigitalInkViewState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _DigitalInkViewState extends State<DigitalInkView> {
+  // Core variable declarations
+  final Ink _ink = Ink();
+  List<StrokePoint> _points = [];
+  String _recognizedText = '';
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  @override
+  void dispose() {
+    // ORIGINAL _digitalInkRecognizer.close();
+    locator<DigitalInkRecognizer>().close();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+      appBar: AppBar(toolbarHeight: 55, title: const Text('連想漢字蝶番')),
+      body: SafeArea(
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+          children: [
+            Expanded(
+              child: GestureDetector(
+                onPanStart: (DragStartDetails details) {
+                  _ink.strokes.add(Stroke());
+                },
+                onPanUpdate: (DragUpdateDetails details) {
+                  setState(() {
+                    final RenderObject? object = context.findRenderObject();
+                    final localPosition = (object as RenderBox?)?.globalToLocal(details.localPosition);
+                    if (localPosition != null) {
+                      _points = List.from(_points)
+                        ..add(StrokePoint(
+                          x: localPosition.dx,
+                          y: localPosition.dy,
+                          t: DateTime.now().millisecondsSinceEpoch,
+                        ));
+                    }
+                    if (_ink.strokes.isNotEmpty) {
+                      _ink.strokes.last.points = _points.toList();
+                    }
+                  });
+                },
+                onPanEnd: (DragEndDetails details) {
+                  _points.clear();
+                  _recogniseText();
+                  setState(() {});
+                },
+                child: CustomPaint(
+                  painter: Signature(ink: _ink),
+                  size: Size.infinite,
+                ),
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            if (_recognizedText.isNotEmpty)
+              Text(
+                'Candidates: $_recognizedText',
+                style: const TextStyle(fontSize: 23),
+              ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // ElevatedButton(
+                  //   onPressed: _recogniseText,
+                  //   child: Text('Read Text'),
+                  // ),
+                  ElevatedButton(
+                    onPressed: _clearPad,
+                    child: const Text('Clear Pad'),
+                  ),
+                ],
+              ),
             ),
+            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // ElevatedButton(
+                  //   onPressed: _isModelDownloaded,
+                  //   child: Text('Check Model'),
+                  // ),
+                  ElevatedButton(
+                    onPressed: _downloadModel,
+                    child: const Text('Download'),
+                  ),
+                  ElevatedButton(
+                    onPressed: _deleteModel,
+                    child: const Text('Delete'),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 8),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+  void _clearPad() {
+    setState(() {
+      _ink.strokes.clear();
+      _points.clear();
+      _recognizedText = '';
+    });
+  }
+
+  // Future<void> _isModelDownloaded() async {
+  //   Toast().show('Checking if model is downloaded...', locator<DigitalInkRecognizerModelManager>().isModelDownloaded(_language).then((value) => value ? 'downloaded' : 'not downloaded'), context, this);
+  // }
+
+  Future<void> _deleteModel() async {
+    Toast().show('Deleting model...', locator<DigitalInkRecognizerModelManager>().deleteModel('ja').then((value) => value ? 'success' : 'failed'), context, this);
+    // Toast().show('Deleting model...', _modelManager.deleteModel(_language).then((value) => value ? 'success' : 'failed'), context, this);
+  }
+
+  Future<void> _downloadModel() async {
+    Toast().show('Downloading model...', locator<DigitalInkRecognizerModelManager>().downloadModel('ja').then((value) => value ? 'success' : 'failed'), context, this);
+  }
+
+  Future<void> _recogniseText() async {
+    try {
+      // ORIGINAL: final candidates = await _digitalInkRecognizer.recognize(_ink);
+      final candidates = await locator<DigitalInkRecognizer>().recognize(_ink);
+      _recognizedText = '';
+      for (final candidate in candidates) {
+        _recognizedText += '\n${candidate.text}';
+      }
+      setState(() {});
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.toString()),
+      ));
+    }
+  }
+}
+
+class Signature extends CustomPainter {
+  Ink ink;
+
+  Signature({required this.ink});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint paint = Paint()
+      ..color = Colors.blue
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 4.0;
+
+    for (final stroke in ink.strokes) {
+      for (int i = 0; i < stroke.points.length - 1; i++) {
+        final p1 = stroke.points[i];
+        final p2 = stroke.points[i + 1];
+        canvas.drawLine(Offset(p1.x.toDouble(), p1.y.toDouble()), Offset(p2.x.toDouble(), p2.y.toDouble()), paint);
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(Signature oldDelegate) => true;
 }
