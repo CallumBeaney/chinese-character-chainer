@@ -1,40 +1,39 @@
 import 'package:flutter/material.dart' hide Ink;
+import 'package:flutter/rendering.dart';
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
 import './activity_indicator/activity_indicator.dart';
 import 'locator.dart';
+import 'buttons.dart';
 
 Future<void> checkAndDownloadModel(String model, DigitalInkRecognizerModelManager manager) async {
   final bool response = await manager.isModelDownloaded(model);
-  print("\n\n_____Language Model status: $response"); // for debugging purposes
+  // print("\n\n_____Language Model status: $response"); // for debugging purposes
   if (response == false) {
-    print('_____Model Not Downloaded; downloading'); // for debugging purposes
+    // print('_____Model Not Downloaded; downloading'); // for debugging purposes
 
-    // TODO: debug
     //Toast().show('Downloading model...', locator<DigitalInkRecognizerModelManager>().downloadModel('ja').then((value) => value ? 'success' : 'failed'), context, this);
-    final result = await manager.downloadModel(model).then((value) => value ? 'successfully downloaded!' : 'failed to download the language model');
-    print("_____download status: $result \n\n"); // for debugging purposes
+    // final result =
+    await manager.downloadModel(model).then((value) => value ? 'successfully downloaded!' : 'failed to download the language model');
+    // print("_____download status: $result \n\n"); // for debugging purposes
   }
 }
 
-// TODO: decide on approach for results buttons
-
-// class HandwritingResultButton extends StatelessWidget {
-//   const HandwritingResultButton({super.key});
-//   HandwritingResultButton(@required this.child, this.onTap, )
-// }
+// TODO: Listview for RButtons
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setup();
   checkAndDownloadModel('ja', locator.get<DigitalInkRecognizerModelManager>());
   locator.get<DigitalInkRecognizer>();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: DigitalInkView(),
     );
@@ -42,6 +41,8 @@ class MyApp extends StatelessWidget {
 }
 
 class DigitalInkView extends StatefulWidget {
+  const DigitalInkView({super.key});
+
   @override
   State<DigitalInkView> createState() => _DigitalInkViewState();
 }
@@ -72,15 +73,23 @@ class _DigitalInkViewState extends State<DigitalInkView> {
       body: SafeArea(
         child: Column(
           children: [
+            const Expanded(child: SizedBox.expand(child: Text("todo"))),
             Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                  // TODO
-                  ElevatedButton(
-                    onPressed: _clearPad,
-                    child: const Text('消去', style: TextStyle(fontSize: 17)),
-                  ),
-                ])),
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: LayoutBuilder(
+                // TODO: kenkyuu
+                builder: (context, constraints) {
+                  final width = constraints.maxWidth;
+                  int numKanji = width ~/ 65;
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ..._recognizedKanji.take(numKanji).map((e) => KanjiButton(kanji: e)), // Future: possibly LayoutBuilder required
+                    ],
+                  );
+                },
+              ),
+            ),
             Container(
               // decoration: BoxDecoration(border: Border.all()),   // If use, can't use color:...
               width: _width,
@@ -122,7 +131,7 @@ class _DigitalInkViewState extends State<DigitalInkView> {
             if (_recognizedKanji.isNotEmpty) // TODO
               Text(
                 // 'Candidates: $_recognizedText',  // 元版
-                'Candidates: $_recognizedKanji',
+                'Candidates: ${_recognizedKanji.where((e) => e.length == 1).toList()}', // TODO: introduce
                 style: const TextStyle(fontSize: 23),
               ),
             Padding(
