@@ -4,6 +4,7 @@ import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_re
 import './activity_indicator/activity_indicator.dart';
 import 'locator.dart';
 import 'buttons.dart';
+import 'dart:async';
 
 Future<void> checkAndDownloadModel(String model, DigitalInkRecognizerModelManager manager) async {
   final bool response = await manager.isModelDownloaded(model);
@@ -59,6 +60,8 @@ class _DigitalInkViewState extends State<DigitalInkView> {
   double get _width => MediaQuery.of(context).size.width;
   final double _height = 360;
 
+  final _candidatesStream = candidatesStream;
+
   @override
   void dispose() {
     // ORIGINAL _digitalInkRecognizer.close();
@@ -79,13 +82,19 @@ class _DigitalInkViewState extends State<DigitalInkView> {
               child: LayoutBuilder(
                 // TODO: kenkyuu
                 builder: (context, constraints) {
-                  final width = constraints.maxWidth;
-                  int numKanji = width ~/ 65;
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ..._recognizedKanji.take(numKanji).map((e) => KanjiButton(kanji: e)), // Future: possibly LayoutBuilder required
-                    ],
+                  return StreamBuilder(
+                    stream: _candidatesStream,
+                    builder: (context, snapshot) {
+                      final kanji = snapshot.data ?? [];
+                      final width = constraints.maxWidth;
+                      int numKanji = width ~/ 65;
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ...kanji.take(numKanji).map((e) => KanjiButton(kanji: e)), // Future: possibly LayoutBuilder required
+                        ],
+                      );
+                    },
                   );
                 },
               ),
@@ -187,16 +196,8 @@ class _DigitalInkViewState extends State<DigitalInkView> {
     try {
       // final candidates = await _digitalInkRecognizer.recognize(_ink);  // 元版
       final candidates = await locator<DigitalInkRecognizer>().recognize(_ink);
-      // _recognizedText = '';
-      _recognizedKanji.clear();
-
-      for (final candidate in candidates) {
-        // _recognizedText += '　${candidate.text}';  // 元版
-        // if (candidate.text.length == 1) {
-        _recognizedKanji.insert(candidates.indexOf(candidate), candidate.text);
-        // }
-      }
-      setState(() {});
+      final candidatesString = candidates.map((e) => e.text).toList();
+      _candidatesController.add(candidatesString);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(e.toString()),
@@ -241,3 +242,6 @@ class Signature extends CustomPainter {
   @override
   bool shouldRepaint(Signature oldDelegate) => true;
 }
+
+final StreamController<List<String>> _candidatesController = StreamController.broadcast();
+Stream<List<String>> get candidatesStream => _candidatesController.stream;
