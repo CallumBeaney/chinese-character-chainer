@@ -1,14 +1,11 @@
 ____________TODO
 
-DEFINE CANVAS AS SQUARE INPUT BOX
-MOVE RESULTS INTO BUTTONS ATOP CANVAS
 DEFINE "PRESENT KANJI" CLASS
-DEFINE , . BUTTONS                                  steve
+DEFINE , . BUTTONS
 DEFINE "LIST BOX" CLASS 
 ^   https://stackoverflow.com/questions/50080860/what-are-keys-in-the-stateless-widgets-class/50081052#50081052
-FIND HOW TO PARSE JSON OR LIKE DICTIONARY FORMAT
-FIND HOW TO INSERT OVERLAY WITH KANJI INFO          steve
-DICTIONARY SORTOUT
+FIND HOW TO INSERT OVERLAY WITH KANJI INFO
+BUILD README
 
 
 ____________NEW FEATURES
@@ -47,3 +44,5 @@ DICTIONARIES
     ..
     ALT CHINESE WEBAPI: http://ccdb.hemiola.com
 
+    SPREADSHEET:        https://docs.google.com/spreadsheets/d/1LVHUr5v1gzsIN5rZXSkln8hyGX5Urcf4BP6uvF8t1k4/edit#gid=2085376787
+    

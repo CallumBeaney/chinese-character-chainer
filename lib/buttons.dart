@@ -7,6 +7,18 @@ class KanjiButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(child: Text(kanji), onPressed: () {});
+    return Container(
+      width: 50,
+      height: 50,
+      color: Colors.grey[200],
+      margin: const EdgeInsets.all(1.0),
+      child: TextButton(
+        child: Text(
+          kanji,
+          style: const TextStyle(fontSize: 24, color: Colors.black),
+        ),
+        onPressed: () {},
+      ),
+    );
   }
 }

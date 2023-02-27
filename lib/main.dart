@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart' hide Ink;
-import 'package:flutter/rendering.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart' hide Ink; // prevent clashes with ML Kit class
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
 import './activity_indicator/activity_indicator.dart';
-import 'locator.dart';
+import 'locator.dart'; // Singleton
 import 'buttons.dart';
 import 'dart:async';
 
@@ -36,6 +36,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
+      // theme: ThemeData(
+      //   textButtonTheme: TextButton.styleFrom(foregroundColor: Colors.green),
+      // ),
       home: DigitalInkView(),
     );
   }
@@ -53,18 +56,13 @@ class _DigitalInkViewState extends State<DigitalInkView> {
   final Ink _ink = Ink();
   List<StrokePoint> _points = [];
 
-  // String _recognizedText = '';   // For debugging
-  // ignore: prefer_final_fields
-  List<String> _recognizedKanji = [];
-
   double get _width => MediaQuery.of(context).size.width;
-  final double _height = 360;
+  final double canvasHeight = 350;
 
   final _candidatesStream = candidatesStream;
 
   @override
   void dispose() {
-    // ORIGINAL _digitalInkRecognizer.close();
     locator<DigitalInkRecognizer>().close();
     super.dispose();
   }
@@ -72,22 +70,48 @@ class _DigitalInkViewState extends State<DigitalInkView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(toolbarHeight: 30, title: const Text('連想漢字蝶番')),
+      // appBar: AppBar(toolbarHeight: 45, title: const Text('連想漢字蝶番')),
       body: SafeArea(
         child: Column(
           children: [
-            const Expanded(child: SizedBox.expand(child: Text("todo"))),
+            // const Expanded(child: SizedBox.expand(child: Text("todo"))), // TODO upper area
+
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return StreamBuilder(
+                      stream: _candidatesStream,
+                      builder: (context, snapshot) {
+                        final List<String> rensou = ['連', '想', '漢', '字', '蝶', '番', '漢', '字', '蝶', '番', '漢', '字', '蝶', '番'];
+                        // final height = int(constraints.maxHeight);
+                        return SingleChildScrollView(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ...rensou.map((e) => KanjiButton(kanji: e)),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+            ),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5),
               child: LayoutBuilder(
-                // TODO: kenkyuu
+                // TODO: research LB vs SB
                 builder: (context, constraints) {
                   return StreamBuilder(
                     stream: _candidatesStream,
                     builder: (context, snapshot) {
-                      final kanji = snapshot.data ?? [];
+                      final kanji = snapshot.data ?? ['漢', '字', 'を', 'か', 'い', 'て'];
                       final width = constraints.maxWidth;
-                      int numKanji = width ~/ 65;
+                      int numKanji = width ~/ 65; // manages the display to stop overflow.
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -102,28 +126,30 @@ class _DigitalInkViewState extends State<DigitalInkView> {
             Container(
               // decoration: BoxDecoration(border: Border.all()),   // If use, can't use color:...
               width: _width,
-              height: _height,
-              color: Colors.amber[100],
+              height: canvasHeight,
+              color: Colors.grey[300],
               child: GestureDetector(
                 onPanStart: (DragStartDetails details) {
                   _ink.strokes.add(Stroke());
                 },
                 onPanUpdate: (DragUpdateDetails details) {
-                  setState(() {
-                    final RenderObject? object = context.findRenderObject();
-                    final localPosition = (object as RenderBox?)?.globalToLocal(details.localPosition);
-                    if (localPosition != null) {
-                      _points = List.from(_points)
-                        ..add(StrokePoint(
-                          x: localPosition.dx,
-                          y: localPosition.dy,
-                          t: DateTime.now().millisecondsSinceEpoch,
-                        ));
-                    }
-                    if (_ink.strokes.isNotEmpty) {
-                      _ink.strokes.last.points = _points.toList();
-                    }
-                  });
+                  setState(
+                    () {
+                      final RenderObject? object = context.findRenderObject();
+                      final localPosition = (object as RenderBox?)?.globalToLocal(details.localPosition);
+                      if (localPosition != null) {
+                        _points = List.from(_points)
+                          ..add(StrokePoint(
+                            x: localPosition.dx,
+                            y: localPosition.dy,
+                            t: DateTime.now().millisecondsSinceEpoch,
+                          ));
+                      }
+                      if (_ink.strokes.isNotEmpty) {
+                        _ink.strokes.last.points = _points.toList();
+                      }
+                    },
+                  );
                 },
                 onPanEnd: (DragEndDetails details) {
                   _points.clear();
@@ -133,37 +159,35 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                 child: CustomPaint(
                   painter: Signature(ink: _ink),
                   // size: (_width, _height),
-                  size: Size.fromHeight(_height),
+                  // size: Size.fromHeight(_height),
+                  size: Size.fromHeight(canvasHeight),
                 ),
               ),
             ),
-            if (_recognizedKanji.isNotEmpty) // TODO
-              Text(
-                // 'Candidates: $_recognizedText',  // 元版
-                'Candidates: ${_recognizedKanji.where((e) => e.length == 1).toList()}', // TODO: introduce
-                style: const TextStyle(fontSize: 23),
-              ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ElevatedButton(
-                    onPressed: _clearPad,
-                    child: const Text('消去', style: TextStyle(fontSize: 17)),
+                  SizedBox(
+                    width: 66,
+                    height: 40,
+                    child: ElevatedButton(
+                      onPressed: _clearPad,
+                      child: const Text('消去', style: TextStyle(fontSize: 16)),
+                    ),
                   ),
-                  ElevatedButton(
-                    onPressed: _downloadModel,
-                    child: const Text('Download'),
-                  ),
-                  ElevatedButton(
-                    onPressed: _deleteModel,
-                    child: const Text('Delete'),
-                  ),
+                  // ElevatedButton(
+                  //   onPressed: _downloadModel,
+                  //   child: const Text('Download'),
+                  // ),
+                  // ElevatedButton(
+                  //   onPressed: _deleteModel,
+                  //   child: const Text('Delete'),
+                  // ),
                 ],
               ),
             ),
-            const SizedBox(height: 20),
           ],
         ),
       ),
@@ -172,10 +196,9 @@ class _DigitalInkViewState extends State<DigitalInkView> {
 
   void _clearPad() {
     setState(() {
-      _ink.strokes.clear();
-      _points.clear();
-      // _recognizedText = '';
-      _recognizedKanji.clear();
+      _ink.strokes.clear(); // Co-ordinate values
+      _points.clear(); // Visual representation on the canvas
+      // _recognizedKanji.clear();
     });
   }
 
@@ -183,20 +206,18 @@ class _DigitalInkViewState extends State<DigitalInkView> {
   //   Toast().show('Checking if model is downloaded...', locator<DigitalInkRecognizerModelManager>().isModelDownloaded(_language).then((value) => value ? 'downloaded' : 'not downloaded'), context, this);
   // }
 
-  Future<void> _deleteModel() async {
-    Toast().show('Deleting model...', locator<DigitalInkRecognizerModelManager>().deleteModel('ja').then((value) => value ? 'success' : 'failed'), context, this);
-    // Toast().show('Deleting model...', _modelManager.deleteModel(_language).then((value) => value ? 'success' : 'failed'), context, this);
-  }
+  // Future<void> _deleteModel() async {
+  //   Toast().show('Deleting model...', locator<DigitalInkRecognizerModelManager>().deleteModel('ja').then((value) => value ? 'success' : 'failed'), context, this);
+  //   // Toast().show('Deleting model...', _modelManager.deleteModel(_language).then((value) => value ? 'success' : 'failed'), context, this);
+  // }
 
-  Future<void> _downloadModel() async {
-    Toast().show('Downloading model...', locator<DigitalInkRecognizerModelManager>().downloadModel('ja').then((value) => value ? 'success' : 'failed'), context, this);
-  }
-
+  // Future<void> _downloadModel() async {
+  //   Toast().show('Downloading model...', locator<DigitalInkRecognizerModelManager>().downloadModel('ja').then((value) => value ? 'success' : 'failed'), context, this);
+  // }
   Future<void> _recogniseText() async {
     try {
-      // final candidates = await _digitalInkRecognizer.recognize(_ink);  // 元版
-      final candidates = await locator<DigitalInkRecognizer>().recognize(_ink);
-      final candidatesString = candidates.map((e) => e.text).toList();
+      final List<RecognitionCandidate> candidates = await locator<DigitalInkRecognizer>().recognize(_ink);
+      final List<String> candidatesString = candidates.where((e) => e.text.length == 1).map((e) => e.text).toList();
       _candidatesController.add(candidatesString);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -205,18 +226,6 @@ class _DigitalInkViewState extends State<DigitalInkView> {
     }
   }
 }
-
-// class ResultsButton extends StatelessWidget {
-//   const ResultsButton({Key? key, required this.buttonText, required this.onTap}) : super(key: key);
-
-//   final String buttonText;
-//   final Function()? onTap;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     Center(child: InkWell(),)
-//   }
-// }
 
 class Signature extends CustomPainter {
   Ink ink;
@@ -243,5 +252,12 @@ class Signature extends CustomPainter {
   bool shouldRepaint(Signature oldDelegate) => true;
 }
 
+// Stream for Text Recognition candidates
 final StreamController<List<String>> _candidatesController = StreamController.broadcast();
 Stream<List<String>> get candidatesStream => _candidatesController.stream;
+
+// Stream for User's Choice
+final StreamController<List<String>> _resultsController = StreamController.broadcast();
+Stream<List<String>> get resultsController => _resultsController.stream;
+
+// TODO: 重要: Link into Column Kanji
