@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' hide Ink; // prevent clashes with ML Kit class
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
+import 'package:rensou_flutter/painter.dart';
 import './activity_indicator/activity_indicator.dart';
 import 'locator.dart'; // Singleton
 import 'buttons.dart';
@@ -8,18 +9,16 @@ import 'dart:async';
 
 Future<void> checkAndDownloadModel(String model, DigitalInkRecognizerModelManager manager) async {
   final bool response = await manager.isModelDownloaded(model);
-  // print("\n\n_____Language Model status: $response"); // for debugging purposes
   if (response == false) {
-    // print('_____Model Not Downloaded; downloading'); // for debugging purposes
-
-    //Toast().show('Downloading model...', locator<DigitalInkRecognizerModelManager>().downloadModel('ja').then((value) => value ? 'success' : 'failed'), context, this);
-    // final result =
-    await manager.downloadModel(model).then((value) => value ? 'successfully downloaded!' : 'failed to download the language model');
-    // print("_____download status: $result \n\n"); // for debugging purposes
+    // ORIGINAL: Toast().show('Downloading model...', locator<DigitalInkRecognizerModelManager>().downloadModel('ja').then((value) => value ? 'success' : 'failed'), context, this);
+    // ignore: unused_local_variable
+    final result = await manager.downloadModel(model).then((value) => value ? 'successfully downloaded!' : 'failed to download the language model');
   }
 }
 
-// TODO: Listview for RButtons
+// // Stream for Text Recognition candidates
+final StreamController<List<String>> _candidatesController = StreamController.broadcast();
+Stream<List<String>> get candidatesStream => _candidatesController.stream;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -205,15 +204,14 @@ class _DigitalInkViewState extends State<DigitalInkView> {
   // Future<void> _isModelDownloaded() async {
   //   Toast().show('Checking if model is downloaded...', locator<DigitalInkRecognizerModelManager>().isModelDownloaded(_language).then((value) => value ? 'downloaded' : 'not downloaded'), context, this);
   // }
-
   // Future<void> _deleteModel() async {
   //   Toast().show('Deleting model...', locator<DigitalInkRecognizerModelManager>().deleteModel('ja').then((value) => value ? 'success' : 'failed'), context, this);
   //   // Toast().show('Deleting model...', _modelManager.deleteModel(_language).then((value) => value ? 'success' : 'failed'), context, this);
   // }
-
   // Future<void> _downloadModel() async {
   //   Toast().show('Downloading model...', locator<DigitalInkRecognizerModelManager>().downloadModel('ja').then((value) => value ? 'success' : 'failed'), context, this);
   // }
+
   Future<void> _recogniseText() async {
     try {
       final List<RecognitionCandidate> candidates = await locator<DigitalInkRecognizer>().recognize(_ink);
@@ -227,37 +225,8 @@ class _DigitalInkViewState extends State<DigitalInkView> {
   }
 }
 
-class Signature extends CustomPainter {
-  Ink ink;
-
-  Signature({required this.ink});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final Paint paint = Paint()
-      ..color = Colors.black87
-      ..strokeCap = StrokeCap.round
-      ..strokeWidth = 4.0;
-
-    for (final stroke in ink.strokes) {
-      for (int i = 0; i < stroke.points.length - 1; i++) {
-        final p1 = stroke.points[i];
-        final p2 = stroke.points[i + 1];
-        canvas.drawLine(Offset(p1.x.toDouble(), p1.y.toDouble()), Offset(p2.x.toDouble(), p2.y.toDouble()), paint);
-      }
-    }
-  }
-
-  @override
-  bool shouldRepaint(Signature oldDelegate) => true;
-}
-
-// Stream for Text Recognition candidates
-final StreamController<List<String>> _candidatesController = StreamController.broadcast();
-Stream<List<String>> get candidatesStream => _candidatesController.stream;
 
 // Stream for User's Choice
-final StreamController<List<String>> _resultsController = StreamController.broadcast();
-Stream<List<String>> get resultsController => _resultsController.stream;
+// final StreamController<List<String>> _resultsController = StreamController.broadcast();
+// Stream<List<String>> get resultsController => _resultsController.stream;
 
-// TODO: 重要: Link into Column Kanji

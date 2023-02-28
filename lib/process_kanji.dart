@@ -1,34 +1,25 @@
-import 'dart:collection';
-
-import 'dictionary.dart';
-
-void main() {
-  const nKanji = "貝", pKanji = "目";
-  // TODO: Get previous kanji from user buttonpress of KanjiButton
-
-  final result = validateKanji(nKanji, pKanji);
-
-  if (result == true) {
-    // TODO: code updating user's kanji list
-  } else {
-    // TODO: code kanji button failure state
-  }
-}
+import 'locator.dart';
 
 bool validateKanji(String newKanji, String previousKanji) {
   late final List<String>? previousKanjiRadicals;
   late final List<String>? newKanjiRadicals;
 
-  if (dictionary.containsKey(newKanji) == false) {
+  if (locator<Dictionary>().containsKey(newKanji) == false) {
     return false;
   } else {
-    previousKanjiRadicals = dictionary[previousKanji]!['radicals']?.split(',');
-    newKanjiRadicals = dictionary[newKanji]!['radicals']?.split(',');
+    previousKanjiRadicals = locator<Dictionary>()[previousKanji]!['radicals']?.split(',');
+    newKanjiRadicals = locator<Dictionary>()[newKanji]!['radicals']?.split(',');
   }
-
   if (newKanjiRadicals!.any((element) => previousKanjiRadicals!.contains(element)) == false) {
     return false;
   } else {
     return true;
   }
 }
+
+// For Debug
+// void main() { 
+//   setup();
+//   final bool result = validateKanji("貝", "目");
+//   print(result);
+// }

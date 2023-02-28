@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './cubit/kanji_cubit.dart';
 
 class KanjiButton extends StatelessWidget {
   const KanjiButton({Key? key, required this.kanji}) : super(key: key);
@@ -17,7 +18,7 @@ class KanjiButton extends StatelessWidget {
           kanji,
           style: const TextStyle(fontSize: 24, color: Colors.black),
         ),
-        onPressed: () {},
+        onPressed: () {}, // () => context.read<KanjiCubit>().validateKanji(),
       ),
     );
   }

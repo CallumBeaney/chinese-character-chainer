@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_mlkit_digital_ink_recognition: ^0.6.0
   get_it: ^7.2.0
+  flutter_bloc: ^8.1.2
 
 dev_dependencies:
   flutter_test:
