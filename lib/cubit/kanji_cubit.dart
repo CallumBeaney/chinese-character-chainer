@@ -1,30 +1,31 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
-import 'package:rensou_flutter/locator.dart';
+// // import 'package:bloc/bloc.dart';
+// // import 'package:rensou_flutter/locator.dart';
 
-part 'kanji_state.dart';
+// // part 'kanji_state.dart';
 
-class KanjiCubit extends Cubit<KanjiState> {
-  KanjiCubit() : super(KanjiState(newInputtedKanji: null, lastInputtedKanji: null));
+// // class KanjiCubit extends Cubit<KanjiState> {
+// //   KanjiCubit() : super(KanjiState.initial);
 
-  bool validateKanji(String newKanji, String previousKanji) {
-    late final List<String>? previousKanjiRadicals;
-    late final List<String>? newKanjiRadicals;
+//   void validateKanji(String newKanji, String previousKanji) {
+//     late final List<String> previousKanjiRadicals;
+//     late final List<String> newKanjiRadicals;
+//     final dict = locator<Dictionary>();
 
-    if (locator<Dictionary>().containsKey(newKanji) == false) {
-      // ML Recognition button that was pressed to turn Red, not make any text changes
-      return false;
-    } else {
-      previousKanjiRadicals = locator<Dictionary>()[previousKanji]!['radicals']?.split(',');
-      newKanjiRadicals = locator<Dictionary>()[newKanji]!['radicals']?.split(',');
-    }
+//     if (dict.containsKey(newKanji) == false) {
+//       // FAILURE: Recognition button turn Red
+//       return false;
+//     } else {
+//       // SUCCESS: check radicals
+//       previousKanjiRadicals = dict[previousKanji]!['radicals']?.split(',') ?? [];
+//       newKanjiRadicals = dict[newKanji]!['radicals']?.split(',') ?? [];
+//     }
 
-    if (newKanjiRadicals!.any((element) => previousKanjiRadicals!.contains(element)) == false) {
-      return false;
-      // ML Recognition button that was pressed to turn Red, not make any text changes
-    } else {
-      return true;
-      // ALL Recognition buttonS to empty, turn Grey if any Red, send 'newKanji' to user kanji list button column.
-    }
-  }
-}
+//     if (newKanjiRadicals.any((e) => previousKanjiRadicals.contains(e)) == false) {
+//       return false;
+//       // FAILURE: Recognition button turn Red
+//     } else {
+//       return true;
+//       // SUCCESS: empty all Recognition buttons, turn Grey if any Red, send 'newKanji' to user kanji list button column.
+//     }
+//   }
+// }
