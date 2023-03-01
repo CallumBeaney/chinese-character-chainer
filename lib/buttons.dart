@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import './cubit/kanji_cubit.dart';
 
 class KanjiButton extends StatelessWidget {
-  const KanjiButton({Key? key, required this.kanji}) : super(key: key);
+  const KanjiButton({Key? key, required this.kanji, this.error = false}) : super(key: key);
 
   final String kanji;
+  final bool error;
 
   @override
   Widget build(BuildContext context) {

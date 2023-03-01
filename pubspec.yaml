@@ -35,6 +35,7 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+  bloc: ^8.1.1
   cupertino_icons: ^1.0.2
   google_mlkit_digital_ink_recognition: ^0.6.0
   get_it: ^7.2.0

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart' hide Ink;
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
 
 class Signature extends CustomPainter {
-  Ink ink;
+  final List<Stroke> strokes;
 
-  Signature({required this.ink});
+  const Signature({required this.strokes});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -13,7 +13,7 @@ class Signature extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..strokeWidth = 4.0;
 
-    for (final stroke in ink.strokes) {
+    for (final stroke in strokes) {
       for (int i = 0; i < stroke.points.length - 1; i++) {
         final p1 = stroke.points[i];
         final p2 = stroke.points[i + 1];

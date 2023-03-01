@@ -11,7 +11,12 @@ void setup() {
   // final String language = 'ja';
   locator.registerLazySingleton<DigitalInkRecognizerModelManager>(() => DigitalInkRecognizerModelManager());
   locator.registerLazySingleton<DigitalInkRecognizer>(() => DigitalInkRecognizer(languageCode: 'ja'));
-  // locator.registerLazySingleton<Dictionary>(() => dictionary);
 
+  // TRIED DOING HERE FIRST
+  // locator.registerLazySingleton<Ink>(() => Ink()); // final Ink _ink = Ink();
+  // locator.registerLazySingleton<List<StrokePoint>>(() => []); // List<StrokePoint> _points = [];
+
+  // TODO:
+  locator.registerLazySingleton<Dictionary>(() => dictionary);
   // locator.registerLazySingleton<StreamController<List<String>>>(() => StreamController.broadcast());
 }

@@ -1,8 +1,10 @@
 import 'locator.dart';
 
+//    All of this to be moved into kanji_cubit class
+
 bool validateKanji(String newKanji, String previousKanji) {
-  late final List<String>? previousKanjiRadicals;
-  late final List<String>? newKanjiRadicals;
+  final List<String>? previousKanjiRadicals;
+  final List<String>? newKanjiRadicals;
 
   if (locator<Dictionary>().containsKey(newKanji) == false) {
     return false;

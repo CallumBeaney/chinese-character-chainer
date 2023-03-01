@@ -1,26 +1,26 @@
-import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart' hide Ink; // prevent clashes with ML Kit class
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
+import 'package:rensou_flutter/dictionary.dart';
 import 'package:rensou_flutter/locator.dart';
 
 part 'recognition_manager_state.dart';
 
-class RecognitionManagerCubit extends Cubit<List<String>> {
-  RecognitionManagerCubit() : super(const []);
+class RecognitionManagerCubit extends Cubit<RecognitionManagerState> {
+  RecognitionManagerCubit() : super(RecognitionManagerState.initial);
 
-  final Ink _ink = Ink();
-  List<StrokePoint> _points = [];
-
-  Future<void> _recogniseText(context) async {
+  Future<void> recogniseText(Ink ink) async {
     try {
-      final List<RecognitionCandidate> candidates = await locator<DigitalInkRecognizer>().recognize(_ink);
-      final List<String> candidatesString = candidates.where((e) => e.text.length == 1).map((e) => e.text).toList();
-      //_candidatesController.add(candidatesString);
+      final List<RecognitionCandidate> candidates = await locator<DigitalInkRecognizer>().recognize(ink);
+      final List<String> candidatesString = candidates.where((e) => dictionary.containsKey(e.text)).map((e) => e.text).toList();
+      emit(state.copyWith(candidates: candidatesString));
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(e.toString()),
-      ));
+      // todo: error thing
     }
   }
+
+  void clearCandidates() => emit(state.copyWith(candidates: []));
 }
+
+
+// In Cubit need function called when user taps button (yingai void)
+// i.e. when Knajitapped
