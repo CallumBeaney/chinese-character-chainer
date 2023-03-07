@@ -8,6 +8,8 @@ typedef Dictionary = Map<String, Map<String, String?>>;
 final locator = GetIt.instance;
 
 void setup() {
+  List<String> userList = [];
+
   // final String language = 'ja';
   locator.registerLazySingleton<DigitalInkRecognizerModelManager>(() => DigitalInkRecognizerModelManager());
   locator.registerLazySingleton<DigitalInkRecognizer>(() => DigitalInkRecognizer(languageCode: 'ja'));
@@ -17,6 +19,7 @@ void setup() {
   // locator.registerLazySingleton<List<StrokePoint>>(() => []); // List<StrokePoint> _points = [];
 
   // TODO:
+  locator.registerLazySingleton<List<String>>(() => userList);
   locator.registerLazySingleton<Dictionary>(() => dictionary);
   // locator.registerLazySingleton<StreamController<List<String>>>(() => StreamController.broadcast());
 }

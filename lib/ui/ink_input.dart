@@ -14,10 +14,10 @@ class InkInput extends StatefulWidget {
 }
 
 class _InkInputState extends State<InkInput> {
-  final double canvasHeight = 350;
+  final double canvasHeight = 300;
 
   final Ink _ink = Ink();
-  List<StrokePoint> _points = [];
+  List<StrokePoint> _points = []; // TODO: singleton to access from digital_ink_view upon validation?
 
   @override
   Widget build(BuildContext context) {

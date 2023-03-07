@@ -44,5 +44,11 @@ DICTIONARIES
     ..
     ALT CHINESE WEBAPI: http://ccdb.hemiola.com
 
+    KANJI
     SPREADSHEET:        https://docs.google.com/spreadsheets/d/1LVHUr5v1gzsIN5rZXSkln8hyGX5Urcf4BP6uvF8t1k4/edit#gid=2085376787
     
+    HANZI
+    SPREADSHEET:        https://docs.google.com/spreadsheets/d/1N1WOlitY9Zv3slF_ZRi7eMwZqCBPzXy2kHIxqZWcuFE/edit?usp=sharing
+
+    CONVERSION/
+    BUILD TOOLS:        https://github.com/nieldlr/hanzi

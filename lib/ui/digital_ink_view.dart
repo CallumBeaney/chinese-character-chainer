@@ -14,10 +14,12 @@ class DigitalInkView extends StatefulWidget {
 
 class _DigitalInkViewState extends State<DigitalInkView> {
   double get _width => MediaQuery.of(context).size.width;
-  final double canvasHeight = 350;
+  final double canvasHeight = 300;
 
-  final List<String> rensou = ['連', '想', '漢', '字', '蝶', '番'];
-  final List<String> kanjiPlaceholder = ['漢', '字', 'を', 'か', 'い', 'て'];
+  // final List<String> rensou = ['連', '想', '漢', '字', '蝶', '番'];
+  final List<String> kanjiListPlaceholder = ['此', 'は', '貴', '方', '之', '漢', '字', '列'];
+  final List<String> kanjiPlaceholder = ['漢', '字', 'を', '書', 'い', 'て'];
+  // 貴方の漢字列
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,9 @@ class _DigitalInkViewState extends State<DigitalInkView> {
         child: BlocBuilder<RecognitionManagerCubit, RecognitionManagerState>(
           builder: (context, state) {
             // If there are no results yet, display the name.
-            final results = state.results.isEmpty ? rensou : state.results;
+            final results = state.results.isEmpty ? kanjiListPlaceholder : state.results;
+            // ignore: prefer_if_null_operators
+            final mostRecent = state.comparator == null ? '字' : state.comparator.toString();
             return Column(
               children: [
                 // const Expanded(child: SizedBox.expand(child: Text("todo"))), // TODO upper area
@@ -40,13 +44,17 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              ...results.map((e) => KanjiButton(kanji: e)),
+                              ...results.map((e) => ListKanjiButton(kanji: e)),
                             ],
                           ),
                         );
                       },
                     ),
                   ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: ComparisonKanjiButton(kanji: mostRecent),
                 ),
 
                 Padding(
@@ -56,11 +64,15 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                     builder: (context, constraints) {
                       final kanji = state.candidates.isEmpty ? kanjiPlaceholder : state.candidates;
                       final width = constraints.maxWidth;
-                      int numKanji = width ~/ 65; // manages the display to stop overflow.
+                      int numKanji = width ~/ 60; // manage number of guesses displayed to stop overflow.
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          ...kanji.take(numKanji).map((e) => KanjiButton(kanji: e)), // Future: possibly LayoutBuilder required
+                          ...kanji.take(numKanji).map(
+                                (e) => RecognizedKanjiButton(
+                                  kanji: e,
+                                ),
+                              ), // Future: possibly LayoutBuilder required
                         ],
                       );
                     },
