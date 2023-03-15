@@ -21,4 +21,7 @@ class RecognitionManagerState {
         candidates: candidates ?? this.candidates,
         results: results ?? this.results,
       );
+
+  RecognitionManagerState addResult(String result) =>
+      copyWith(results: [...results, result], candidates: []);
 }

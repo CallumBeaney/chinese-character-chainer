@@ -13,34 +13,53 @@ class DigitalInkView extends StatefulWidget {
 }
 
 class _DigitalInkViewState extends State<DigitalInkView> {
-  double get _width => MediaQuery.of(context).size.width;
-  final double canvasHeight = 300;
+  // double get _width => MediaQuery.of(context).size.width;
+  // final double canvasHeight = 300;
 
   // final List<String> rensou = ['連', '想', '漢', '字', '蝶', '番'];
-  final List<String> kanjiListPlaceholder = ['此', 'は', '貴', '方', '之', '漢', '字', '列'];
-  final List<String> kanjiPlaceholder = ['漢', '字', 'を', '書', 'い', 'て'];
-  // 貴方の漢字列
+  final List<String> kanjiListPlaceholder = [
+    '貴',
+    '方',
+    '之',
+    '漢',
+    '字',
+    '列'
+  ]; // "This is your kanji list"
+  final List<String> recognitionKanjiPlaceholder = [
+    '漢',
+    '字',
+    'を',
+    '書',
+    'い',
+    'て'
+  ]; // "Write a kanji"
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(toolbarHeight: 45, title: const Text('連想漢字蝶番')),
+      // appBar: AppBar(
+      //   toolbarHeight: 45,
+      //   title: const Text('連想漢字蝶番'),
+      //   backgroundColor: Colors.grey[200],
+      // ),
       body: SafeArea(
         child: BlocBuilder<RecognitionManagerCubit, RecognitionManagerState>(
           builder: (context, state) {
             // If there are no results yet, display the name.
-            final results = state.results.isEmpty ? kanjiListPlaceholder : state.results;
-            // ignore: prefer_if_null_operators
-            final mostRecent = state.comparator == null ? '字' : state.comparator.toString();
+            final results =
+                state.results.isEmpty ? kanjiListPlaceholder : state.results;
+            final mostRecent =
+                state.comparator == null ? '字' : state.comparator.toString();
             return Column(
+              // TODO: https://stackoverflow.com/questions/51066628/fading-edge-listview-flutter
               children: [
-                // const Expanded(child: SizedBox.expand(child: Text("todo"))), // TODO upper area
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(3.0),
                     child: LayoutBuilder(
                       builder: (context, constraints) {
                         return SingleChildScrollView(
+                          reverse: true,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -52,9 +71,22 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                     ),
                   ),
                 ),
+
+                // The black middle button contains the most recent inputted kanji
+                //            which is then compared against the user's next input
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: ComparisonKanjiButton(kanji: mostRecent),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const punctuationButton(sign: '、'),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                        child: ComparisonKanjiButton(kanji: mostRecent),
+                      ),
+                      const punctuationButton(sign: '。'),
+                    ],
+                  ),
                 ),
 
                 Padding(
@@ -62,9 +94,12 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                   child: LayoutBuilder(
                     // TODO: research LB vs SB
                     builder: (context, constraints) {
-                      final kanji = state.candidates.isEmpty ? kanjiPlaceholder : state.candidates;
+                      final kanji = state.candidates.isEmpty
+                          ? recognitionKanjiPlaceholder
+                          : state.candidates;
                       final width = constraints.maxWidth;
-                      int numKanji = width ~/ 60; // manage number of guesses displayed to stop overflow.
+                      int numKanji = width ~/
+                          60; // manage number of guesses displayed to stop overflow.
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -72,7 +107,7 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                                 (e) => RecognizedKanjiButton(
                                   kanji: e,
                                 ),
-                              ), // Future: possibly LayoutBuilder required
+                              ),
                         ],
                       );
                     },

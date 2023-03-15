@@ -11,12 +11,18 @@ class InkControls extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(
-            width: 66,
-            height: 40,
-            child: ElevatedButton(
+          Container(
+            width: 55,
+            height: 35,
+            color: Colors.grey[300],
+            margin: EdgeInsets.only(top: 3.0),
+            child: TextButton(
               onPressed: onClear,
-              child: const Text('消去', style: TextStyle(fontSize: 16)),
+              child: const Text(
+                '消去',
+                style:
+                    TextStyle(fontSize: 18, color: Colors.black, height: 1.2),
+              ),
             ),
           ),
           // ElevatedButton(

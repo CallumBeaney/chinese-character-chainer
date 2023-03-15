@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart' hide Ink;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
 import 'package:rensou_flutter/cubit/recognition_manager_cubit.dart';
+import 'package:rensou_flutter/locator.dart';
 import 'package:rensou_flutter/painter.dart';
 
 import 'ink_controls.dart';
@@ -17,7 +20,28 @@ class _InkInputState extends State<InkInput> {
   final double canvasHeight = 300;
 
   final Ink _ink = Ink();
-  List<StrokePoint> _points = []; // TODO: singleton to access from digital_ink_view upon validation?
+  List<StrokePoint> _points = [];
+
+  late final StreamSubscription<bool> _clearTriggerSub;
+
+  @override
+  void initState() {
+    _clearTriggerSub =
+        recognitionManager().clearTriggerStream.listen(_onClearTrigger);
+    super.initState();
+  } // _cTS must be housed in initState() or the listener will not listen
+
+  void _onClearTrigger(bool trigger) {
+    if (trigger) {
+      _onClear(false);
+    }
+  }
+
+  @override
+  void dispose() {
+    _clearTriggerSub.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,15 +90,19 @@ class _InkInputState extends State<InkInput> {
   void _onRecognise() {
     setState(() {
       _points.clear();
+      // locator<List<StrokePoint>>().clear(); // doesn't run.
     });
     BlocProvider.of<RecognitionManagerCubit>(context).recogniseText(_ink);
   }
 
-  void _onClear() {
+  void _onClear([bool clearCandidates = true]) {
     setState(() {
       _ink.strokes.clear(); // Co-ordinate values
       _points.clear(); // Visual representation on the canvas
     });
-    BlocProvider.of<RecognitionManagerCubit>(context).clearCandidates();
+    if (clearCandidates) {
+      BlocProvider.of<RecognitionManagerCubit>(context).clearCandidates();
+      // BlocProvider.of<RecognitionManagerCubit>(context)
+    }
   }
 }
