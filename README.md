@@ -16,6 +16,10 @@ Write a kanji in the white box. Tap your kanji when it appears in one of the gre
 
 <br>
 
+# Learning  
+Moving from JS/HTML/CSS to Dart was quite a challenge and required a bit of collaboration.  
+Implementing a good architecture by separating business logic from UI widgets with a state management Cubit, as well as using streams and singletons for handling Google ML Kit API calls initially, and dictionary objects.
+
 # Dictionary information
 
 DICTIONARY SOURCES:  
