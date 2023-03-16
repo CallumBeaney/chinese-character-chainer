@@ -1,10 +1,14 @@
 ____________TODO
 
-DEFINE "PRESENT KANJI" CLASS
-DEFINE , . BUTTONS
-DEFINE "LIST BOX" CLASS 
-^   https://stackoverflow.com/questions/50080860/what-are-keys-in-the-stateless-widgets-class/50081052#50081052
-FIND HOW TO INSERT OVERLAY WITH KANJI INFO
+Change to light (kanjilookup)
+
+Hive package for keeping local session data
+        ^ https://pub.dev/packages/hive
+    あるいは Shared preferences
+        ^ https://pub.dev/packages/shared_preferences
+        
+SingleChildScrollView RE: mega readings 上下
+    ^ https://api.flutter.dev/flutter/widgets/SingleChildScrollView-class.html
 BUILD README
 
 

@@ -1,3 +1,29 @@
+/*  This map is built from the JSON file, which is in turn built from the Compiled Kanji Reference Dictionary spreadsheet. 
+
+    SOURCES: 
+
+          EDRDG's [KANJIDIC](http://www.edrdg.org/wiki/index.php/KANJIDIC_Project).
+          Michael Raine & Jim Breen's [KRADFILE](http://www.edrdg.org/krad/kradinf.html).
+          Shang's *[Kanji Frequency on Wikipedia](https://docs.google.com/spreadsheets/d/18uV916nNLcGE7FqjWH4SJSxlvuT8mM4J865u0WvqlHU/edit?usp=sharing)* spreadsheet. 
+
+    KEY :
+          index_KD     = KANJIDIC採番   =  The entry kanji's EDRGD "KANJIDIC" dictionary number **
+          radicals     = 部首           =  Components of the entry kanji
+          strokes      = 字画           =  The entry kanji's stroke count
+          freq_news    = 新聞にある頻度版 =  The frequency at which characters appear in newspapers
+          freq_wiki    = 新聞にある頻度版 =  The frequency at which characters appear on JP Wikipedia
+          english      = 英語の意味      =  The entry kanji's english meaning
+          on_kanji     = 音読み漢字      =  Words using the kanji's onyomi, in kanji form
+          on_kana      = 音読み仮名      =  Words using the kanji's onyomi, in kana form
+          kun_kanji    = 訓読み漢字      =  Words using the kanji's kunyomi, in kanji form
+          kun_kana     = 訓読み仮名      =  Words using the kanji's kunyomi, in kana form
+          heisig_word     = ハイシッグの暗記言葉 = Heisig's Remembering The Kanji keyword
+          heisig_ind      = ハイシッグの採番    = Heisig's index number
+          kanji_readings  = 漢字の発音、読み方  = The entry kanji's pronunciations 
+
+    ** This variable is essential for maintaining order when referencing the CKRD and when cross-referencing other dictionaries using the EDRGD KANJIDIC system 
+*/
+
 const dictionary = {
   "亜": {
     "index_KD": "1",

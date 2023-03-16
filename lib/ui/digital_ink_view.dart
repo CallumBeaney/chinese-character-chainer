@@ -17,22 +17,8 @@ class _DigitalInkViewState extends State<DigitalInkView> {
   // final double canvasHeight = 300;
 
   // final List<String> rensou = ['連', '想', '漢', '字', '蝶', '番'];
-  final List<String> kanjiListPlaceholder = [
-    '貴',
-    '方',
-    '之',
-    '漢',
-    '字',
-    '列'
-  ]; // "This is your kanji list"
-  final List<String> recognitionKanjiPlaceholder = [
-    '漢',
-    '字',
-    'を',
-    '書',
-    'い',
-    'て'
-  ]; // "Write a kanji"
+  final List<String> kanjiListPlaceholder = ['貴', '方', '之', '漢', '字', '列']; // "This is your kanji list"
+  final List<String> recognitionKanjiPlaceholder = ['漢', '字', 'を', '書', 'い', 'て']; // "Write a kanji"
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +32,8 @@ class _DigitalInkViewState extends State<DigitalInkView> {
         child: BlocBuilder<RecognitionManagerCubit, RecognitionManagerState>(
           builder: (context, state) {
             // If there are no results yet, display the name.
-            final results =
-                state.results.isEmpty ? kanjiListPlaceholder : state.results;
-            final mostRecent =
-                state.comparator == null ? '字' : state.comparator.toString();
+            final results = state.results.isEmpty ? kanjiListPlaceholder : state.results;
+            final mostRecent = state.comparator == null ? '字' : state.comparator.toString();
             return Column(
               // TODO: https://stackoverflow.com/questions/51066628/fading-edge-listview-flutter
               children: [
@@ -94,12 +78,9 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                   child: LayoutBuilder(
                     // TODO: research LB vs SB
                     builder: (context, constraints) {
-                      final kanji = state.candidates.isEmpty
-                          ? recognitionKanjiPlaceholder
-                          : state.candidates;
+                      final kanji = state.candidates.isEmpty ? recognitionKanjiPlaceholder : state.candidates;
                       final width = constraints.maxWidth;
-                      int numKanji = width ~/
-                          60; // manage number of guesses displayed to stop overflow.
+                      int numKanji = width ~/ 60; // manage number of guesses displayed to stop overflow.
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

@@ -1,3 +1,4 @@
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -136,32 +137,45 @@ class infoRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, crossAxisAlignment: CrossAxisAlignment.center, children: [
-      Flexible(
-        child: DottedBorder(
-          color: const Color.fromARGB(255, 212, 212, 212),
-          strokeWidth: 1,
-          child: Text(
-            leftText,
-            style: const TextStyle(
-              fontSize: 20,
-            ),
-          ),
-        ),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      // color: Colors.amber, // for debugging
+      child: IntrinsicHeight(
+        child: Row(
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // LEFT: the category definition
+              DottedBorder(
+                padding: const EdgeInsets.symmetric(vertical: 5.0),
+                color: const Color.fromARGB(255, 212, 212, 212),
+                strokeWidth: 1,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(14, 8, 8, 8),
+                  child: Text(
+                    "$leftText ：",
+                    style: const TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+              // RIGHT: info thereabout
+              Expanded(
+                child: DottedBorder(
+                  padding: const EdgeInsets.all(10.0),
+                  color: const Color.fromARGB(255, 212, 212, 212),
+                  strokeWidth: 1,
+                  child: Text(
+                    rightText,
+                    style: const TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+            ]),
       ),
-      Flexible(
-        // flex: 1,
-        child: DottedBorder(
-          color: const Color.fromARGB(255, 212, 212, 212),
-          strokeWidth: 1,
-          child: Text(
-            rightText,
-            style: const TextStyle(
-              fontSize: 20,
-            ),
-          ),
-        ),
-      ),
-    ]);
+    );
   }
 }

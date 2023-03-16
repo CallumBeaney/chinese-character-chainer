@@ -28,7 +28,7 @@ class kanjiInfoView extends StatelessWidget {
   // Heisig _could_ be NULL
   String? get heisigInd => dictionary[kanji]?["heisig_ind"] == null ? null : dictionary[kanji]["heisig_ind"];
   String? get heisigWord => dictionary[kanji]?["heisig_word"] == null ? null : dictionary[kanji]["heisig_word"];
-  String get heisig => heisigInd == null || heisigWord == null ? "No data available" : "#$heisigInd: \"$heisigWord\"";
+  String get heisig => heisigInd == null || heisigWord == null ? "No data available" : "#$heisigInd - \"$heisigWord\"";
 
   @override
   Widget build(BuildContext context) => Theme(
@@ -42,7 +42,7 @@ class kanjiInfoView extends StatelessWidget {
             child: Column(
               children: [
                 // ignore: prefer_const_constructors
-                Padding(padding: EdgeInsets.symmetric(vertical: 65.0)),
+                Padding(padding: EdgeInsets.symmetric(vertical: 30.0)),
                 // The kanji in question, displayed large
                 Center(
                   child: Text(
@@ -55,7 +55,7 @@ class kanjiInfoView extends StatelessWidget {
                 infoRow(leftText: '英語', rightText: english),
                 infoRow(leftText: '部首', rightText: radicals),
                 infoRow(leftText: '字画', rightText: strokes),
-                infoRow(leftText: 'Heisig', rightText: heisig),
+                infoRow(leftText: 'RTK', rightText: heisig),
                 // if ()
               ],
             ),
