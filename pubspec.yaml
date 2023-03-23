@@ -17,6 +17,7 @@ dependencies:
   google_mlkit_digital_ink_recognition: ^0.6.0
   rxdart: ^0.27.7
   dotted_border: ^2.0.0+3
+  ruby_text: ^3.0.1
 
 dev_dependencies:
   flutter_test:

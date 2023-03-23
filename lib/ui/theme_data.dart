@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 ThemeData kanjiLookupTheme = ThemeData(
-  scaffoldBackgroundColor: Colors.grey[900],
+  scaffoldBackgroundColor: Colors.grey[200],
   textTheme: TextTheme(
-    bodyMedium: TextStyle(color: Colors.grey[100]),
+    bodyMedium: TextStyle(color: Colors.grey[900]),
   ),
   appBarTheme: AppBarTheme(
-    backgroundColor: Colors.grey[900],
-    foregroundColor: Colors.grey[200],
+    foregroundColor: Colors.grey[900],
+    backgroundColor: Colors.grey[200],
   ),
 );

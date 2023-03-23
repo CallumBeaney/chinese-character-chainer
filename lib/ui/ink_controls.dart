@@ -15,13 +15,12 @@ class InkControls extends StatelessWidget {
             width: 55,
             height: 35,
             color: Colors.grey[300],
-            margin: EdgeInsets.only(top: 3.0),
+            margin: const EdgeInsets.only(top: 3.0),
             child: TextButton(
               onPressed: onClear,
               child: const Text(
                 '消去',
-                style:
-                    TextStyle(fontSize: 18, color: Colors.black, height: 1.2),
+                style: TextStyle(fontSize: 18, color: Colors.black, height: 1.2),
               ),
             ),
           ),

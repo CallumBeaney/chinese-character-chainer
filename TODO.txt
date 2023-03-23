@@ -1,6 +1,6 @@
 ____________TODO
 
-Change to light (kanjilookup)
+Scrolling problems when spamming punctuation buttons
 
 Hive package for keeping local session data
         ^ https://pub.dev/packages/hive
@@ -9,10 +9,11 @@ Hive package for keeping local session data
         
 SingleChildScrollView RE: mega readings 上下
     ^ https://api.flutter.dev/flutter/widgets/SingleChildScrollView-class.html
+
 BUILD README
 
 
-____________NEW FEATURES
+____________NEW FEATURES ?
 
 HOWTO: LOG SESSION AND STORE INFO
 OVERLAY WITH ARROWS TO SHOW USAGE

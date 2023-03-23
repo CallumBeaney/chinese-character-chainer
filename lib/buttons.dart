@@ -1,9 +1,9 @@
-
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rensou_flutter/cubit/recognition_manager_cubit.dart';
 import 'package:rensou_flutter/ui/kanji_info_view.dart';
+import 'package:ruby_text/ruby_text.dart';
 
 class RecognizedKanjiButton extends StatelessWidget {
   const RecognizedKanjiButton({Key? key, required this.kanji, this.error = false}) : super(key: key);
@@ -28,7 +28,7 @@ class RecognizedKanjiButton extends StatelessWidget {
         },
         child: Text(
           kanji,
-          style: const TextStyle(fontSize: 24, color: Colors.black),
+          style: const TextStyle(fontSize: 25, color: Colors.black),
         ),
       ),
     );
@@ -44,7 +44,7 @@ class ListKanjiButton extends StatelessWidget {
 
   getScreen(context, kanji, isPunctuation) {
     if (isPunctuation == false) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => kanjiInfoView(kanji: kanji)));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => KanjiInfoView(kanji: kanji)));
     } else {
       // Do nothing
       return;
@@ -61,11 +61,11 @@ class ListKanjiButton extends StatelessWidget {
       child: TextButton(
         child: Text(
           kanji,
-          style: const TextStyle(fontSize: 24, color: Colors.black),
+          style: const TextStyle(fontSize: 25, color: Colors.black),
         ),
         onPressed: () {
           getScreen(context, kanji, isPunctuation);
-        }, // TODO: Dictionary view pop
+        },
       ),
     );
   }
@@ -75,6 +75,10 @@ class ComparisonKanjiButton extends StatelessWidget {
   const ComparisonKanjiButton({Key? key, required this.kanji}) : super(key: key);
 
   final String kanji;
+
+  getScreen(context, kanji) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => KanjiInfoView(kanji: kanji)));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,14 +92,16 @@ class ComparisonKanjiButton extends StatelessWidget {
           kanji,
           style: TextStyle(fontSize: 50, color: Colors.grey[200], height: 1.225),
         ),
-        onPressed: () {}, // TODO: Dictionary lookup? Help button?
+        onPressed: () {
+          getScreen(context, kanji);
+        },
       ),
     );
   }
 }
 
-class punctuationButton extends StatelessWidget {
-  const punctuationButton({Key? key, required this.sign}) : super(key: key);
+class PunctuationButton extends StatelessWidget {
+  const PunctuationButton({Key? key, required this.sign}) : super(key: key);
 
   final String sign;
 
@@ -128,11 +134,76 @@ class punctuationButton extends StatelessWidget {
   }
 }
 
-class infoRow extends StatelessWidget {
-  const infoRow({Key? key, required this.leftText, required this.rightText}) : super(key: key);
+class InfoRow extends StatelessWidget {
+  const InfoRow({Key? key, required this.leftText, required this.rightText}) : super(key: key);
 
   final String leftText;
   final String rightText;
+  int get length => rightText.length;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      // color: Colors.amber, // for debugging
+      child: IntrinsicHeight(
+        child: Row(
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // LEFT: the category definition
+              SizedBox(
+                width: 100,
+                child: DottedBorder(
+                  padding: const EdgeInsets.symmetric(vertical: 5.0),
+                  color: const Color.fromARGB(255, 64, 64, 64),
+                  strokeWidth: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(14, 8, 8, 8),
+                    child: Text(
+                      leftText,
+                      style: const TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              // RIGHT: info thereabout
+
+              Expanded(
+                child: DottedBorder(
+                  padding: const EdgeInsets.fromLTRB(10, 14, 10, 10),
+                  color: const Color.fromARGB(255, 64, 64, 64),
+                  strokeWidth: 1,
+                  child: Center(
+                    child: Text(
+                      rightText,
+                      style: length > 25
+                          ? const TextStyle(
+                              fontSize: 17,
+                            )
+                          : const TextStyle(
+                              fontSize: 20,
+                            ),
+                    ),
+                  ),
+                ),
+              ),
+            ]),
+      ),
+    );
+  }
+}
+
+class RubyRow extends StatelessWidget {
+  const RubyRow({Key? key, required this.leftText, required this.rightText, required this.ruby}) : super(key: key);
+
+  final String leftText;
+  final List<String> rightText;
+  final List<String> ruby;
+
+  // String get finalText =>
   // String get rightText => rightReceiver.join(', ');
 
   @override
@@ -146,16 +217,19 @@ class infoRow extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               // LEFT: the category definition
-              DottedBorder(
-                padding: const EdgeInsets.symmetric(vertical: 5.0),
-                color: const Color.fromARGB(255, 212, 212, 212),
-                strokeWidth: 1,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(14, 8, 8, 8),
-                  child: Text(
-                    "$leftText ：",
-                    style: const TextStyle(
-                      fontSize: 20,
+              SizedBox(
+                width: 100,
+                child: DottedBorder(
+                  padding: const EdgeInsets.symmetric(vertical: 5.0),
+                  color: const Color.fromARGB(255, 64, 64, 64),
+                  strokeWidth: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(14, 8, 8, 8),
+                    child: Text(
+                      leftText,
+                      style: const TextStyle(
+                        fontSize: 20,
+                      ),
                     ),
                   ),
                 ),
@@ -164,12 +238,16 @@ class infoRow extends StatelessWidget {
               Expanded(
                 child: DottedBorder(
                   padding: const EdgeInsets.all(10.0),
-                  color: const Color.fromARGB(255, 212, 212, 212),
+                  color: const Color.fromARGB(255, 64, 64, 64),
                   strokeWidth: 1,
-                  child: Text(
-                    rightText,
-                    style: const TextStyle(
-                      fontSize: 20,
+                  child: Center(
+                    child: RubyText(
+                      rubyStyle: const TextStyle(fontSize: 9, letterSpacing: 0.1),
+                      style: const TextStyle(
+                        fontSize: 20,
+                        letterSpacing: 1.0,
+                      ),
+                      [for (var i = 0; i < rightText.length; i++) (RubyTextData("${rightText[i]},　", ruby: "${ruby[i]}　"))],
                     ),
                   ),
                 ),

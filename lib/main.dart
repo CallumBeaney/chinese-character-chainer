@@ -1,15 +1,8 @@
-// ignore_for_file: unused_import, unnecessary_import
-
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' hide Ink; // prevent clashes with ML Kit class
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
-import 'package:rensou_flutter/cubit/recognition_manager_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rensou_flutter/painter.dart';
 import 'package:rensou_flutter/ui/digital_ink_view.dart';
-import './activity_indicator/activity_indicator.dart';
 import 'locator.dart'; // Singleton
-import 'buttons.dart';
 import 'dart:async';
 
 // Must access

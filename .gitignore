@@ -46,3 +46,5 @@ lib/olddictionary.dart
 lib/newdict.json
 lib/testarea.dart
 macos/Podfile
+
+lib/olddictionary.dart

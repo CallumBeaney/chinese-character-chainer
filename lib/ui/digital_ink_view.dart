@@ -13,9 +13,6 @@ class DigitalInkView extends StatefulWidget {
 }
 
 class _DigitalInkViewState extends State<DigitalInkView> {
-  // double get _width => MediaQuery.of(context).size.width;
-  // final double canvasHeight = 300;
-
   // final List<String> rensou = ['連', '想', '漢', '字', '蝶', '番'];
   final List<String> kanjiListPlaceholder = ['貴', '方', '之', '漢', '字', '列']; // "This is your kanji list"
   final List<String> recognitionKanjiPlaceholder = ['漢', '字', 'を', '書', 'い', 'て']; // "Write a kanji"
@@ -23,11 +20,6 @@ class _DigitalInkViewState extends State<DigitalInkView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   toolbarHeight: 45,
-      //   title: const Text('連想漢字蝶番'),
-      //   backgroundColor: Colors.grey[200],
-      // ),
       body: SafeArea(
         child: BlocBuilder<RecognitionManagerCubit, RecognitionManagerState>(
           builder: (context, state) {
@@ -35,7 +27,7 @@ class _DigitalInkViewState extends State<DigitalInkView> {
             final results = state.results.isEmpty ? kanjiListPlaceholder : state.results;
             final mostRecent = state.comparator == null ? '字' : state.comparator.toString();
             return Column(
-              // TODO: https://stackoverflow.com/questions/51066628/fading-edge-listview-flutter
+              // TODO: May need: https://stackoverflow.com/questions/51066628/fading-edge-listview-flutter
               children: [
                 Expanded(
                   child: Padding(
@@ -63,12 +55,12 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const punctuationButton(sign: '、'),
+                      const PunctuationButton(sign: '、'),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 35.0),
                         child: ComparisonKanjiButton(kanji: mostRecent),
                       ),
-                      const punctuationButton(sign: '。'),
+                      const PunctuationButton(sign: '。'),
                     ],
                   ),
                 ),
@@ -76,7 +68,6 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: LayoutBuilder(
-                    // TODO: research LB vs SB
                     builder: (context, constraints) {
                       final kanji = state.candidates.isEmpty ? recognitionKanjiPlaceholder : state.candidates;
                       final width = constraints.maxWidth;
