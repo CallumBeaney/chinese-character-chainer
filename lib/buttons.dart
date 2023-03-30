@@ -20,6 +20,7 @@ class RecognizedKanjiButton extends StatelessWidget {
     return Container(
       width: 50,
       height: 50,
+      // color: error ? const Color.fromARGB(255, 198, 55, 45) : Colors.grey[200],
       color: Colors.grey[200],
       margin: const EdgeInsets.all(1.0),
       child: TextButton(
@@ -28,7 +29,9 @@ class RecognizedKanjiButton extends StatelessWidget {
         },
         child: Text(
           kanji,
-          style: const TextStyle(fontSize: 25, color: Colors.black),
+          style:
+              // error ? const TextStyle(fontSize: 25, color: Colors.black) : const TextStyle(fontSize: 25, color: Color.fromARGB(255, 233, 233, 233)),
+              const TextStyle(fontSize: 25, color: Colors.black),
         ),
       ),
     );

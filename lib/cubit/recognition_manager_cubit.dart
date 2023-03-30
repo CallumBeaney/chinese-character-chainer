@@ -12,16 +12,12 @@ class RecognitionManagerCubit extends Cubit<RecognitionManagerState> {
   // Empty ML recognition candidates row
   void clearCandidates() => emit(state.copyWith(candidates: []));
 
-  Stream<bool> get clearTriggerStream => stream
-      .map((e) => e.results.length)
-      .bufferCount(2, 1)
-      .map((e) => e.first != e.last);
+  Stream<bool> get clearTriggerStream => stream.map((e) => e.results.length).bufferCount(2, 1).map((e) => e.first != e.last);
 
   Future<void> recogniseText(Ink ink) async {
     try {
       final List<RecognitionCandidate> candidates =
-          await locator<DigitalInkRecognizer>().recognize(
-              ink); // ML package .recognise() function invoked, returns list of guesses of user input
+          await locator<DigitalInkRecognizer>().recognize(ink); // ML package .recognise() function invoked, returns list of guesses of user input
       final List<String> candidatesString = candidates
           .where((e) => dictionary.containsKey(e.text))
           .map((e) => e.text)
@@ -41,18 +37,20 @@ class RecognitionManagerCubit extends Cubit<RecognitionManagerState> {
     }
 
     if (newKanji == '。' || newKanji == '、') {
-      emit(state.addResult(newKanji));
-      return;
-    }
-    if (previousKanji == '。' || previousKanji == '、') {
+      // TODO: fix the ability to alternate buttons
       emit(state.addResult(newKanji));
       return;
     }
 
-    List<String> previousKanjiRadicals =
-        dictionary[previousKanji]?['radicals']?.split(',') ?? [];
-    List<String> newKanjiRadicals =
-        dictionary[newKanji]?['radicals']?.split(',') ?? [];
+    if (previousKanji == '。' || previousKanji == '、' && dictionary[previousKanji] != null) {
+      // TODO: check the previouskanji check -- you can bug it with _を_ !
+      emit(state.addResult(newKanji));
+
+      return;
+    }
+
+    List<String> previousKanjiRadicals = dictionary[previousKanji]?['radicals']?.split(',') ?? [];
+    List<String> newKanjiRadicals = dictionary[newKanji]?['radicals']?.split(',') ?? [];
 
     if (previousKanji == null) {
       // User is submitting their first ever kanji -- let it pass!
@@ -60,8 +58,7 @@ class RecognitionManagerCubit extends Cubit<RecognitionManagerState> {
       return;
     }
 
-    if (newKanjiRadicals.any((e) => previousKanjiRadicals.contains(e)) ==
-        false) {
+    if (newKanjiRadicals.any((e) => previousKanjiRadicals.contains(e)) == false) {
       return;
       // TODO: change button colour!
     } else {
