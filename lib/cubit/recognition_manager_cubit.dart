@@ -12,6 +12,7 @@ class RecognitionManagerCubit extends Cubit<RecognitionManagerState> {
   // Empty ML recognition candidates row
   void clearCandidates() => emit(state.copyWith(candidates: []));
 
+  // TODO: this still needed?
   Stream<bool> get clearTriggerStream => stream.map((e) => e.results.length).bufferCount(2, 1).map((e) => e.first != e.last);
 
   Future<void> recogniseText(Ink ink) async {
@@ -36,16 +37,20 @@ class RecognitionManagerCubit extends Cubit<RecognitionManagerState> {
       return;
     }
 
+    // is user trying [ 。 、 。 、 。 、 ] ???
+    if ((newKanji == '。' && previousKanji == '、') || (newKanji == '、' && previousKanji == '。')) {
+      return;
+    }
+
+    // is user adding legitimate punctuation?
     if (newKanji == '。' || newKanji == '、') {
-      // TODO: fix the ability to alternate buttons
       emit(state.addResult(newKanji));
       return;
     }
 
-    if (previousKanji == '。' || previousKanji == '、' && dictionary[previousKanji] != null) {
-      // TODO: check the previouskanji check -- you can bug it with _を_ !
+    // is user adding chracter _after_ punctuation?
+    if ((previousKanji == '。' || previousKanji == '、') && dictionary.containsKey(newKanji)) {
       emit(state.addResult(newKanji));
-
       return;
     }
 

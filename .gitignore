@@ -48,3 +48,4 @@ lib/testarea.dart
 macos/Podfile
 
 lib/olddictionary.dart
+_misc_files/olddictionary.dart

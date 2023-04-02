@@ -2,6 +2,8 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rensou_flutter/cubit/recognition_manager_cubit.dart';
+import 'package:rensou_flutter/locator.dart';
+import 'package:rensou_flutter/ui/app_info_view.dart';
 import 'package:rensou_flutter/ui/kanji_info_view.dart';
 import 'package:ruby_text/ruby_text.dart';
 
@@ -9,7 +11,7 @@ class RecognizedKanjiButton extends StatelessWidget {
   const RecognizedKanjiButton({Key? key, required this.kanji, this.error = false}) : super(key: key);
 
   final String kanji;
-  final bool error; // TODO: error colouring
+  final bool error; // TODO: error colouring -- when validateKanji() returns a failure.
 
   void _onSubmit(context, kanji) {
     BlocProvider.of<RecognitionManagerCubit>(context).validateKanji(kanji);
@@ -43,7 +45,7 @@ class ListKanjiButton extends StatelessWidget {
 
   final String kanji;
 
-  bool get isPunctuation => kanji == '。' || kanji == '、' ? true : false;
+  bool get isPunctuation => kanji == '。' || kanji == '、' || !locator<Dictionary>().containsKey(kanji) ? true : false;
 
   getScreen(context, kanji, isPunctuation) {
     if (isPunctuation == false) {
@@ -79,8 +81,15 @@ class ComparisonKanjiButton extends StatelessWidget {
 
   final String kanji;
 
-  getScreen(context, kanji) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => KanjiInfoView(kanji: kanji)));
+  bool get isPunctuation => kanji == '。' || kanji == '、' || !locator<Dictionary>().containsKey(kanji) ? true : false;
+
+  getScreen(context, kanji, isPunctuation) {
+    if (isPunctuation == false) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => KanjiInfoView(kanji: kanji)));
+    } else {
+      // TODO: this.buttoncolour etc etc
+      return;
+    }
   }
 
   @override
@@ -96,7 +105,7 @@ class ComparisonKanjiButton extends StatelessWidget {
           style: TextStyle(fontSize: 50, color: Colors.grey[200], height: 1.225),
         ),
         onPressed: () {
-          getScreen(context, kanji);
+          getScreen(context, kanji, isPunctuation);
         },
       ),
     );
@@ -250,12 +259,44 @@ class RubyRow extends StatelessWidget {
                         fontSize: 20,
                         letterSpacing: 1.0,
                       ),
-                      [for (var i = 0; i < rightText.length; i++) (RubyTextData("${rightText[i]},　", ruby: "${ruby[i]}　"))],
+                      [for (var i = 0; i < rightText.length; i++) (RubyTextData(" ${rightText[i]}, ", ruby: "${ruby[i]} "))],
                     ),
                   ),
                 ),
               ),
             ]),
+      ),
+    );
+  }
+}
+
+class InfoButton extends StatelessWidget {
+  const InfoButton({Key? key, required this.text}) : super(key: key);
+
+  final String text;
+
+  getScreen(context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => const AppInfoView()));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 45,
+      height: 45,
+      color: const Color.fromARGB(255, 49, 49, 49),
+      child: TextButton(
+        onPressed: () {
+          getScreen(context);
+        },
+        child: Text(
+          text,
+          style: const TextStyle(
+            fontSize: 25,
+            color: Color.fromARGB(255, 214, 214, 214),
+            height: 1.26,
+          ),
+        ),
       ),
     );
   }

@@ -28,8 +28,8 @@ class KanjiInfoView extends StatelessWidget {
   String? get heisig => heisigInd == null || heisigWord == null ? null : "#$heisigInd - \"$heisigWord\"";
 
   // Frequency data _could_ be NULL
-  String? get newsFreq => dictionary[kanji]?["freq_news"] == null ? null : dictionary[kanji]["heisig_ind"];
-  String? get wikiFreq => dictionary[kanji]?["freq_news"] == null ? null : dictionary[kanji]["heisig_ind"];
+  String? get newsFreq => dictionary[kanji]?["freq_news"] == null ? null : dictionary[kanji]["freq_news"];
+  String? get wikiFreq => dictionary[kanji]?["freq_wiki"] == null ? null : dictionary[kanji]["freq_wiki"];
 
   // Onyomi kanji & readings _could_ be NULL
   List<String>? get onyomiKanji => dictionary[kanji]?["on_kanji"] == null ? null : dictionary[kanji]?["on_kanji"].split(",");
@@ -98,8 +98,7 @@ class KanjiInfoView extends StatelessWidget {
                       ruby: kunyomiKana!,
                     ),
                   ],
-
-                  // if ()
+                  const Padding(padding: EdgeInsets.only(top: 25)),
                 ],
               ),
             ),

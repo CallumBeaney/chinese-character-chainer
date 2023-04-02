@@ -22,7 +22,8 @@ Stream<List<String>> get candidatesStream => _candidatesController.stream;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setup();
-  await checkAndDownloadModel('ja', locator.get<DigitalInkRecognizerModelManager>()); //TODO: note change
+  await checkAndDownloadModel('ja', locator.get<DigitalInkRecognizerModelManager>()); //TODO: functionality to change languages?
+  // popup on first ever startup
   locator.get<DigitalInkRecognizer>();
   runApp(const MyApp());
 }
