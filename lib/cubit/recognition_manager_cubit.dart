@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
-import 'package:rensou_flutter/jp_dictionary.dart';
 import 'package:rensou_flutter/locator.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -12,6 +11,8 @@ class RecognitionManagerCubit extends Cubit<RecognitionManagerState> {
   // Empty ML recognition candidates row
   void clearCandidates() => emit(state.copyWith(candidates: []));
 
+  void clearAll() => emit(state.copyWith(candidates: [], results: []));
+
   // TODO: this still needed?
   Stream<bool> get clearTriggerStream => stream.map((e) => e.results.length).bufferCount(2, 1).map((e) => e.first != e.last);
 
@@ -20,7 +21,7 @@ class RecognitionManagerCubit extends Cubit<RecognitionManagerState> {
       final List<RecognitionCandidate> candidates =
           await locator<DigitalInkRecognizer>().recognize(ink); // ML package .recognise() function invoked, returns list of guesses of user input
       final List<String> candidatesString = candidates
-          .where((e) => dictionary.containsKey(e.text))
+          .where((e) => locator<Dictionary>().containsKey(e.text))
           .map((e) => e.text)
           .toList(); // Strip that guess list of non-valid characters e.g. romaji, katakana, */!-# etc
       emit(state.copyWith(candidates: candidatesString));

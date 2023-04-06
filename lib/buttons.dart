@@ -5,6 +5,7 @@ import 'package:rensou_flutter/cubit/recognition_manager_cubit.dart';
 import 'package:rensou_flutter/locator.dart';
 import 'package:rensou_flutter/ui/app_info_view.dart';
 import 'package:rensou_flutter/ui/jp_info_view.dart';
+import 'package:rensou_flutter/ui/zh_info_view.dart';
 import 'package:ruby_text/ruby_text.dart';
 
 class RecognizedKanjiButton extends StatelessWidget {

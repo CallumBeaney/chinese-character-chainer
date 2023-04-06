@@ -1,3 +1,25 @@
+/*  This map is built from Jun Da 笪骏 (jda@mtsu.edu)'s Hanzi Frequency List
+
+    SOURCES: 
+
+          https://lingua.mtsu.edu/chinese-computing/statistics/char/list.php?Which=MO
+
+    KEY :
+          index_jun  = 序号       =  The entry hanzi's serial number as per Jun **
+          freq       = 频率       =  Individual raw frequency of character in reference corpus
+          percentile = 累计频率(%) =  Cumulative frequency in percentile
+          pinyin     = 拼音       =  Romanized pronunciation of the entry hanzi
+          jyutping   = 粵拼       =  The Cantonese pronunciation
+          zhuyin     = 注音       =  The Bopomofo pronunciation
+          radicals   = 部首       =  Components of the entry hanzi
+          trad_char  = 繁體字     =  The traditional form of the entry hanzi
+          english    = 英文翻譯   =  The entry hanzi's english meaning
+          
+
+    ** This variable is essential for maintaining order when referencing Jun Da's list.
+*/
+
+// ignore: constant_identifier_names
 const zh_simp_dict = {
   "的": {
     "index_jun": "1",
@@ -81706,7 +81728,7 @@ const zh_simp_dict = {
     "index_jun": "8220",
     "freq": "3",
     "percentile": "99.9987824542",
-    "pinyin": null,
+    "pinyin": "lǐ",
     "jyutping": "lei5",
     "zhuyin": "ㄌㄧˇ",
     "radicals": "亠,里,𧘇",
@@ -98911,7 +98933,7 @@ const zh_simp_dict = {
     "index_jun": "9019",
     "freq": "1",
     "percentile": "99.9995276584",
-    "pinyin": null,
+    "pinyin": "nián",
     "jyutping": "nin4",
     "zhuyin": null,
     "radicals": "禾,千,㇒,十",

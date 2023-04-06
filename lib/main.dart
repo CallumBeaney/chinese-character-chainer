@@ -21,8 +21,8 @@ import 'dart:async';
 // }
 
 // // Stream for Text Recognition candidates
-final StreamController<List<String>> _candidatesController = StreamController.broadcast();
-Stream<List<String>> get candidatesStream => _candidatesController.stream;
+// final StreamController<List<String>> _candidatesController = StreamController.broadcast();
+// Stream<List<String>> get candidatesStream => _candidatesController.stream;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -83,8 +83,6 @@ class _HomePageState extends State<HomePage> {
         final bool result = await locator.get<DigitalInkRecognizerModelManager>().downloadModel('zh-Hani').then((value) => value ? true : false);
       }
     }
-
-    // Either way, you're now going to get a recogniser
   }
 
   @override
@@ -212,8 +210,7 @@ class PopupPage extends StatelessWidget {
           children: const [
             Padding(
               padding: EdgeInsets.all(50),
-              child: Text(
-                  'Installing language models for this app.\n\nThis may take up to a minute depending on the quality of your internet connection.\n\nOnce this download is complete, this app can be operated fully offline.'),
+              child: Text('Installing language models for this app.\n\nOnce this download is complete, this app can be operated fully offline.'),
             ),
           ],
         ),

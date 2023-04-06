@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rensou_flutter/buttons.dart';
@@ -47,7 +46,8 @@ class _DigitalInkViewState extends State<DigitalInkView> {
 
   // TODO: https://pub.dev/packages/number_to_words_chinese/install
   int getScore(List<String> answers) {
-    return answers.map((e) => locator<Dictionary>().containsKey(e)).where((r) => r == true).length;
+    // TODO: reconfigure to check for repeats?
+    return answers.map((e) => locator<Dictionary>().containsKey(e)).where((r) => (r == true)).length;
   }
 
   @override
@@ -87,6 +87,7 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                                   child: TextButton(
                                     onPressed: () {
                                       Navigator.pop(context);
+                                      BlocProvider.of<RecognitionManagerCubit>(context).clearAll();
                                     },
                                     child: const Icon(
                                       Icons.arrow_back,
@@ -95,16 +96,6 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                                   ),
                                 ),
                               )),
-                          // child: Align(
-                          //     alignment: Alignment.topCenter,
-                          //     child:
-                          //     Opacity(
-                          //         // nest here to ensure proper centring of KANJI LIST below
-                          //         opacity: 0.0,
-                          //         child: Padding(
-                          //           padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                          //           child: Text(""),
-                          //         )))
                         ),
 
                         // The USER KANJI LIST

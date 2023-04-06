@@ -24,7 +24,8 @@
     ** This variable is essential for maintaining order when referencing the CKRD and when cross-referencing other dictionaries using the EDRGD KANJIDIC system 
 */
 
-const dictionary = {
+// ignore: constant_identifier_names
+const jp_dict = {
   "亜": {
     "index_KD": "1",
     "radicals": "｜,一,口,亞",
