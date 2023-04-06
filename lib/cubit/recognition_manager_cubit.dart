@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
-import 'package:rensou_flutter/dictionary.dart';
+import 'package:rensou_flutter/jp_dictionary.dart';
 import 'package:rensou_flutter/locator.dart';
 import 'package:rxdart/rxdart.dart';
 

@@ -6,43 +6,41 @@ import 'package:rensou_flutter/locator.dart';
 
 import 'ink_input.dart';
 
-class DigitalInkView extends StatefulWidget {
-  const DigitalInkView({super.key});
+class ZhTradInkView extends StatefulWidget {
+  const ZhTradInkView({super.key});
 
   @override
-  State<DigitalInkView> createState() => _DigitalInkViewState();
+  State<ZhTradInkView> createState() => _ZhTradInkViewState();
 }
 
-class _DigitalInkViewState extends State<DigitalInkView> {
+class _ZhTradInkViewState extends State<ZhTradInkView> {
   // final List<String> rensou = ['連', '想', '漢', '字', '蝶', '番'];
   final List<String> kanjiListPlaceholder = [
-    'こ',
-    'れ',
-    'は',
-    '連',
-    '想',
-    '漢',
-    '字',
-    '蝶',
-    '番',
-    'で',
-    'す',
-    '。',
-    'こ',
-    'こ',
-    'は',
-    'あ',
-    'な',
-    'た',
-    'の',
+    '這',
+    '裡',
+    '是',
+    '您',
+    '的',
     '漢',
     '字',
     '列',
-    'で',
-    'す',
+    '表',
+    '。',
+    '按',
+    '漢',
+    '字',
+    '可',
+    '獲',
+    '取',
+    '有',
+    '關',
+    '它',
+    '的',
+    '信',
+    '息',
     '。',
   ]; // "This is your kanji list"
-  final List<String> recognitionKanjiPlaceholder = ['漢', '字', 'を', '書', 'い', 'て']; // "Write a kanji"
+  final List<String> recognitionKanjiPlaceholder = ['請', '寫', '一', '個', '漢', '字']; // "Write a kanji"
 
   // TODO: https://pub.dev/packages/number_to_words_chinese/install
   int getScore(List<String> answers) {
@@ -52,6 +50,12 @@ class _DigitalInkViewState extends State<DigitalInkView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   title: const Text('日本語'),
+      //   toolbarHeight: 50,
+      //   foregroundColor: Colors.grey[900],
+      //   backgroundColor: Colors.grey[200],
+      // ),
       body: SafeArea(
         child: BlocBuilder<RecognitionManagerCubit, RecognitionManagerState>(
           builder: (context, state) {
@@ -67,17 +71,38 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                     return Row(
                       children: [
                         // HIDDEN BUTTON IN TOP LEFT COLUMN
-                        const Expanded(
-                            flex: 1,
-                            child: Align(
-                                alignment: Alignment.topCenter,
-                                child: Opacity(
-                                    // nest here to ensure proper centring of KANJI LIST below
-                                    opacity: 0.0,
-                                    child: Padding(
-                                      padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                                      child: Text(""),
-                                    )))),
+                        Expanded(
+                          flex: 1,
+                          child: Align(
+                              alignment: Alignment.topCenter,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                                child: Container(
+                                  width: 45,
+                                  height: 45,
+                                  color: Color.fromARGB(255, 108, 108, 108),
+                                  child: TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Icon(
+                                      Icons.arrow_back,
+                                      color: Color.fromARGB(255, 221, 221, 221),
+                                    ),
+                                  ),
+                                ),
+                              )),
+                          // child: Align(
+                          //     alignment: Alignment.topCenter,
+                          //     child:
+                          //     Opacity(
+                          //         // nest here to ensure proper centring of KANJI LIST below
+                          //         opacity: 0.0,
+                          //         child: Padding(
+                          //           padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                          //           child: Text(""),
+                          //         )))
+                        ),
 
                         // The USER KANJI LIST
                         Expanded(
@@ -142,7 +167,6 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                                       ),
                                     ),
                                   )),
-                              // ),
                             ]
                           ],
                         ),

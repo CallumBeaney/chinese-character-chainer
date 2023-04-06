@@ -586,8 +586,7 @@ const dictionary = {
     "strokes": "10",
     "freq_news": "206",
     "freq_wiki": "37891",
-    "english":
-        "plan,suggestion,draft,ponder,fear,proposition,idea,expectation,bill,worry",
+    "english": "plan,suggestion,draft,ponder,fear,proposition,idea,expectation,bill,worry",
     "heisig_word": "plan",
     "heisig_ind": "214",
     "kanji_readings": "アン,つくえ,",
@@ -827,8 +826,7 @@ const dictionary = {
     "strokes": "15",
     "freq_news": "1158",
     "freq_wiki": "2885",
-    "english":
-        "consolation,amusement,seduce,cheer,make sport of,comfort,console",
+    "english": "consolation,amusement,seduce,cheer,make sport of,comfort,console",
     "heisig_word": "consolation",
     "heisig_ind": "1096",
     "kanji_readings": "イ,なぐさ.める,なぐさ.む,",
@@ -873,8 +871,7 @@ const dictionary = {
     "strokes": "9",
     "freq_news": "831",
     "freq_wiki": "56686",
-    "english":
-        "do,change,make,benefit,welfare,be of use,reach to,try,practice,cost,serve as,good,advantage,as a result of",
+    "english": "do,change,make,benefit,welfare,be of use,reach to,try,practice,cost,serve as,good,advantage,as a result of",
     "heisig_word": "do",
     "heisig_ind": "1918",
     "kanji_readings": "イ,ため,な.る,な.す,す.る,たり,つく.る,なり,",
@@ -1204,8 +1201,7 @@ const dictionary = {
     "strokes": "10",
     "freq_news": "1524",
     "freq_wiki": "7004",
-    "english":
-        "deviate,idleness,leisure,miss the mark,evade,elude,parry,diverge",
+    "english": "deviate,idleness,leisure,miss the mark,evade,elude,parry,diverge",
     "heisig_word": "elude",
     "heisig_ind": "1973",
     "kanji_readings": "イツ,そ.れる,そ.らす,はぐ.れる,",
@@ -1295,8 +1291,7 @@ const dictionary = {
     "strokes": "6",
     "freq_news": "682",
     "freq_wiki": "28490",
-    "english":
-        "stamp,seal,mark,imprint,symbol,emblem,trademark,evidence,souvenir,India",
+    "english": "stamp,seal,mark,imprint,symbol,emblem,trademark,evidence,souvenir,India",
     "heisig_word": "stamp",
     "heisig_ind": "1425",
     "kanji_readings": "イン,しるし,-じるし,しる.す,",
@@ -1611,8 +1606,7 @@ const dictionary = {
     "strokes": "5",
     "freq_news": "2400",
     "freq_wiki": "731",
-    "english":
-        "sign of the hare or rabbit,5-7AM,fourth sign of Chinese zodiac,east",
+    "english": "sign of the hare or rabbit,5-7AM,fourth sign of Chinese zodiac,east",
     "heisig_word": "sign of the hare",
     "heisig_ind": "2041",
     "kanji_readings": "ボウ,モウ,う,",
@@ -2857,8 +2851,7 @@ const dictionary = {
     "strokes": "8",
     "freq_news": "789",
     "freq_wiki": "18967",
-    "english":
-        "push,stop,check,subdue,attach,seize,weight,shove,press,seal,do in spite of",
+    "english": "push,stop,check,subdue,attach,seize,weight,shove,press,seal,do in spite of",
     "heisig_word": "push",
     "heisig_ind": "1114",
     "kanji_readings": "オウ,お.す,お.し-,お.っ-,お.さえる,おさ.える,",
@@ -3266,8 +3259,7 @@ const dictionary = {
     "english": "below,down,descend,give,low,inferior",
     "heisig_word": "below",
     "heisig_ind": "50",
-    "kanji_readings":
-        "カ,ゲ,した,しも,もと,さ.げる,さ.がる,くだ.る,くだ.り,くだ.す,-くだ.す,くだ.さる,お.ろす,お.りる,",
+    "kanji_readings": "カ,ゲ,した,しも,もと,さ.げる,さ.がる,くだ.る,くだ.り,くだ.す,-くだ.す,くだ.さる,お.ろす,お.りる,",
     "on_kanji": "下流,下降,落下,下水,下車,上下",
     "on_kana": "かりゅう,かこう,らっか,げすい,げしゃ,じょうげ",
     "kun_kanji": "下りる,下ろす,下さる,下す,下る,下がる,下げる,下,下,下",
@@ -3699,8 +3691,7 @@ const dictionary = {
     "strokes": "20",
     "freq_news": "1230",
     "freq_wiki": "13648",
-    "english":
-        "baggage,shoulder-pole load,bear (a burden),shoulder (a gun),load,cargo,freight",
+    "english": "baggage,shoulder-pole load,bear (a burden),shoulder (a gun),load,cargo,freight",
     "heisig_word": "baggage",
     "heisig_ind": "1013",
     "kanji_readings": "カ,に,",
@@ -3715,8 +3706,7 @@ const dictionary = {
     "strokes": "10",
     "freq_news": "1085",
     "freq_wiki": "28463",
-    "english":
-        "splendor,flower,petal,shine,luster,ostentatious,showy,gay,gorgeous",
+    "english": "splendor,flower,petal,shine,luster,ostentatious,showy,gay,gorgeous",
     "heisig_word": "splendor",
     "heisig_ind": "1581",
     "kanji_readings": "カ,ケ,はな,",
@@ -3761,8 +3751,7 @@ const dictionary = {
     "strokes": "15",
     "freq_news": "455",
     "freq_wiki": "23419",
-    "english":
-        "chapter,lesson,section,department,division,counter for chapters (of a book)",
+    "english": "chapter,lesson,section,department,division,counter for chapters (of a book)",
     "heisig_word": "chapter",
     "heisig_ind": "1123",
     "kanji_readings": "カ,",
@@ -4077,8 +4066,7 @@ const dictionary = {
     "strokes": "13",
     "freq_news": "176",
     "freq_wiki": "120630",
-    "english":
-        "unravel,notes,key,explanation,understanding,untie,undo,solve,answer,cancel,absolve,explain,minute",
+    "english": "unravel,notes,key,explanation,understanding,untie,undo,solve,answer,cancel,absolve,explain,minute",
     "heisig_word": "unravel",
     "heisig_ind": "1814",
     "kanji_readings": "カイ,ゲ,と.く,と.かす,と.ける,ほど.く,ほど.ける,わか.る,さと.る,",
@@ -4096,8 +4084,7 @@ const dictionary = {
     "english": "-times,round,game,revolve,counter for occurrences",
     "heisig_word": "times",
     "heisig_ind": "586",
-    "kanji_readings":
-        "カイ,エ,まわ.る,-まわ.る,-まわ.り,まわ.す,-まわ.す,まわ.し-,-まわ.し,もとお.る,か.える,",
+    "kanji_readings": "カイ,エ,まわ.る,-まわ.る,-まわ.り,まわ.す,-まわ.す,まわ.し-,-まわ.し,もとお.る,か.える,",
     "on_kanji": "回答,転回,次回,回向",
     "on_kana": "かいとう,てんかい,じかい,えこう",
     "kun_kanji": "回す,回る",
@@ -4214,8 +4201,7 @@ const dictionary = {
     "strokes": "16",
     "freq_news": "1493",
     "freq_wiki": "4478",
-    "english":
-        "pocket,feelings,heart,yearn,miss someone,become attached to,bosom,breast",
+    "english": "pocket,feelings,heart,yearn,miss someone,become attached to,bosom,breast",
     "heisig_word": "pocket",
     "heisig_ind": "828",
     "kanji_readings": "カイ,エ,ふところ,なつ.かしい,なつ.かしむ,なつ.く,なつ.ける,なず.ける,いだ.く,おも.う,",
@@ -5178,8 +5164,7 @@ const dictionary = {
     "english": "hang,suspend,depend,arrive at,tax,pour",
     "heisig_word": "hang",
     "heisig_ind": "674",
-    "kanji_readings":
-        "カイ,ケイ,か.ける,-か.ける,か.け,-か.け,-が.け,か.かる,-か.かる,-が.かる,か.かり,-が.かり,かかり,-がかり,",
+    "kanji_readings": "カイ,ケイ,か.ける,-か.ける,か.け,-か.け,-が.け,か.かる,-か.かる,-が.かる,か.かり,-が.かり,かかり,-がかり,",
     "on_kanji": null,
     "on_kana": null,
     "kun_kanji": "掛かる,掛ける,掛",
@@ -5851,8 +5836,7 @@ const dictionary = {
     "strokes": "9",
     "freq_news": "944",
     "freq_wiki": "39054",
-    "english":
-        "scroll,volume,book,part,roll up,wind up,tie,coil,counter for texts (or book scrolls)",
+    "english": "scroll,volume,book,part,roll up,wind up,tie,coil,counter for texts (or book scrolls)",
     "heisig_word": "scroll",
     "heisig_ind": "1207",
     "kanji_readings": "カン,ケン,ま.く,まき,ま.き,",
@@ -5942,8 +5926,7 @@ const dictionary = {
     "strokes": "13",
     "freq_news": "1377",
     "freq_wiki": "13794",
-    "english":
-        "tolerant,leniency,generosity,relax,feel at home,be at ease,broadminded",
+    "english": "tolerant,leniency,generosity,relax,feel at home,be at ease,broadminded",
     "heisig_word": "tolerant",
     "heisig_ind": "226",
     "kanji_readings": "カン,くつろ.ぐ,ひろ.い,ゆる.やか,",
@@ -6588,8 +6571,7 @@ const dictionary = {
     "strokes": "3",
     "freq_news": "542",
     "freq_wiki": "28846",
-    "english":
-        "round,full,month,perfection,-ship,pills,make round,roll up,curl up,seduce,explain away",
+    "english": "round,full,month,perfection,-ship,pills,make round,roll up,curl up,seduce,explain away",
     "heisig_word": "round",
     "heisig_ind": "44",
     "kanji_readings": "ガン,まる,まる.める,まる.い,",
@@ -6859,8 +6841,7 @@ const dictionary = {
     "strokes": "15",
     "freq_news": "525",
     "freq_wiki": "82394",
-    "english":
-        "utensil,vessel,receptacle,implement,instrument,ability,container,tool,set",
+    "english": "utensil,vessel,receptacle,implement,instrument,ability,container,tool,set",
     "heisig_word": "utensil",
     "heisig_ind": "121",
     "kanji_readings": "キ,うつわ,",
@@ -6950,8 +6931,7 @@ const dictionary = {
     "strokes": "7",
     "freq_news": "896",
     "freq_wiki": "11745",
-    "english":
-        "hope,beg,request,pray,beseech,Greece,dilute (acid),rare,few,phenomenal",
+    "english": "hope,beg,request,pray,beseech,Greece,dilute (acid),rare,few,phenomenal",
     "heisig_word": "hope",
     "heisig_ind": "1489",
     "kanji_readings": "キ,ケ,まれ,",
@@ -9111,8 +9091,7 @@ const dictionary = {
     "strokes": "7",
     "freq_news": "286",
     "freq_wiki": "96581",
-    "english":
-        "bureau,board,office,affair,conclusion,court lady,lady-in-waiting,her apartment",
+    "english": "bureau,board,office,affair,conclusion,court lady,lady-in-waiting,her apartment",
     "heisig_word": "bureau",
     "heisig_ind": "1066",
     "kanji_readings": "キョク,つぼね,",
@@ -9127,8 +9106,7 @@ const dictionary = {
     "strokes": "6",
     "freq_news": "810",
     "freq_wiki": "130504",
-    "english":
-        "bend,music,melody,composition,pleasure,injustice,fault,curve,crooked,perverse,lean",
+    "english": "bend,music,melody,composition,pleasure,injustice,fault,curve,crooked,perverse,lean",
     "heisig_word": "bend",
     "heisig_ind": "1172",
     "kanji_readings": "キョク,ま.がる,ま.げる,",
@@ -9143,8 +9121,7 @@ const dictionary = {
     "strokes": "13",
     "freq_news": "460",
     "freq_wiki": "48507",
-    "english":
-        "poles,settlement,conclusion,end,highest rank,electric poles,very,extremely,most,highly,10**48",
+    "english": "poles,settlement,conclusion,end,highest rank,electric poles,very,extremely,most,highly,10**48",
     "heisig_word": "poles",
     "heisig_ind": "1903",
     "kanji_readings": "キョク,ゴク,きわ.める,きわ.まる,きわ.まり,きわ.み,き.める,-ぎ.め,き.まる,",
@@ -9714,8 +9691,7 @@ const dictionary = {
     "strokes": "8",
     "freq_news": "629",
     "freq_wiki": "31430",
-    "english":
-        "tool,utensil,means,possess,ingredients,counter for armor,suits,sets of furniture",
+    "english": "tool,utensil,means,possess,ingredients,counter for armor,suits,sets of furniture",
     "heisig_word": "tool",
     "heisig_ind": "74",
     "kanji_readings": "グ,そな.える,つぶさ.に,",
@@ -10495,8 +10471,7 @@ const dictionary = {
     "strokes": "11",
     "freq_news": "899",
     "freq_wiki": "27586",
-    "english":
-        "put up (a notice),put up,hoist,display,hang out,publish,describe",
+    "english": "put up (a notice),put up,hoist,display,hang out,publish,describe",
     "heisig_word": "put up a notice",
     "heisig_ind": "673",
     "kanji_readings": "ケイ,かか.げる,",
@@ -11321,8 +11296,7 @@ const dictionary = {
     "strokes": "11",
     "freq_news": null,
     "freq_wiki": "442",
-    "english":
-        "roll,wind,coil,turn pages,roll up sleeves,strip off,be turned,be rolled up",
+    "english": "roll,wind,coil,turn pages,roll up sleeves,strip off,be turned,be rolled up",
     "heisig_word": null,
     "heisig_ind": null,
     "kanji_readings": "ケン,ま.く,ま.くる,まく.る,めく.る,まく.れる,",
@@ -11577,8 +11551,7 @@ const dictionary = {
     "strokes": "11",
     "freq_news": "707",
     "freq_wiki": "25796",
-    "english":
-        "precipitous,inaccessible place,impregnable position,steep place,sharp eyes",
+    "english": "precipitous,inaccessible place,impregnable position,steep place,sharp eyes",
     "heisig_word": "precipitous",
     "heisig_ind": "1672",
     "kanji_readings": "ケン,けわ.しい,",
@@ -11653,8 +11626,7 @@ const dictionary = {
     "strokes": "10",
     "freq_news": "172",
     "freq_wiki": "183732",
-    "english":
-        "meadow,original,primitive,field,plain,prairie,tundra,wilderness",
+    "english": "meadow,original,primitive,field,plain,prairie,tundra,wilderness",
     "heisig_word": "meadow",
     "heisig_ind": "134",
     "kanji_readings": "ゲン,はら,",
@@ -12014,8 +11986,7 @@ const dictionary = {
     "strokes": "9",
     "freq_news": "612",
     "freq_wiki": "34953",
-    "english":
-        "happenstance,especially,intentionally,reason,cause,circumstances,the late,therefore,consequently",
+    "english": "happenstance,especially,intentionally,reason,cause,circumstances,the late,therefore,consequently",
     "heisig_word": "happenstance",
     "heisig_ind": "333",
     "kanji_readings": "コ,ゆえ,",
@@ -15060,8 +15031,7 @@ const dictionary = {
     "strokes": "14",
     "freq_news": "183",
     "freq_wiki": "152412",
-    "english":
-        "occasion,side,edge,verge,dangerous,adventurous,indecent,time,when",
+    "english": "occasion,side,edge,verge,dangerous,adventurous,indecent,time,when",
     "heisig_word": "occasion",
     "heisig_ind": "1296",
     "kanji_readings": "サイ,きわ,-ぎわ,",
@@ -15721,8 +15691,7 @@ const dictionary = {
     "strokes": "10",
     "freq_news": null,
     "freq_wiki": "415",
-    "english":
-        "handle,deal with,dispose of,sell,be in demand,be worldly,be frank,be sensible,be sociable,drainage,sale,demand for,eight",
+    "english": "handle,deal with,dispose of,sell,be in demand,be worldly,be frank,be sensible,be sociable,drainage,sale,demand for,eight",
     "heisig_word": "deal with",
     "heisig_ind": "2256",
     "kanji_readings": "ハツ,ハチ,ベツ,さば.く,さば.ける,は.け,",
@@ -15827,8 +15796,7 @@ const dictionary = {
     "strokes": "8",
     "freq_news": "201",
     "freq_wiki": "141519",
-    "english":
-        "nonplussed,three,going,coming,visiting,visit,be defeated,die,be madly in love",
+    "english": "nonplussed,three,going,coming,visiting,visit,be defeated,die,be madly in love",
     "heisig_word": "visit",
     "heisig_ind": "1720",
     "kanji_readings": "サン,シン,まい.る,まい-,まじわる,みつ,",
@@ -16023,8 +15991,7 @@ const dictionary = {
     "strokes": "15",
     "freq_news": "868",
     "freq_wiki": "11215",
-    "english":
-        "approve,praise,title or inscription on picture,assist,agree with",
+    "english": "approve,praise,title or inscription on picture,assist,agree with",
     "heisig_word": "approve",
     "heisig_ind": "843",
     "kanji_readings": "サン,たす.ける,たた.える,",
@@ -16507,8 +16474,7 @@ const dictionary = {
     "english": "stop,halt",
     "heisig_word": "stop",
     "heisig_ind": "370",
-    "kanji_readings":
-        "シ,と.まる,-ど.まり,と.める,-と.める,-ど.め,とど.める,とど.め,とど.まる,や.める,や.む,-や.む,よ.す,-さ.す,-さ.し,",
+    "kanji_readings": "シ,と.まる,-ど.まり,と.める,-と.める,-ど.め,とど.める,とど.め,とど.まる,や.める,や.む,-や.む,よ.す,-さ.す,-さ.し,",
     "on_kanji": "止宿,静止,中止",
     "on_kana": "しやど,せいし,ちゅうし",
     "kun_kanji": "止まる,止める",
@@ -16775,8 +16741,7 @@ const dictionary = {
     "strokes": "13",
     "freq_news": "179",
     "freq_wiki": "66486",
-    "english":
-        "assets,resources,capital,funds,data,be conducive to,contribute to",
+    "english": "assets,resources,capital,funds,data,be conducive to,contribute to",
     "heisig_word": "assets",
     "heisig_ind": "473",
     "kanji_readings": "シ,",
@@ -17016,8 +16981,7 @@ const dictionary = {
     "strokes": "8",
     "freq_news": "109",
     "freq_wiki": "156554",
-    "english":
-        "reign,be at peace,calm down,subdue,quell,govt,cure,heal,rule,conserve",
+    "english": "reign,be at peace,calm down,subdue,quell,govt,cure,heal,rule,conserve",
     "heisig_word": "reign",
     "heisig_ind": "746",
     "kanji_readings": "ジ,チ,おさ.める,おさ.まる,なお.る,なお.す,",
@@ -17407,8 +17371,7 @@ const dictionary = {
     "strokes": "11",
     "freq_news": null,
     "freq_wiki": "380",
-    "english":
-        "all,entirely,altogether,completely,use up,run out of,exhaust,befriend,serve",
+    "english": "all,entirely,altogether,completely,use up,run out of,exhaust,befriend,serve",
     "heisig_word": "without exception",
     "heisig_ind": "2430",
     "kanji_readings": "シツ,シチ,つ.きる,ことごと,ことごと.く,つ.くす,つぶさ.に,",
@@ -17933,8 +17896,7 @@ const dictionary = {
     "strokes": "10",
     "freq_news": "2271",
     "freq_wiki": "341",
-    "english":
-        "bar-tending,serving sake,the host,draw (water),ladle,scoop,pump",
+    "english": "bar-tending,serving sake,the host,draw (water),ladle,scoop,pump",
     "heisig_word": "bartending",
     "heisig_ind": "1429",
     "kanji_readings": "シャク,く.む,",
@@ -18579,8 +18541,7 @@ const dictionary = {
     "strokes": "9",
     "freq_news": "1760",
     "freq_wiki": "3670",
-    "english":
-        "stinking,ill-smelling,suspicious looking,odor,savor,fragrance,be fragrant,stink,glow,be bright",
+    "english": "stinking,ill-smelling,suspicious looking,odor,savor,fragrance,be fragrant,stink,glow,be bright",
     "heisig_word": "stinking",
     "heisig_ind": "122",
     "kanji_readings": "シュウ,くさ.い,-くさ.い,にお.う,にお.い,",
@@ -18835,8 +18796,7 @@ const dictionary = {
     "strokes": "10",
     "freq_news": "601",
     "freq_wiki": "60204",
-    "english":
-        "accompany,obey,submit to,comply,follow,secondary,incidental,subordinate",
+    "english": "accompany,obey,submit to,comply,follow,secondary,incidental,subordinate",
     "heisig_word": "accompany",
     "heisig_ind": "877",
     "kanji_readings": "ジュウ,ショウ,ジュ,したが.う,したが.える,より,",
@@ -19001,8 +18961,7 @@ const dictionary = {
     "strokes": "11",
     "freq_news": "701",
     "freq_wiki": "26138",
-    "english":
-        "inn,lodging,relay station,dwell,lodge,be pregnant,home,dwelling",
+    "english": "inn,lodging,relay station,dwell,lodge,be pregnant,home,dwelling",
     "heisig_word": "inn",
     "heisig_ind": "995",
     "kanji_readings": "シュク,やど,やど.る,やど.す,",
@@ -19707,8 +19666,7 @@ const dictionary = {
     "strokes": "7",
     "freq_news": "1160",
     "freq_wiki": "11298",
-    "english":
-        "preface,beginning,order,precedence,occasion,chance,incidentally",
+    "english": "preface,beginning,order,precedence,occasion,chance,incidentally",
     "heisig_word": "preface",
     "heisig_ind": "1594",
     "kanji_readings": "ジョ,つい.で,ついで,",
@@ -19858,8 +19816,7 @@ const dictionary = {
     "strokes": "5",
     "freq_news": "1540",
     "freq_wiki": "5109",
-    "english":
-        "seduce,call,send for,wear,put on,ride in,buy,eat,drink,catch (cold)",
+    "english": "seduce,call,send for,wear,put on,ride in,buy,eat,drink,catch (cold)",
     "heisig_word": "seduce",
     "heisig_ind": "86",
     "kanji_readings": "ショウ,め.す,",
@@ -19919,8 +19876,7 @@ const dictionary = {
     "strokes": "14",
     "freq_news": null,
     "freq_wiki": "716",
-    "english":
-        "once,before,formerly,ever,never,ex-,lick,lap up,burn up,taste,undergo,underrate,despise",
+    "english": "once,before,formerly,ever,never,ex-,lick,lap up,burn up,taste,undergo,underrate,despise",
     "heisig_word": "lick",
     "heisig_ind": "2870",
     "kanji_readings": "ショウ,ジョウ,かつ.て,こころ.みる,な.める,",
@@ -19995,8 +19951,7 @@ const dictionary = {
     "strokes": "10",
     "freq_news": "634",
     "freq_wiki": "55304",
-    "english":
-        "leader,commander,general,admiral,or,and again,soon,from now on,just about",
+    "english": "leader,commander,general,admiral,or,and again,soon,from now on,just about",
     "heisig_word": "leader",
     "heisig_ind": "731",
     "kanji_readings": "ショウ,ソウ,まさ.に,はた,まさ,ひきい.る,もって,",
@@ -20626,8 +20581,7 @@ const dictionary = {
     "strokes": "15",
     "freq_news": "972",
     "freq_wiki": "13130",
-    "english":
-        "collide,brunt,highway,opposition (astronomy),thrust,pierce,stab,prick",
+    "english": "collide,brunt,highway,opposition (astronomy),thrust,pierce,stab,prick",
     "heisig_word": "collide",
     "heisig_ind": "1680",
     "kanji_readings": "ショウ,つ.く,",
@@ -20840,8 +20794,7 @@ const dictionary = {
     "english": "above,up",
     "heisig_word": "above",
     "heisig_ind": "49",
-    "kanji_readings":
-        "ジョウ,ショウ,シャン,うえ,-うえ,うわ-,かみ,あ.げる,-あ.げる,あ.がる,-あ.がる,あ.がり,-あ.がり,のぼ.る,のぼ.り,のぼ.せる,のぼ.す,よ.す,",
+    "kanji_readings": "ジョウ,ショウ,シャン,うえ,-うえ,うわ-,かみ,あ.げる,-あ.げる,あ.がる,-あ.がる,あ.がり,-あ.がり,のぼ.る,のぼ.り,のぼ.せる,のぼ.す,よ.す,",
     "on_kanji": "上旬,上昇,地上,上人,身上をつぶす",
     "on_kana": "じょうじゅん,じょうしょう,ちじょう,しょうにん,しんじょうをつぶす",
     "kun_kanji": "上がる,上げる,上,上,上す,上せる,上る",
@@ -20853,8 +20806,7 @@ const dictionary = {
     "strokes": "3",
     "freq_news": "1375",
     "freq_wiki": "4867",
-    "english":
-        "length,10feet,measure,Mr.,Ms.,height,stature,all (one has),only,that's all,merely",
+    "english": "length,10feet,measure,Mr.,Ms.,height,stature,all (one has),only,that's all,merely",
     "heisig_word": "length",
     "heisig_ind": "691",
     "kanji_readings": "ジョウ,たけ,だけ,",
@@ -20884,8 +20836,7 @@ const dictionary = {
     "strokes": "9",
     "freq_news": "377",
     "freq_wiki": "93456",
-    "english":
-        "ride,power,multiplication,record,counter for vehicles,board,mount,join",
+    "english": "ride,power,multiplication,record,counter for vehicles,board,mount,join",
     "heisig_word": "ride",
     "heisig_ind": "1585",
     "kanji_readings": "ジョウ,ショウ,の.る,-の.り,の.せる,",
@@ -21650,8 +21601,7 @@ const dictionary = {
     "strokes": "5",
     "freq_news": "492",
     "freq_wiki": "15326",
-    "english":
-        "have the honor to,sign of the monkey,3-5PM,ninth sign of Chinese zodiac",
+    "english": "have the honor to,sign of the monkey,3-5PM,ninth sign of Chinese zodiac",
     "heisig_word": "speaketh",
     "heisig_ind": "1117",
     "kanji_readings": "シン,もう.す,もう.し-,さる,",
@@ -21999,8 +21949,7 @@ const dictionary = {
     "english": "exhaust,use up,run out of,befriend,serve",
     "heisig_word": "exhaust",
     "heisig_ind": "1071",
-    "kanji_readings":
-        "ジン,サン,つ.くす,-つ.くす,-づ.くし,-つ.く,-づ.く,-ず.く,つ.きる,つ.かす,さかづき,ことごと.く,つか,つき,",
+    "kanji_readings": "ジン,サン,つ.くす,-つ.くす,-づ.くし,-つ.く,-づ.く,-ず.く,つ.きる,つ.かす,さかづき,ことごと.く,つか,つき,",
     "on_kanji": "尽力,無尽蔵",
     "on_kana": "じんりょく,むじんぞう",
     "kun_kanji": "尽かす,尽きる,尽くす",
@@ -22402,8 +22351,7 @@ const dictionary = {
     "strokes": "12",
     "freq_news": "1396",
     "freq_wiki": "8791",
-    "english":
-        "follow,though,notwithstanding,while,during,both,all,obey,submit to,comply,at the mercy of (the waves)",
+    "english": "follow,though,notwithstanding,while,during,both,all,obey,submit to,comply,at the mercy of (the waves)",
     "heisig_word": "follow",
     "heisig_ind": "1298",
     "kanji_readings": "ズイ,まにまに,したが.う,",
@@ -22991,8 +22939,7 @@ const dictionary = {
     "english": "life,genuine,birth",
     "heisig_word": "life",
     "heisig_ind": "1555",
-    "kanji_readings":
-        "セイ,ショウ,い.きる,い.かす,い.ける,う.まれる,う.まれ,うまれ,う.む,お.う,は.える,は.やす,き,なま,なま-,な.る,な.す,む.す,-う,",
+    "kanji_readings": "セイ,ショウ,い.きる,い.かす,い.ける,う.まれる,う.まれ,うまれ,う.む,お.う,は.える,は.やす,き,なま,なま-,な.る,な.す,む.す,-う,",
     "on_kanji": "生活,発生,先生,生滅,一生,誕生",
     "on_kana": "せいかつ,はっせい,せんせい,しょうめつ,いっしょう,たんじょう",
     "kun_kanji": "生かす,生きる,生ける,生まれる,生む,生う,生,生,生える,生やす",
@@ -23019,8 +22966,7 @@ const dictionary = {
     "strokes": "14",
     "freq_news": "752",
     "freq_wiki": "34320",
-    "english":
-        "refined,ghost,fairy,energy,vitality,semen,excellence,purity,skill",
+    "english": "refined,ghost,fairy,energy,vitality,semen,excellence,purity,skill",
     "heisig_word": "refined",
     "heisig_ind": "1535",
     "kanji_readings": "セイ,ショウ,シヤウ,",
@@ -23605,8 +23551,7 @@ const dictionary = {
     "strokes": "13",
     "freq_news": "934",
     "freq_wiki": "26299",
-    "english":
-        "node,season,period,occasion,verse,clause,stanza,honor,joint,knuckle,knob,knot,tune,melody",
+    "english": "node,season,period,occasion,verse,clause,stanza,honor,joint,knuckle,knob,knot,tune,melody",
     "heisig_word": "node",
     "heisig_ind": "1464",
     "kanji_readings": "セツ,セチ,ふし,-ぶし,のっと,",
@@ -24641,8 +24586,7 @@ const dictionary = {
     "strokes": "11",
     "freq_news": "204",
     "freq_wiki": "207974",
-    "english":
-        "association,braid,plait,construct,assemble,unite,cooperate,grapple",
+    "english": "association,braid,plait,construct,assemble,unite,cooperate,grapple",
     "heisig_word": "association",
     "heisig_ind": "1776",
     "kanji_readings": "ソ,く.む,くみ,-ぐみ,",
@@ -25152,8 +25096,7 @@ const dictionary = {
     "strokes": "9",
     "freq_news": "45",
     "freq_wiki": "118543",
-    "english":
-        "inter-,mutual,together,each other,minister of state,councillor,aspect,phase,physiognomy",
+    "english": "inter-,mutual,together,each other,minister of state,councillor,aspect,phase,physiognomy",
     "heisig_word": "inter",
     "heisig_ind": "209",
     "kanji_readings": "ソウ,ショウ,あい-,",
@@ -26488,8 +26431,7 @@ const dictionary = {
     "strokes": "5",
     "freq_news": "66",
     "freq_wiki": "463817",
-    "english":
-        "substitute,change,convert,replace,period,age,generation,charge,rate,fee",
+    "english": "substitute,change,convert,replace,period,age,generation,charge,rate,fee",
     "heisig_word": "substitute",
     "heisig_ind": "1005",
     "kanji_readings": "ダイ,タイ,か.わる,かわ.る,かわ.り,-がわ.り,か.える,よ,しろ,",
@@ -27449,8 +27391,7 @@ const dictionary = {
     "strokes": "11",
     "freq_news": "338",
     "freq_wiki": "51740",
-    "english":
-        "severance,decline,refuse,apologize,warn,dismiss,prohibit,decision,judgement,cutting",
+    "english": "severance,decline,refuse,apologize,warn,dismiss,prohibit,decision,judgement,cutting",
     "heisig_word": "severance",
     "heisig_ind": "1136",
     "kanji_readings": "ダン,た.つ,ことわ.る,さだ.める,",
@@ -28020,8 +27961,7 @@ const dictionary = {
     "strokes": "8",
     "freq_news": "497",
     "freq_wiki": "52286",
-    "english":
-        "pour,irrigate,shed (tears),flow into,concentrate on,notes,comment,annotate",
+    "english": "pour,irrigate,shed (tears),flow into,concentrate on,notes,comment,annotate",
     "heisig_word": "pour",
     "heisig_ind": "267",
     "kanji_readings": "チュウ,そそ.ぐ,さ.す,つ.ぐ,",
@@ -28186,8 +28126,7 @@ const dictionary = {
     "strokes": "11",
     "freq_news": "849",
     "freq_wiki": "42783",
-    "english":
-        "renowned,publish,write,remarkable,phenomenal,put on,don,wear,arrival,finish (race),counter for suits of clothing,literary work",
+    "english": "renowned,publish,write,remarkable,phenomenal,put on,don,wear,arrival,finish (race),counter for suits of clothing,literary work",
     "heisig_word": "renowned",
     "heisig_ind": "1258",
     "kanji_readings": "チョ,チャク,あらわ.す,いちじる.しい,",
@@ -28217,8 +28156,7 @@ const dictionary = {
     "strokes": "2",
     "freq_news": "1312",
     "freq_wiki": "22409",
-    "english":
-        "street,ward,town,counter for guns,tools,leaves or cakes of something,even number,4th calendar sign",
+    "english": "street,ward,town,counter for guns,tools,leaves or cakes of something,even number,4th calendar sign",
     "heisig_word": "street",
     "heisig_ind": "91",
     "kanji_readings": "チョウ,テイ,チン,トウ,チ,ひのと,",
@@ -28293,8 +28231,7 @@ const dictionary = {
     "strokes": "8",
     "freq_news": "2208",
     "freq_wiki": "1290",
-    "english":
-        "quire (of paper),bundle of seaweed,counter for screens,notebook",
+    "english": "quire (of paper),bundle of seaweed,counter for screens,notebook",
     "heisig_word": "quire",
     "heisig_ind": "2231",
     "kanji_readings": "チョウ,ジョウ,かきもの,",
@@ -28354,8 +28291,7 @@ const dictionary = {
     "strokes": "11",
     "freq_news": "403",
     "freq_wiki": "56256",
-    "english":
-        "lengthen,counter for bows & stringed instruments,stretch,spread,put up (tent)",
+    "english": "lengthen,counter for bows & stringed instruments,stretch,spread,put up (tent)",
     "heisig_word": "lengthen",
     "heisig_ind": "1921",
     "kanji_readings": "チョウ,は.る,-は.り,-ば.り,",
@@ -28580,8 +28516,7 @@ const dictionary = {
     "strokes": "15",
     "freq_news": "87",
     "freq_wiki": "87548",
-    "english":
-        "tune,tone,meter,key (music),writing style,prepare,exorcise,investigate",
+    "english": "tune,tone,meter,key (music),writing style,prepare,exorcise,investigate",
     "heisig_word": "tune",
     "heisig_ind": "349",
     "kanji_readings": "チョウ,しら.べる,しら.べ,ととの.う,ととの.える,",
@@ -29271,8 +29206,7 @@ const dictionary = {
     "strokes": "9",
     "freq_news": "1627",
     "freq_wiki": "6430",
-    "english":
-        "pavilion,restaurant,mansion,arbor,cottage,vaudeville,music hall,stage name",
+    "english": "pavilion,restaurant,mansion,arbor,cottage,vaudeville,music hall,stage name",
     "heisig_word": "pavilion",
     "heisig_ind": "311",
     "kanji_readings": "テイ,チン,",
@@ -29512,8 +29446,7 @@ const dictionary = {
     "strokes": "10",
     "freq_news": "2189",
     "freq_wiki": "1702",
-    "english":
-        "counter for guns,inksticks,palanquins,rickshaws,bravely volunteer",
+    "english": "counter for guns,inksticks,palanquins,rickshaws,bravely volunteer",
     "heisig_word": "counter for tools",
     "heisig_ind": "2267",
     "kanji_readings": "チョウ,テイ,ぬ.く,",
@@ -30083,8 +30016,7 @@ const dictionary = {
     "strokes": "11",
     "freq_news": "1501",
     "freq_wiki": "6902",
-    "english":
-        "annexed,accompany,marry,suit,meet,satisfy,attach,append,garnish,imitate",
+    "english": "annexed,accompany,marry,suit,meet,satisfy,attach,append,garnish,imitate",
     "heisig_word": "annexed",
     "heisig_ind": "634",
     "kanji_readings": "テン,そ.える,そ.う,も.える,も.う,",
@@ -30189,8 +30121,7 @@ const dictionary = {
     "strokes": "6",
     "freq_news": "416",
     "freq_wiki": "96501",
-    "english":
-        "transmit,go along,walk along,follow,report,communicate,legend,tradition",
+    "english": "transmit,go along,walk along,follow,report,communicate,legend,tradition",
     "heisig_word": "transmit",
     "heisig_ind": "963",
     "kanji_readings": "デン,テン,つた.わる,つた.える,つた.う,つだ.う,-づた.い,つて,",
@@ -30355,8 +30286,7 @@ const dictionary = {
     "strokes": "10",
     "freq_news": "817",
     "freq_wiki": "29186",
-    "english":
-        "junior,emptiness,vanity,futility,uselessness,ephemeral thing,gang,set,party,people",
+    "english": "junior,emptiness,vanity,futility,uselessness,ephemeral thing,gang,set,party,people",
     "heisig_word": "junior",
     "heisig_ind": "878",
     "kanji_readings": "ト,いたずら,あだ,",
@@ -30806,8 +30736,7 @@ const dictionary = {
     "strokes": "7",
     "freq_news": "236",
     "freq_wiki": "66958",
-    "english":
-        "throw,discard,abandon,launch into,join,invest in,hurl,give up,sell at a loss",
+    "english": "throw,discard,abandon,launch into,join,invest in,hurl,give up,sell at a loss",
     "heisig_word": "throw",
     "heisig_ind": "706",
     "kanji_readings": "トウ,な.げる,-な.げ,",
@@ -31587,8 +31516,7 @@ const dictionary = {
     "strokes": "11",
     "freq_news": "175",
     "freq_wiki": "127163",
-    "english":
-        "gain,get,find,earn,acquire,can,may,able to,profit,advantage,benefit",
+    "english": "gain,get,find,earn,acquire,can,may,able to,profit,advantage,benefit",
     "heisig_word": "gain",
     "heisig_ind": "876",
     "kanji_readings": "トク,え.る,う.る,",
@@ -31663,8 +31591,7 @@ const dictionary = {
     "strokes": "7",
     "freq_news": null,
     "freq_wiki": "391",
-    "english":
-        "become bald,bare,wear out,waste away,little girl employed at a brothel",
+    "english": "become bald,bare,wear out,waste away,little girl employed at a brothel",
     "heisig_word": "bald",
     "heisig_ind": "2606",
     "kanji_readings": "トク,ちび.る,かむろ,は.げる,はげ,",
@@ -31874,8 +31801,7 @@ const dictionary = {
     "strokes": "7",
     "freq_news": "2468",
     "freq_wiki": "499",
-    "english":
-        "west,bird,sign of the bird,5-7PM,tenth sign of Chinese zodiac,sake radical (no. 164)",
+    "english": "west,bird,sign of the bird,5-7PM,tenth sign of Chinese zodiac,sake radical (no. 164)",
     "heisig_word": "sign of the bird",
     "heisig_ind": "1427",
     "kanji_readings": "ユウ,とり,",
@@ -35115,8 +35041,7 @@ const dictionary = {
     "strokes": "10",
     "freq_news": "431",
     "freq_wiki": "27046",
-    "english":
-        "incur,cover,veil,brood over,shelter,wear,put on,be exposed (film),receiving",
+    "english": "incur,cover,veil,brood over,shelter,wear,put on,be exposed (film),receiving",
     "heisig_word": "incur",
     "heisig_ind": "807",
     "kanji_readings": "ヒ,こうむ.る,おお.う,かぶ.る,かぶ.せる,",
@@ -35701,8 +35626,7 @@ const dictionary = {
     "strokes": "15",
     "freq_news": "686",
     "freq_wiki": "44967",
-    "english":
-        "signpost,seal,mark,stamp,imprint,symbol,emblem,trademark,evidence,souvenir,target",
+    "english": "signpost,seal,mark,stamp,imprint,symbol,emblem,trademark,evidence,souvenir,target",
     "heisig_word": "signpost",
     "heisig_ind": "1608",
     "kanji_readings": "ヒョウ,しるべ,しるし,",
@@ -36140,8 +36064,7 @@ const dictionary = {
     "english": "adhere,attach,refer to,append",
     "heisig_word": "adhere",
     "heisig_ind": "1000",
-    "kanji_readings":
-        "フ,つ.ける,-つ.ける,-づ.ける,つ.け,つ.け-,-つ.け,-づ.け,-づけ,つ.く,-づ.く,つ.き,-つ.き,-つき,-づ.き,-づき,",
+    "kanji_readings": "フ,つ.ける,-つ.ける,-づ.ける,つ.け,つ.け-,-つ.け,-づ.け,-づけ,つ.く,-づ.く,つ.き,-つ.き,-つき,-づ.き,-づき,",
     "on_kanji": "付与,交付,給付",
     "on_kana": "ふよ,こうふ,きゅうふ",
     "kun_kanji": "付く,付ける",
@@ -36243,8 +36166,7 @@ const dictionary = {
     "strokes": "8",
     "freq_news": "170",
     "freq_wiki": "100042",
-    "english":
-        "borough,urban prefecture,govt office,representative body,storehouse",
+    "english": "borough,urban prefecture,govt office,representative body,storehouse",
     "heisig_word": "municipality",
     "heisig_ind": "1002",
     "kanji_readings": "フ,",
@@ -36604,8 +36526,7 @@ const dictionary = {
     "strokes": "10",
     "freq_news": "36",
     "freq_wiki": "502759",
-    "english":
-        "section,bureau,dept,class,copy,part,portion,counter for copies of a newspaper or magazine",
+    "english": "section,bureau,dept,class,copy,part,portion,counter for copies of a newspaper or magazine",
     "heisig_word": "section",
     "heisig_ind": "1845",
     "kanji_readings": "ブ,-べ,",
@@ -36935,8 +36856,7 @@ const dictionary = {
     "strokes": "4",
     "freq_news": "24",
     "freq_wiki": "389640",
-    "english":
-        "part,minute of time,segment,share,degree,one's lot,duty,understand,know,rate,1%,chances,shaku/100",
+    "english": "part,minute of time,segment,share,degree,one's lot,duty,understand,know,rate,1%,chances,shaku/100",
     "heisig_word": "part",
     "heisig_ind": "781",
     "kanji_readings": "ブン,フン,ブ,わ.ける,わ.け,わ.かれる,わ.かる,わ.かつ,",
@@ -37206,8 +37126,7 @@ const dictionary = {
     "strokes": "15",
     "freq_news": "1803",
     "freq_wiki": "5703",
-    "english":
-        "cash,bad habit,humble prefix,gift,shinto offerings of cloth,rope,cut paper",
+    "english": "cash,bad habit,humble prefix,gift,shinto offerings of cloth,rope,cut paper",
     "heisig_word": "cash",
     "heisig_ind": "1040",
     "kanji_readings": "ヘイ,ぬさ,",
@@ -37537,8 +37456,7 @@ const dictionary = {
     "strokes": "15",
     "freq_news": "591",
     "freq_wiki": "97382",
-    "english":
-        "compilation,knit,plait,braid,twist,editing,completed poem,part of a book",
+    "english": "compilation,knit,plait,braid,twist,editing,completed poem,part of a book",
     "heisig_word": "compilation",
     "heisig_ind": "1825",
     "kanji_readings": "ヘン,あ.む,-あ.み,",
@@ -37643,8 +37561,7 @@ const dictionary = {
     "strokes": "5",
     "freq_news": "619",
     "freq_wiki": "21636",
-    "english":
-        "valve,petal,braid,speech,dialect,discrimination,dispose of,distinguish",
+    "english": "valve,petal,braid,speech,dialect,discrimination,dispose of,distinguish",
     "heisig_word": "valve",
     "heisig_ind": "742",
     "kanji_readings": "ベン,ヘン,わきま.える,わ.ける,はなびら,あらそ.う,",
@@ -37779,8 +37696,7 @@ const dictionary = {
     "strokes": "12",
     "freq_news": "332",
     "freq_wiki": "47274",
-    "english":
-        "supplement,supply,make good,offset,compensate,assistant,learner",
+    "english": "supplement,supply,make good,offset,compensate,assistant,learner",
     "heisig_word": "supplement",
     "heisig_ind": "1840",
     "kanji_readings": "ホ,おぎな.う,",
@@ -38590,8 +38506,7 @@ const dictionary = {
     "strokes": "8",
     "freq_news": "808",
     "freq_wiki": "19347",
-    "english":
-        "tassel,tuft,fringe,bunch,lock (hair),segment (orange),house,room",
+    "english": "tassel,tuft,fringe,bunch,lock (hair),segment (orange),house,room",
     "heisig_word": "tassel",
     "heisig_ind": "1078",
     "kanji_readings": "ボウ,ふさ,",
@@ -38726,8 +38641,7 @@ const dictionary = {
     "strokes": "16",
     "freq_news": "1370",
     "freq_wiki": "11493",
-    "english":
-        "conspire,cheat,impose on,plan,devise,scheme,have in mind,deceive",
+    "english": "conspire,cheat,impose on,plan,devise,scheme,have in mind,deceive",
     "heisig_word": "conspire",
     "heisig_ind": "1760",
     "kanji_readings": "ボウ,ム,はか.る,たばか.る,はかりごと,",
@@ -39612,8 +39526,7 @@ const dictionary = {
     "strokes": "14",
     "freq_news": null,
     "freq_wiki": "866",
-    "english":
-        "vine,tendril,influence,connections,good offices,spread,sprawl,thrive,rampant,powerful",
+    "english": "vine,tendril,influence,connections,good offices,spread,sprawl,thrive,rampant,powerful",
     "heisig_word": "tendril",
     "heisig_ind": "2359",
     "kanji_readings": "マン,バン,はびこ.る,つる,",
@@ -39643,8 +39556,7 @@ const dictionary = {
     "strokes": "5",
     "freq_news": "650",
     "freq_wiki": "39080",
-    "english":
-        "un-,not yet,hitherto,still,even now,sign of the ram,1-3PM,eighth sign of Chinese zodiac",
+    "english": "un-,not yet,hitherto,still,even now,sign of the ram,1-3PM,eighth sign of Chinese zodiac",
     "heisig_word": "not yet",
     "heisig_ind": "216",
     "kanji_readings": "ミ,ビ,いま.だ,ま.だ,ひつじ,",
@@ -39674,8 +39586,7 @@ const dictionary = {
     "strokes": "3",
     "freq_news": "2142",
     "freq_wiki": "1618",
-    "english":
-        "sign of the snake or serpent,9-11AM,sixth sign of Chinese zodiac",
+    "english": "sign of the snake or serpent,9-11AM,sixth sign of Chinese zodiac",
     "heisig_word": "sign of the snake",
     "heisig_ind": "2042",
     "kanji_readings": "シ,み,",
@@ -39810,8 +39721,7 @@ const dictionary = {
     "strokes": "7",
     "freq_news": "1122",
     "freq_wiki": "8879",
-    "english":
-        "exquisite,strange,queer,mystery,miracle,excellent,delicate,charming",
+    "english": "exquisite,strange,queer,mystery,miracle,excellent,delicate,charming",
     "heisig_word": "exquisite",
     "heisig_ind": "123",
     "kanji_readings": "ミョウ,ビョウ,たえ,",
@@ -40069,8 +39979,7 @@ const dictionary = {
     "english": "bright,light",
     "heisig_word": "bright",
     "heisig_ind": "20",
-    "kanji_readings":
-        "メイ,ミョウ,ミン,あ.かり,あか.るい,あか.るむ,あか.らむ,あき.らか,あ.ける,-あ.け,あ.く,あ.くる,あ.かす,",
+    "kanji_readings": "メイ,ミョウ,ミン,あ.かり,あか.るい,あか.るむ,あか.らむ,あき.らか,あ.ける,-あ.け,あ.く,あ.くる,あ.かす,",
     "on_kanji": "明暗,説明,鮮明,明日,光明,灯明",
     "on_kana": "めいあん,せつめい,せんめい,あした,こうみょう,とうみょう",
     "kun_kanji": "明かす,明かり,明く,明くる,明ける,明らむ,明るい,明るむ,明らか",
@@ -40427,8 +40336,7 @@ const dictionary = {
     "strokes": "14",
     "freq_news": "2360",
     "freq_wiki": "2773",
-    "english":
-        "ignorance,darkness,get,receive,be subjected to,sustain,Mongolia",
+    "english": "ignorance,darkness,get,receive,be subjected to,sustain,Mongolia",
     "heisig_word": "darken",
     "heisig_ind": "2384",
     "kanji_readings": "モウ,ボウ,こうむ.る,おお.う,くら.い,",
@@ -40968,8 +40876,7 @@ const dictionary = {
     "strokes": "13",
     "freq_news": null,
     "freq_wiki": "143",
-    "english":
-        "be superior,heal,more and more,increasingly,finally,beyond doubt",
+    "english": "be superior,heal,more and more,increasingly,finally,beyond doubt",
     "heisig_word": "in the nick of time",
     "heisig_ind": "2433",
     "kanji_readings": "ユ,いよいよ,まさ.る,",
@@ -41464,8 +41371,7 @@ const dictionary = {
     "strokes": "3",
     "freq_news": "308",
     "freq_wiki": "68972",
-    "english":
-        "bestow,participate in,give,award,impart,provide,cause,gift,godsend",
+    "english": "bestow,participate in,give,award,impart,provide,cause,gift,godsend",
     "heisig_word": "bestow",
     "heisig_ind": "1246",
     "kanji_readings": "ヨ,あた.える,あずか.る,くみ.する,ともに,",
@@ -41795,8 +41701,7 @@ const dictionary = {
     "strokes": "12",
     "freq_news": "414",
     "freq_wiki": "70902",
-    "english":
-        "leaf,plane,lobe,needle,blade,spear,counter for flat things,fragment,piece",
+    "english": "leaf,plane,lobe,needle,blade,spear,counter for flat things,fragment,piece",
     "heisig_word": "leaf",
     "heisig_ind": "228",
     "kanji_readings": "ヨウ,は,",
@@ -41931,8 +41836,7 @@ const dictionary = {
     "strokes": "7",
     "freq_news": "834",
     "freq_wiki": "12263",
-    "english":
-        "repress,well,now,in the first place,push,shove,press,seal,do in spite of",
+    "english": "repress,well,now,in the first place,push,shove,press,seal,do in spite of",
     "heisig_word": "repress",
     "heisig_ind": "1700",
     "kanji_readings": "ヨク,おさ.える,",
@@ -42550,8 +42454,7 @@ const dictionary = {
     "english": "stand up",
     "heisig_word": "stand up",
     "heisig_ind": "431",
-    "kanji_readings":
-        "リツ,リュウ,リットル,た.つ,-た.つ,た.ち-,た.てる,-た.てる,た.て-,たて-,-た.て,-だ.て,-だ.てる,",
+    "kanji_readings": "リツ,リュウ,リットル,た.つ,-た.つ,た.ち-,た.てる,-た.てる,た.て-,たて-,-た.て,-だ.て,-だ.てる,",
     "on_kanji": "立案,起立,独立,建立",
     "on_kana": "りつあん,きりつ,どくりつ,こんりゅう",
     "kun_kanji": "立つ,立てる",
@@ -43718,8 +43621,7 @@ const dictionary = {
     "strokes": "13",
     "freq_news": "2066",
     "freq_wiki": "2604",
-    "english":
-        "bargain,reason,charge,suspicion,point,account,purity,honest,low price,cheap,rested,contented,peaceful",
+    "english": "bargain,reason,charge,suspicion,point,account,purity,honest,low price,cheap,rested,contented,peaceful",
     "heisig_word": "bargain",
     "heisig_ind": "1601",
     "kanji_readings": "レン,",
@@ -50889,8 +50791,7 @@ const dictionary = {
     "strokes": "13",
     "freq_news": null,
     "freq_wiki": "901",
-    "english":
-        "break,destroy,censure,be chipped,be scratched,be broken,be ruined",
+    "english": "break,destroy,censure,be chipped,be scratched,be broken,be ruined",
     "heisig_word": "break",
     "heisig_ind": "2067",
     "kanji_readings": "キ,こぼ.つ,こわ.す,こぼ.れる,こわ.れる,そし.る,やぶ.る,",
@@ -56935,8 +56836,7 @@ const dictionary = {
     "strokes": "19",
     "freq_news": null,
     "freq_wiki": "24",
-    "english":
-        "pocket,feelings,heart,yearn,miss someone,become attached to,bosom,breast",
+    "english": "pocket,feelings,heart,yearn,miss someone,become attached to,bosom,breast",
     "heisig_word": null,
     "heisig_ind": null,
     "kanji_readings": "カイ,エ,ふところ,なつ.かしい,なつ.かしむ,なつ.く,なつ.ける,いだ.く,おも.う,",
@@ -58331,8 +58231,7 @@ const dictionary = {
     "strokes": "12",
     "freq_news": null,
     "freq_wiki": "542",
-    "english":
-        "rub,massage,shampoo,debate vigorously,train,coach,worry,get in trouble",
+    "english": "rub,massage,shampoo,debate vigorously,train,coach,worry,get in trouble",
     "heisig_word": null,
     "heisig_ind": null,
     "kanji_readings": "ジュウ,も.む,も.める,",
@@ -76662,8 +76561,7 @@ const dictionary = {
     "strokes": "6",
     "freq_news": null,
     "freq_wiki": "40",
-    "english":
-        "brush,finally,self,relate,follow,here,fast,writing brush radical (no. 129)",
+    "english": "brush,finally,self,relate,follow,here,fast,writing brush radical (no. 129)",
     "heisig_word": null,
     "heisig_ind": null,
     "kanji_readings": "イチ,イツ,ふで,ここに,T2ふでづくり,",
@@ -76738,8 +76636,7 @@ const dictionary = {
     "strokes": "7",
     "freq_news": null,
     "freq_wiki": "7",
-    "english":
-        "interior region of the body too deep to be reached by acupuncture",
+    "english": "interior region of the body too deep to be reached by acupuncture",
     "heisig_word": null,
     "heisig_ind": null,
     "kanji_readings": "コウ,",
@@ -76784,8 +76681,7 @@ const dictionary = {
     "strokes": "8",
     "freq_news": null,
     "freq_wiki": "1",
-    "english":
-        "risk,brave,dare,face,defy,(diseases) attack,damage,desecrate,assume (a name)",
+    "english": "risk,brave,dare,face,defy,(diseases) attack,damage,desecrate,assume (a name)",
     "heisig_word": null,
     "heisig_ind": null,
     "kanji_readings": "ボウ,おか.す,",
@@ -85980,8 +85876,7 @@ const dictionary = {
     "strokes": "24",
     "freq_news": null,
     "freq_wiki": "1",
-    "english":
-        "soon after,presently,almost,all but,no more than,after all,(kokuji)",
+    "english": "soon after,presently,almost,all but,no more than,after all,(kokuji)",
     "heisig_word": null,
     "heisig_ind": null,
     "kanji_readings": "やがて,",
@@ -90571,8 +90466,7 @@ const dictionary = {
     "strokes": "14",
     "freq_news": null,
     "freq_wiki": "170",
-    "english":
-        "martingale,breast harness,saddle girth,fetter,shackle,carry on back",
+    "english": "martingale,breast harness,saddle girth,fetter,shackle,carry on back",
     "heisig_word": null,
     "heisig_ind": null,
     "kanji_readings": "オウ,ヨウ,むながい,",

@@ -50,7 +50,7 @@ class AppInfoView extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(35, 17, 35, 17),
               child: Text.rich(
                 TextSpan(
-                  text: "This is a mobile webapp for practicing hand-writing kanji by chaining them by their shared components:\n\n",
+                  text: "This app is for practicing hand-writing kanji by chaining them by their shared components:\n\n",
                   children: [
                     const TextSpan(
                       text: "　　虫虹工紅、寸吋囗吐土",
@@ -98,6 +98,21 @@ class AppInfoView extends StatelessWidget {
                 textAlign: TextAlign.justify,
               ),
             ),
+
+            // Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+            // Container(
+            //     width: 45,
+            //     height: 45,
+            //     color: Color.fromARGB(255, 129, 129, 129),
+            //     child: TextButton(
+            //       onPressed: () {
+            //         Navigator.pop(context);
+            //       },
+            //       child: const Icon(
+            //         Icons.arrow_back,
+            //         color: Color.fromARGB(255, 221, 221, 221),
+            //       ),
+            //     )),
           ],
         ))),
       ));
