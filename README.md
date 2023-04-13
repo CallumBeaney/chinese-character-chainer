@@ -1,5 +1,9 @@
-# 連想漢字蝶番　Rensou Kanji Hinge (FLUTTER BUILD -- WIP)
-
+# 連想漢字蝶番　Rensou Kanji Hinge (FLUTTER BUILD -- WIP --Currently rebuilding to include Simp & Trad Chinese)
+  
+  ## The below information concerns the [JS/HMTL/CSS version](https://github.com/CallumBeaney/rensou-kanji-hinge) I prototyped this with.
+  
+   
+  
 <img style="width:250px;" src="https://raw.githubusercontent.com/CallumBeaney/rensou-kanji-hinge/master/images/demo.gif"></img>
 
 # 情報と使用法・ABOUT 
