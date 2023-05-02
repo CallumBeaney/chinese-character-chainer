@@ -14,7 +14,7 @@ RecognitionManagerCubit recognitionManager() => locator.get<RecognitionManagerCu
 void setup() {
   locator.registerLazySingleton<DigitalInkRecognizerModelManager>(() => DigitalInkRecognizerModelManager());
 
-  // TODO: find a way to make this languageCode configurable by Stater monitoring
+  // TODO: find a way to make this languageCode configurable by State monitoring
   locator.registerLazySingleton<DigitalInkRecognizer>(() => DigitalInkRecognizer(languageCode: 'jp'));
 
   locator.registerLazySingleton<Dictionary>(() => jp_dict);

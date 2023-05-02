@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _checkModelsDownloaded(context);
       // TODO: build language-specific recognisers based on menu button pushed
-      locator.get<DigitalInkRecognizer>();
+      // locator.get<DigitalInkRecognizer>(); // TODO: uncomment + remove buttons below to check if works.
     });
   }
 
@@ -134,6 +134,7 @@ class _HomePageState extends State<HomePage> {
                       color: const Color.fromARGB(255, 108, 108, 108),
                       child: TextButton(
                           onPressed: () {
+                            locator.get<DigitalInkRecognizer>();
                             Navigator.push(context, MaterialPageRoute(builder: (context) => const DigitalInkView()));
                           },
                           child: const Text(

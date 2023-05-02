@@ -1,4 +1,4 @@
-const zh_trad_dictionary = {
+const zh_trad_dict = {
   "的": {
     "index_jun": "1",
     "freq": "7922684",
