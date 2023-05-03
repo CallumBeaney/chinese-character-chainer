@@ -9,6 +9,7 @@ part 'language_manager_state.dart';
 
 typedef Dictionary = Map<String, Map<String, String?>>;
 
+// BCP-47 Codes from https://developers.google.com/ml-kit/vision/digital-ink-recognition/base-models?hl=en#text
 const language_options = {
   "japanese": "jp",
   "traditional": "zh-TW",
@@ -34,12 +35,15 @@ class LanguageManagerCubit extends Cubit<LanguageManagerState> {
   void update(String lang, String dict) => emit(state.copyWith(language: lang, dictionary: dict));
 
   void changeLanguage(String language) {
-    bool check = locator.isRegistered<Dictionary>();
-    if (check == true) {
+    bool checkDict = locator.isRegistered<Dictionary>();
+    if (checkDict == true) {
       locator.unregister<Dictionary>();
+    }
+
+    bool checkRecognizer = locator.isRegistered<DigitalInkRecognizer>();
+    if (checkRecognizer == true) {
+      locator<DigitalInkRecognizer>().close();
       locator.unregister<DigitalInkRecognizer>();
-    } else {
-      // do another thing
     }
 
     // Register Ink Recognizer in singleton
@@ -64,6 +68,11 @@ class LanguageManagerCubit extends Cubit<LanguageManagerState> {
           locator.registerLazySingleton(() => zh_simp_dict);
         }
         break;
+    }
+
+    checkDict = locator.isRegistered<Dictionary>();
+    if (checkDict == false) {
+      // There's a problem!
     }
 
     // TODO: check w alex about this Object? return type issues WRT custom map objects etc -- is the reason for using the Switch below

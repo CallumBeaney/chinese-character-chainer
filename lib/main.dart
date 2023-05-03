@@ -5,10 +5,12 @@ import 'package:rensou_flutter/ui/app_info_view.dart';
 import 'package:rensou_flutter/ui/jp_ink_view.dart';
 // import 'package:rensou_flutter/ui/home_view.dart';
 import 'package:flutter/material.dart';
-import 'package:rensou_flutter/ui/jp_ink_view.dart';
+import 'package:rensou_flutter/ui/zh_simp_ink_view.dart';
 import 'package:rensou_flutter/ui/zh_trad_ink_view.dart';
+import 'package:rxdart/streams.dart';
 import 'locator.dart'; // Singleton
 import 'dart:async';
+import 'locator_handler.dart';
 
 // Must access
 // Future<void> checkAndDownloadModel(String model, DigitalInkRecognizerModelManager manager) async {
@@ -66,9 +68,10 @@ class _HomePageState extends State<HomePage> {
     // locator.get<DigitalInkRecognizerModelManager>().deleteModel('ja'); // for debugging
     // locator.get<DigitalInkRecognizerModelManager>().deleteModel('zh-Hani'); // for debugging
     final bool jaCheck = await locator.get<DigitalInkRecognizerModelManager>().isModelDownloaded('ja');
-    final bool zhCheck = await locator.get<DigitalInkRecognizerModelManager>().isModelDownloaded('zh-Hani');
+    final bool zhCheck = await locator.get<DigitalInkRecognizerModelManager>().isModelDownloaded('zh-Hani-CN');
+    final bool zhTrCheck = await locator.get<DigitalInkRecognizerModelManager>().isModelDownloaded('zh-Hani-HK');
 
-    if (jaCheck == false || zhCheck == false) {
+    if (jaCheck == false || zhCheck == false || zhTrCheck == FromCallableStream) {
       Navigator.of(context).push(
         // TODO: design PopupPage such that it listens for completion of downloads
         MaterialPageRoute(builder: (BuildContext context) => const PopupPage()),
@@ -80,7 +83,11 @@ class _HomePageState extends State<HomePage> {
       }
       if (zhCheck == false) {
         // ignore: unused_local_variable
-        final bool result = await locator.get<DigitalInkRecognizerModelManager>().downloadModel('zh-Hani').then((value) => value ? true : false);
+        final bool result = await locator.get<DigitalInkRecognizerModelManager>().downloadModel('zh-Hani-CN').then((value) => value ? true : false);
+      }
+      if (zhTrCheck == false) {
+        // ignore: unused_local_variable
+        final bool result = await locator.get<DigitalInkRecognizerModelManager>().downloadModel('zh-Hani-HK').then((value) => value ? true : false);
       }
     }
   }
@@ -134,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                       color: const Color.fromARGB(255, 108, 108, 108),
                       child: TextButton(
                           onPressed: () {
-                            locator.get<DigitalInkRecognizer>();
+                            changeLanguage("ja");
                             Navigator.push(context, MaterialPageRoute(builder: (context) => const DigitalInkView()));
                           },
                           child: const Text(
@@ -148,7 +155,10 @@ class _HomePageState extends State<HomePage> {
                       height: 60,
                       color: const Color.fromARGB(255, 108, 108, 108),
                       child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            changeLanguage("zh-Hani-CN");
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ZhSimpInkView()));
+                          },
                           child: const Text(
                             "简体字",
                             style: TextStyle(color: Color.fromARGB(255, 221, 221, 221), fontSize: 26, height: 1.2),
@@ -161,6 +171,7 @@ class _HomePageState extends State<HomePage> {
                       color: const Color.fromARGB(255, 108, 108, 108),
                       child: TextButton(
                           onPressed: () {
+                            changeLanguage("zh-Hani-HK");
                             Navigator.push(context, MaterialPageRoute(builder: (context) => const ZhTradInkView()));
                           },
                           child: const Text(
