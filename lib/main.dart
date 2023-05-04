@@ -1,38 +1,15 @@
 import 'package:flutter/material.dart' hide Ink; // prevent clashes with ML Kit class
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rensou_flutter/ui/app_info_view.dart';
-import 'package:rensou_flutter/ui/jp_ink_view.dart';
-// import 'package:rensou_flutter/ui/home_view.dart';
+import 'package:rensou_flutter/ui/ink_view.dart';
 import 'package:flutter/material.dart';
-import 'package:rensou_flutter/ui/zh_simp_ink_view.dart';
-import 'package:rensou_flutter/ui/zh_trad_ink_view.dart';
-import 'package:rxdart/streams.dart';
 import 'locator.dart'; // Singleton
 import 'dart:async';
-import 'locator_handler.dart';
-
-// Must access
-// Future<void> checkAndDownloadModel(String model, DigitalInkRecognizerModelManager manager) async {
-//   final bool response = await manager.isModelDownloaded(model);
-//   if (response == false) {
-//     // ORIGINAL: Toast().show('Downloading model...', locator<DigitalInkRecognizerModelManager>().downloadModel('ja').then((value) => value ? 'success' : 'failed'), context, this);
-//     // ignore: unused_local_variable
-//     final result = await manager.downloadModel(model).then((value) => value ? 'successfully downloaded!' : 'failed to download the language model');
-//   }
-// }
-
-// // Stream for Text Recognition candidates
-// final StreamController<List<String>> _candidatesController = StreamController.broadcast();
-// Stream<List<String>> get candidatesStream => _candidatesController.stream;
+import 'model/model.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setup();
-  // await checkAndDownloadModel('ja', locator.get<DigitalInkRecognizerModelManager>()); //TODO: functionality to change languages?
-  // await checkAndDownloadModel('zh-Hani', locator.get<DigitalInkRecognizerModelManager>());
-  // popup on first ever startup
-  // locator.get<DigitalInkRecognizer>();
+  setup(); // Call singleton, init global language model manager for ink recognition ML KIT
   runApp(const MyApp());
 }
 
@@ -41,17 +18,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => recognitionManager()),
-      ],
-      child: const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        // theme: ThemeData(
-        //   textButtonTheme: TextButton.styleFrom(foregroundColor: Colors.green),
-        // ),
-        home: HomePage(),
-      ),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
     );
   }
 }
@@ -65,13 +34,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Future<void> _checkModelsDownloaded(context) async {
+    // TODO: implement less cursed way of doing this.
+    // Activity indicator may be viable alternative as per below:
+    // Toast().show('Downloading model...', locator<DigitalInkRecognizerModelManager>().downloadModel('ja').then((value) => value ? 'success' : 'failed'), context, this);
+
     // locator.get<DigitalInkRecognizerModelManager>().deleteModel('ja'); // for debugging
-    // locator.get<DigitalInkRecognizerModelManager>().deleteModel('zh-Hani'); // for debugging
     final bool jaCheck = await locator.get<DigitalInkRecognizerModelManager>().isModelDownloaded('ja');
     final bool zhCheck = await locator.get<DigitalInkRecognizerModelManager>().isModelDownloaded('zh-Hani-CN');
-    final bool zhTrCheck = await locator.get<DigitalInkRecognizerModelManager>().isModelDownloaded('zh-Hani-HK');
+    final bool zhTrCheck = await locator.get<DigitalInkRecognizerModelManager>().isModelDownloaded('zh-Hani-TW');
 
-    if (jaCheck == false || zhCheck == false || zhTrCheck == FromCallableStream) {
+    if (jaCheck == false || zhCheck == false || zhTrCheck == false) {
       Navigator.of(context).push(
         // TODO: design PopupPage such that it listens for completion of downloads
         MaterialPageRoute(builder: (BuildContext context) => const PopupPage()),
@@ -87,7 +59,7 @@ class _HomePageState extends State<HomePage> {
       }
       if (zhTrCheck == false) {
         // ignore: unused_local_variable
-        final bool result = await locator.get<DigitalInkRecognizerModelManager>().downloadModel('zh-Hani-HK').then((value) => value ? true : false);
+        final bool result = await locator.get<DigitalInkRecognizerModelManager>().downloadModel('zh-Hani-TW').then((value) => value ? true : false);
       }
     }
   }
@@ -95,11 +67,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    // Check the condition when the app is opened
+    // Check when the app is opened
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _checkModelsDownloaded(context);
-      // TODO: build language-specific recognisers based on menu button pushed
-      // locator.get<DigitalInkRecognizer>(); // TODO: uncomment + remove buttons below to check if works.
     });
   }
 
@@ -114,7 +84,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.15),
+              margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.17),
               child: const Text(
                 '漢字連鎖',
                 style: TextStyle(
@@ -140,10 +110,8 @@ class _HomePageState extends State<HomePage> {
                       height: 60,
                       color: const Color.fromARGB(255, 108, 108, 108),
                       child: TextButton(
-                          onPressed: () {
-                            changeLanguage("ja");
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const DigitalInkView()));
-                          },
+                          onPressed: () =>
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const DigitalInkView(config: LanguageConfig.jp))),
                           child: const Text(
                             "日本語",
                             style: TextStyle(color: Color.fromARGB(255, 221, 221, 221), fontSize: 26, height: 1.2),
@@ -155,10 +123,8 @@ class _HomePageState extends State<HomePage> {
                       height: 60,
                       color: const Color.fromARGB(255, 108, 108, 108),
                       child: TextButton(
-                          onPressed: () {
-                            changeLanguage("zh-Hani-CN");
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ZhSimpInkView()));
-                          },
+                          onPressed: () =>
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const DigitalInkView(config: LanguageConfig.zhSimp))),
                           child: const Text(
                             "简体字",
                             style: TextStyle(color: Color.fromARGB(255, 221, 221, 221), fontSize: 26, height: 1.2),
@@ -170,10 +136,8 @@ class _HomePageState extends State<HomePage> {
                       height: 60,
                       color: const Color.fromARGB(255, 108, 108, 108),
                       child: TextButton(
-                          onPressed: () {
-                            changeLanguage("zh-Hani-HK");
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ZhTradInkView()));
-                          },
+                          onPressed: () =>
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const DigitalInkView(config: LanguageConfig.zhTrad))),
                           child: const Text(
                             "繁體字",
                             style: TextStyle(color: Color.fromARGB(255, 221, 221, 221), fontSize: 26, height: 1.2),
@@ -204,8 +168,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-// Navigator.push(context, MaterialPageRoute(builder: (context) => KanjiInfoView(kanji: kanji)));
 
 class PopupPage extends StatelessWidget {
   const PopupPage({super.key});

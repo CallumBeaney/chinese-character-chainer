@@ -1,8 +1,6 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 
-ThemeData kanjiLookupTheme = ThemeData(
+ThemeData infoViewTheme = ThemeData(
   scaffoldBackgroundColor: Colors.grey[200],
   textTheme: TextTheme(
     bodyMedium: TextStyle(color: Colors.grey[900]),
@@ -12,6 +10,3 @@ ThemeData kanjiLookupTheme = ThemeData(
     backgroundColor: Colors.grey[200],
   ),
 );
-
-// TODO 
-// TextButtonThemeData recognizedKanjiButton_normal = TextButtonThemeData();

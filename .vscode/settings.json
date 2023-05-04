@@ -2,7 +2,7 @@
     "cmake.configureOnOpen": false,
     "dart.lineLength": 150,
     "[dart]": {
-        "editor.rulers": [80],
+        "editor.rulers": [150],
         "editor.tabSize": 2
     }
 }

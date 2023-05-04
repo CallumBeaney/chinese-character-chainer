@@ -1,16 +1,14 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart' hide Ink;
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
 import 'package:rensou_flutter/cubit/recognition_manager_cubit.dart';
-import 'package:rensou_flutter/locator.dart';
 import 'package:rensou_flutter/painter.dart';
 
 import 'ink_controls.dart';
 
 class InkInput extends StatefulWidget {
-  const InkInput({super.key});
+  final RecognitionManagerCubit controller;
+  const InkInput({required this.controller, super.key});
 
   @override
   State<InkInput> createState() => _InkInputState();
@@ -22,12 +20,12 @@ class _InkInputState extends State<InkInput> {
   final Ink _ink = Ink();
   List<StrokePoint> _points = [];
 
+  // This stream-related code, as used in RecognitionManagerCubit, is used to clear the canvas once the user presses a button output by the ML-kit's handwriting recognitino operation. Without this, it won't work!
   late final StreamSubscription<bool> _clearTriggerSub;
 
   @override
   void initState() {
-    _clearTriggerSub =
-        recognitionManager().clearTriggerStream.listen(_onClearTrigger);
+    _clearTriggerSub = widget.controller.clearTriggerStream.listen(_onClearTrigger);
     super.initState();
   } // _cTS must be housed in initState() or the listener will not listen
 
@@ -90,9 +88,8 @@ class _InkInputState extends State<InkInput> {
   void _onRecognise() {
     setState(() {
       _points.clear();
-      // locator<List<StrokePoint>>().clear(); // doesn't run.
     });
-    BlocProvider.of<RecognitionManagerCubit>(context).recogniseText(_ink);
+    widget.controller.recogniseText(_ink);
   }
 
   void _onClear([bool clearCandidates = true]) {
@@ -101,8 +98,7 @@ class _InkInputState extends State<InkInput> {
       _points.clear(); // Visual representation on the canvas
     });
     if (clearCandidates) {
-      BlocProvider.of<RecognitionManagerCubit>(context).clearCandidates();
-      // BlocProvider.of<RecognitionManagerCubit>(context)
+      widget.controller.clearCandidates();
     }
   }
 }

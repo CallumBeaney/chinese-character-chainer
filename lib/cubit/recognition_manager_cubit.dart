@@ -1,74 +1,76 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
-import 'package:rensou_flutter/locator.dart';
+import 'package:rensou_flutter/model/model.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'recognition_manager_state.dart';
 
 class RecognitionManagerCubit extends Cubit<RecognitionManagerState> {
-  RecognitionManagerCubit() : super(RecognitionManagerState.initial);
+  final LanguageConfig config;
+  late final recognizer = DigitalInkRecognizer(languageCode: config.code);
+
+  RecognitionManagerCubit({required this.config}) : super(RecognitionManagerState.initial);
 
   // Empty ML recognition candidates row
   void clearCandidates() => emit(state.copyWith(candidates: []));
 
   void clearAll() => emit(state.copyWith(candidates: [], results: []));
 
-  // TODO: this still needed?
+  // This is important! This is used in ink_input.dart to auto-clear the Ink input canvas.
   Stream<bool> get clearTriggerStream => stream.map((e) => e.results.length).bufferCount(2, 1).map((e) => e.first != e.last);
 
   Future<void> recogniseText(Ink ink) async {
     try {
       final List<RecognitionCandidate> candidates =
-          await locator<DigitalInkRecognizer>().recognize(ink); // ML package .recognise() function invoked, returns list of guesses of user input
+          await recognizer.recognize(ink); // ML package .recognise() function invoked, returns list of guesses of user input
       final List<String> candidatesString = candidates
-          .where((e) => locator<Dictionary>().containsKey(e.text))
+          .where((e) => config.dictionary.containsKey(e.text))
           .map((e) => e.text)
           .toList(); // Strip that guess list of non-valid characters e.g. romaji, katakana, */!-# etc
       emit(state.copyWith(candidates: candidatesString));
     } catch (e) {
-      // todo: error thing
+      print('there is an error here $e \n'); // TODO: fix this up!
     }
   }
 
-  void validateKanji(String newKanji) {
-    final dictionary = locator<Dictionary>();
-    final String? previousKanji = state.comparator;
+  void validateCharacter(String newCharacter) {
+    final String? previousCharacter = state.comparator;
 
-    if (previousKanji == newKanji) {
+    if (previousCharacter == newCharacter) {
       return;
     }
 
     // is user trying [ 。 、 。 、 。 、 ] ???
-    if ((newKanji == '。' && previousKanji == '、') || (newKanji == '、' && previousKanji == '。')) {
+    if ((newCharacter == '。' && previousCharacter == '、') || (newCharacter == '、' && previousCharacter == '。')) {
       return;
     }
 
     // is user adding legitimate punctuation?
-    if (newKanji == '。' || newKanji == '、') {
-      emit(state.addResult(newKanji));
+    if (newCharacter == '。' || newCharacter == '、') {
+      emit(state.addResult(newCharacter));
       return;
     }
 
-    // is user adding chracter _after_ punctuation?
-    if ((previousKanji == '。' || previousKanji == '、') && dictionary.containsKey(newKanji)) {
-      emit(state.addResult(newKanji));
+    // is user adding chracter _after_ punctuation? In which case any valid character may be pushed.
+    if ((previousCharacter == '。' || previousCharacter == '、') && config.dictionary.containsKey(newCharacter)) {
+      emit(state.addResult(newCharacter));
       return;
     }
 
-    List<String> previousKanjiRadicals = dictionary[previousKanji]?['radicals']?.split(',') ?? [];
-    List<String> newKanjiRadicals = dictionary[newKanji]?['radicals']?.split(',') ?? [];
+    List<String> prevCharRadicals = config.dictionary[previousCharacter]?['radicals']?.split(',') ?? [];
+    List<String> newCharRadicals = config.dictionary[newCharacter]?['radicals']?.split(',') ?? [];
 
-    if (previousKanji == null) {
-      // User is submitting their first ever kanji -- let it pass!
-      emit(state.addResult(newKanji));
+    if (previousCharacter == null) {
+      // User is submitting their first ever kanji/hanzi -- let it pass!
+      emit(state.addResult(newCharacter));
       return;
     }
 
-    if (newKanjiRadicals.any((e) => previousKanjiRadicals.contains(e)) == false) {
+    if (newCharRadicals.any((e) => prevCharRadicals.contains(e)) == false) {
       return;
-      // TODO: change button colour!
+      // TODO ?: change button colour?
     } else {
-      emit(state.addResult(newKanji));
+      emit(state.addResult(newCharacter));
     }
   }
 }

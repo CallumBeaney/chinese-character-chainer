@@ -3,18 +3,20 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:rensou_flutter/buttons.dart';
-import 'package:rensou_flutter/locator.dart';
-import 'package:rensou_flutter/ui/theme_data.dart';
+import 'package:rensou_flutter/model/model.dart';
+import 'package:rensou_flutter/ui/app_theme_data.dart';
 
 class KanjiInfoView extends StatelessWidget {
-  const KanjiInfoView({Key? key, required this.kanji})
-      : super(
-          key: key,
-        );
-
   final String kanji;
+  final LanguageConfig config;
 
-  get dictionary => locator<Dictionary>();
+  const KanjiInfoView({
+    super.key,
+    required this.kanji,
+    required this.config,
+  });
+
+  Dictionary get dictionary => config.dictionary;
 
   // These will _never_ be NULL
   String get readings => dictionary[kanji]!["kanji_readings"]!.split(",").join(', ');
@@ -23,24 +25,24 @@ class KanjiInfoView extends StatelessWidget {
   String get strokes => dictionary[kanji]!["strokes"]!.toString();
 
   // Heisig _could_ be NULL
-  String? get heisigInd => dictionary[kanji]?["heisig_ind"] == null ? null : dictionary[kanji]["heisig_ind"];
-  String? get heisigWord => dictionary[kanji]?["heisig_word"] == null ? null : dictionary[kanji]["heisig_word"];
+  String? get heisigInd => dictionary[kanji]?["heisig_ind"];
+  String? get heisigWord => dictionary[kanji]?["heisig_word"];
   String? get heisig => heisigInd == null || heisigWord == null ? null : "#$heisigInd - \"$heisigWord\"";
 
   // Frequency data _could_ be NULL
-  String? get newsFreq => dictionary[kanji]?["freq_news"] == null ? null : dictionary[kanji]["freq_news"];
-  String? get wikiFreq => dictionary[kanji]?["freq_wiki"] == null ? null : dictionary[kanji]["freq_wiki"];
+  String? get newsFreq => dictionary[kanji]?["freq_news"];
+  String? get wikiFreq => dictionary[kanji]?["freq_wiki"];
 
   // Onyomi kanji & readings _could_ be NULL
-  List<String>? get onyomiKanji => dictionary[kanji]?["on_kanji"] == null ? null : dictionary[kanji]?["on_kanji"].split(",");
-  List<String>? get onyomiKana => dictionary[kanji]?["on_kana"] == null ? null : dictionary[kanji]?["on_kana"].split(",");
+  List<String>? get onyomiKanji => dictionary[kanji]?["on_kanji"]?.split(",");
+  List<String>? get onyomiKana => dictionary[kanji]?["on_kana"]?.split(",");
 
-  List<String>? get kunyomiKanji => dictionary[kanji]?["kun_kanji"] == null ? null : dictionary[kanji]?["kun_kanji"].split(",");
-  List<String>? get kunyomiKana => dictionary[kanji]?["kun_kana"] == null ? null : dictionary[kanji]?["kun_kana"].split(",");
+  List<String>? get kunyomiKanji => dictionary[kanji]?["kun_kanji"]?.split(",");
+  List<String>? get kunyomiKana => dictionary[kanji]?["kun_kana"]?.split(",");
 
   @override
   Widget build(BuildContext context) => Theme(
-        data: kanjiLookupTheme,
+        data: infoViewTheme,
         child: Scaffold(
           appBar: AppBar(
             title: const Text('漢字情報'),

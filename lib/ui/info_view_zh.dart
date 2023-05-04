@@ -1,39 +1,38 @@
-// ignore_for_file: prefer_null_aware_operators
-
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:rensou_flutter/buttons.dart';
-import 'package:rensou_flutter/locator.dart';
-import 'package:rensou_flutter/ui/theme_data.dart';
+import 'package:rensou_flutter/model/model.dart';
+import 'package:rensou_flutter/ui/app_theme_data.dart';
 
 class HanziInfoView extends StatelessWidget {
-  const HanziInfoView({Key? key, required this.kanji})
-      : super(
-          key: key,
-        );
+  final String hanzi;
+  final LanguageConfig config;
 
-  final String kanji;
+  const HanziInfoView({
+    super.key,
+    required this.hanzi,
+    required this.config,
+  });
 
-  get dictionary => locator<Dictionary>();
+  Dictionary get dictionary => config.dictionary;
 
   // These will _never_ be NULL
-  String get pinyin => dictionary[kanji]["pinyin"];
-  String get tradChar => dictionary[kanji]["trad_char"];
-  String get radicals => dictionary[kanji]["radicals"].split(",").join(', ');
-  String get freq => dictionary[kanji]["freq"];
-  String get percentile => dictionary[kanji]["percentile"];
+  String get pinyin => dictionary[hanzi]!["pinyin"]!;
+  String get radicals => dictionary[hanzi]!["radicals"]!.split(",").join(', ');
+  String get freq => dictionary[hanzi]!["freq"]!;
+  String get percentile => dictionary[hanzi]!["percentile"]!;
 
   // These _could_ be NULL
-  String? get english => dictionary[kanji]?["english"] == null ? null : dictionary[kanji]["english"].split(",").join(', ');
-  String? get jyutping => dictionary[kanji]?["jyutping"] == null ? null : dictionary[kanji]["jyutping"];
-  String? get zhuyin => dictionary[kanji]?["zhuyin"] == null ? null : dictionary[kanji]["zhuyin"];
+  String? get english => dictionary[hanzi]?["english"]?.split(",").join(', ');
+  String? get jyutping => dictionary[hanzi]?["jyutping"];
+  String? get zhuyin => dictionary[hanzi]?["zhuyin"];
 
   @override
   Widget build(BuildContext context) => Theme(
-        data: kanjiLookupTheme,
+        data: infoViewTheme,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('漢字情報'),
+            title: const Text('漢字資訊'),
             toolbarHeight: 50,
           ),
           body: SafeArea(
@@ -41,7 +40,7 @@ class HanziInfoView extends StatelessWidget {
               child: Column(
                 children: [
                   const Padding(padding: EdgeInsets.only(top: 25)),
-                  // The kanji in question, displayed large
+                  // The hanzi in question, displayed large
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: DottedBorder(
@@ -50,7 +49,7 @@ class HanziInfoView extends StatelessWidget {
                       strokeWidth: 1,
                       child: Center(
                         child: Text(
-                          kanji,
+                          hanzi,
                           style: const TextStyle(fontSize: 85),
                         ),
                       ),
@@ -70,8 +69,15 @@ class HanziInfoView extends StatelessWidget {
                     InfoRow(leftText: '粵拼', rightText: jyutping!),
                   ],
 
+                  if (config.code == "zh-Hani-CN" && hanzi != (dictionary[hanzi]!["alt_char"]!)) ...[
+                    InfoRow(leftText: '繁體字', rightText: dictionary[hanzi]!["alt_char"]!),
+                  ],
+
+                  if (config.code == "zh-Hani-TW" && hanzi != (dictionary[hanzi]!["alt_char"]!)) ...[
+                    InfoRow(leftText: '簡體字', rightText: dictionary[hanzi]!["alt_char"]!),
+                  ],
+
                   InfoRow(leftText: '部首', rightText: radicals),
-                  InfoRow(leftText: '繁體字', rightText: tradChar),
                   InfoRow(leftText: '频率', rightText: freq),
                   InfoRow(leftText: '累计\n频率', rightText: percentile),
 

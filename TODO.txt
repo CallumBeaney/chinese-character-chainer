@@ -1,24 +1,17 @@
 ____________TODO
 
-Scrolling problems when spamming punctuation buttons
+see problems tab 
+
+____________NEW FEATURES ?
+
+HOWTO: LOG SESSION AND STORE INFO
+IDENTIFY RARELY USED HANZI
 
 Hive package for keeping local session data
         ^ https://pub.dev/packages/hive
     あるいは Shared preferences
         ^ https://pub.dev/packages/shared_preferences
-        
-SingleChildScrollView RE: mega readings 上下
-    ^ https://api.flutter.dev/flutter/widgets/SingleChildScrollView-class.html
-
-BUILD README
-
-
-____________NEW FEATURES ?
-
-HOWTO: LOG SESSION AND STORE INFO
-OVERLAY WITH ARROWS TO SHOW USAGE
-IDENTIFY RARELY USED HANZI
-
+    
 
 ____________INFORMATION
 
