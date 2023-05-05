@@ -14,9 +14,11 @@ I originally prototyped a [JS/HMTL/CSS webapp](https://github.com/CallumBeaney/r
   
 # Dictionary information
   
-I hand-rolled these dictionary files out of a want to not rely on *any* internet connectivity with the exception of the first-time opening, where the Google ML Kit language models must be quickly downloaded.  
+I hand-rolled these dictionary files out of a want to not rely on *any* internet connectivity with the exception of the first-time opening, where the Google ML Kit language models must be quickly downloaded.   
   
-JAPANESE DICTIONARY STRUCTURE:  
+Due to the vastness of their size and technical debt incurred by e.g. the ways that researchers broke characters down into radicals using unicode characters (e.g. 拆 => 扌 手 斥	才), very occasionally characters that should match will not, and characters that one wouldn't intuit to be matchable will be able to be matched. This will be cleared up through regular bugfixing by myself as I use these dictionaries.  
+
+### JAPANESE DICTIONARY STRUCTURE:  
 The dictionary follows basic JSON form but is adapted to a Dart object (Map<String, Map<String, nullable String>>). 
   
  - EDRDG's [KANJIDIC](http://www.edrdg.org/wiki/index.php/KANJIDIC_Project).  
@@ -39,10 +41,11 @@ heisig_ind      = ハイシッグの採番    = Heisig's index number
 kanji_readings  = 漢字の発音、読み方  = The entry kanji's pronunciations 
 ```        
   
-CHINESE DICTIONARIES:  
+### CHINESE DICTIONARIES:  
   
  - Jun Da 笪骏's [Hanzi Frequency List](https://lingua.mtsu.edu/chinese-computing/statistics/char/list.php?Which=MO).  
  - Denisowski's [CEDICT](https://cc-cedict.org/wiki/).  
+ - 開放詞典 (KFCD)'s [Chaizi](https://github.com/kfcd/chaizi).  
    
 ```
 index_jun  = 序号       =  The entry hanzi's serial number as per Jun's index
