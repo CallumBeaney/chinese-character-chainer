@@ -1,4 +1,4 @@
-<img style="width:300px" src="https://callumbeaney.github.io/index_images/rensou.jpg" /></a>   
+<img style="width:300px" src="https://callumbeaney.github.io/index_images/chain.jpg" /></a>   
 
 # 漢字連鎖 Kanji/Hanzi Chainer  
   
@@ -30,7 +30,7 @@ index_KD     = KANJIDIC採番   =  The entry kanji's EDRGD "KANJIDIC" dictionary
 radicals     = 部首           =  Components of the entry kanji
 strokes      = 字画           =  The entry kanji's stroke count
 freq_news    = 新聞にある頻度版 =  The frequency at which characters appear in newspapers
-freq_wiki    = 新聞にある頻度版 =  The frequency at which characters appear on JP Wikipedia
+freq_wiki    = wikiにある頻度版=  The frequency at which characters appear on JP Wikipedia
 english      = 英語の意味      =  The entry kanji's english meaning
 on_kanji     = 音読み漢字      =  Words using the kanji's onyomi, in kanji form
 on_kana      = 音読み仮名      =  Words using the kanji's onyomi, in kana form
@@ -55,6 +55,6 @@ pinyin     = 拼音       =  Romanized pronunciation of the entry hanzi
 jyutping   = 粵拼       =  The Cantonese pronunciation
 zhuyin     = 注音       =  The Bopomofo pronunciation
 radicals   = 部首       =  Components of the entry hanzi
-alt_char  = 繁體字     =  The traditional/simplified alternative of the entry hanzi
-english    = 英文翻譯   =  The entry hanzi's english meaning
+alt_char   = 繁體字     =  The traditional/simplified alternative of the entry hanzi
+english    = 英文翻譯    =  The entry hanzi's english meaning
 ``` 
