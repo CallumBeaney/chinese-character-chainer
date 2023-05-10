@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// TODO ?: try implement Alex's fade thing
+// This was implemented by absolute legend https://github.com/alexobviously
 
 class FadeMask extends StatelessWidget {
   final Widget child;
@@ -9,8 +9,8 @@ class FadeMask extends StatelessWidget {
   const FadeMask({
     super.key,
     required this.child,
-    this.startFade = 0.02,
-    this.endFade = 0.9,
+    this.startFade = 0.02, // changed from default
+    this.endFade = 0.9, // changed from default
   });
 
   @override
@@ -18,8 +18,8 @@ class FadeMask extends StatelessWidget {
     return ShaderMask(
       shaderCallback: (Rect rect) {
         return LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
+          begin: Alignment.bottomCenter, // inverted these two from default
+          end: Alignment.topCenter,
           colors: [
             if (startFade != null) Colors.white,
             Colors.transparent,

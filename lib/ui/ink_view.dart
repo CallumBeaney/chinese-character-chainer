@@ -3,6 +3,7 @@ import 'package:character_chainer/cubit/recognition_manager_cubit.dart';
 import 'package:character_chainer/model/language_config.dart';
 import 'package:character_chainer/model/placeholders.dart';
 import 'package:character_chainer/model/types.dart';
+import 'package:character_chainer/ui/fade_mask.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,19 +31,12 @@ class _DigitalInkViewState extends State<DigitalInkView> {
 
   // TODO ?: implement Chinese numbering for the score? (https://pub.dev/packages/number_to_words_chinese/install)
   int getScore(List<String> answers) {
-    // TODO: reconfigure to check for repeats
-    return answers.map((e) => dictionary.containsKey(e)).where((r) => (r == true)).length;
+    return Set.from(answers).where((e) => dictionary.containsKey(e)).length;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('日本語'),
-      //   toolbarHeight: 50,
-      //   foregroundColor: Colors.grey[900],
-      //   backgroundColor: Colors.grey[200],
-      // ),
       body: SafeArea(
         child: BlocBuilder<RecognitionManagerCubit, RecognitionManagerState>(
           bloc: controller,
@@ -54,6 +48,7 @@ class _DigitalInkViewState extends State<DigitalInkView> {
 
             return Column(
               children: [
+                // TOP LEFT: NAVIGATION BACK BUTTON
                 Expanded(
                   child: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
                     return Padding(
@@ -78,7 +73,7 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                             ),
                           ),
 
-                          // The USER CHARACTER LIST
+                          // TOP MIDDLE: The USER CHARACTER LIST
                           Expanded(
                             flex: 5,
                             child: Column(
@@ -87,18 +82,22 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                                   child: Align(
                                     alignment: Alignment.bottomCenter,
                                     child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
+                                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                       child: LayoutBuilder(
                                         builder: (context, constraints) {
-                                          return SingleChildScrollView(
-                                            reverse: results.length > 25 ? true : false,
-                                            child: Wrap(
-                                              children: [
-                                                ...results.map((e) => UsersCharacterListButton(
-                                                      character: e,
-                                                      config: widget.config,
-                                                    )),
-                                              ],
+                                          return FadeMask(
+                                            startFade: 0.03,
+                                            endFade: 0.98,
+                                            child: SingleChildScrollView(
+                                              reverse: results.length > 25 ? true : false,
+                                              child: Wrap(
+                                                children: [
+                                                  ...results.map((e) => UsersCharacterListButton(
+                                                        character: e,
+                                                        config: widget.config,
+                                                      )),
+                                                ],
+                                              ),
                                             ),
                                           );
                                         },
@@ -122,7 +121,7 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                 // The black middle button contains the most recent inputted kanji
                 // which is then compared against the user's next input
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  padding: const EdgeInsets.only(bottom: 10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -164,6 +163,7 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                   ),
                 ),
                 InkInput(controller: controller),
+                const SizedBox(height: 10),
               ],
             );
           },
@@ -174,16 +174,9 @@ class _DigitalInkViewState extends State<DigitalInkView> {
 
   Widget _topRightButtons(int score) => Column(
         children: [
-          if (score == 0)
-            const IgnorePointer(
-              child: Opacity(
-                opacity: 0,
-                child: InfoButton(text: "何"),
-              ),
-            ),
-          if (score != 0) ...[
-            const SizedBox(height: 8),
-            Container(
+          Opacity(
+            opacity: score == 0 ? 0 : 1,
+            child: Container(
               width: 45,
               height: 45,
               color: const Color.fromARGB(255, 49, 49, 49),
@@ -194,12 +187,12 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                   style: TextStyle(
                     fontSize: (score > 99) ? 15 : 25,
                     color: const Color.fromARGB(255, 214, 214, 214),
-                    height: 1.26,
+                    height: 1.1,
                   ),
                 ),
               ),
             ),
-          ],
+          ),
         ],
       );
 }

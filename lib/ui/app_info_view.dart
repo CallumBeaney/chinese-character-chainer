@@ -79,7 +79,7 @@ class AppInfoView extends StatelessWidget {
                     ),
                     const TextSpan(
                       text:
-                          " made this based on how he used to furtively practice Japanese & Mandarin on a notepad at work.\n\nThis app was hand-compiled from several different dictionaries including EDRDG's KANJIDIC, Michael Raine & Jim Breen's KRADFILE, Denisowski's CEDICT, and Shang's Kanji Frequency on Wikipedia spreadsheet. There are likely to be some discrepancies in character information that can only viably be identified through real-world usage.\n\nTo read more, or to report an issue, consult this app's ",
+                          " made this based on how he used to furtively practice Japanese & Mandarin on a notepad at work.\n\nThis app was hand-compiled from several different dictionaries including EDRDG's KANJIDIC, Michael Raine & Jim Breen's KRADFILE, Denisowski's CEDICT, and Shang's Kanji Frequency on Wikipedia spreadsheet.\n\nDue to the vastness of their size and technical debt incurred by e.g. the ways that researchers broke characters down into radicals using unicode characters (e.g. 拆 => 扌 手 斥 才), very occasionally characters that should match will not, and characters that one wouldn't intuit to be matchable will be able to be matched.\n\nTo read more, or to report an issue, consult this app's ",
                     ),
                     TextSpan(
                       text: "Github repository",

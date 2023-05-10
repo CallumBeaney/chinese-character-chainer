@@ -40,12 +40,22 @@ class RecognitionManagerCubit extends Cubit<RecognitionManagerState> {
       return;
     }
 
+    if (previousCharacter == null && (newCharacter == '。' || newCharacter == '、' || !config.dictionary.containsKey(newCharacter))) {
+      // The user is trying to enter e.g. hiragana or punctuation buttons for their first ever input -- ダメ！
+      return;
+    }
+    if (previousCharacter == null && config.dictionary.containsKey(newCharacter)) {
+      // User is submitting their first ever kanji/hanzi -- let it pass!
+      emit(state.addResult(newCharacter));
+      return;
+    }
+
     // is user trying [ 。 、 。 、 。 、 ] ???
     if ((newCharacter == '。' && previousCharacter == '、') || (newCharacter == '、' && previousCharacter == '。')) {
       return;
     }
 
-    // is user adding legitimate punctuation?
+    // is user adding legitimate punctuation && there's already a kanji inputted?
     if (newCharacter == '。' || newCharacter == '、') {
       emit(state.addResult(newCharacter));
       return;
@@ -59,12 +69,6 @@ class RecognitionManagerCubit extends Cubit<RecognitionManagerState> {
 
     List<String> prevCharRadicals = config.dictionary[previousCharacter]?['radicals']?.split(',') ?? [];
     List<String> newCharRadicals = config.dictionary[newCharacter]?['radicals']?.split(',') ?? [];
-
-    if (previousCharacter == null) {
-      // User is submitting their first ever kanji/hanzi -- let it pass!
-      emit(state.addResult(newCharacter));
-      return;
-    }
 
     if (newCharRadicals.any((e) => prevCharRadicals.contains(e)) == false) {
       return;

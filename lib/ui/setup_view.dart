@@ -55,8 +55,8 @@ class PopupPage extends StatelessWidget {
                 const Padding(
                   padding: EdgeInsets.all(60),
                   child: Text(
-                    "Downloading language models. This may take several seconds to a minute. Once downloaded, this app will thereafter operate fully-offline.",
-                    style: TextStyle(fontSize: 18),
+                    "Downloading language models. This may take between 10 seconds and a minute depending on your connection. This software will thereafter be operable without internet access.\n\n下载语言模型。 这可能需要 10 秒到一分钟，具体取决于您的连接情况。 此软件此后无需互联网访问即可运行。\n\n言語モデルをダウンロードしています。 接続に応じて、これには 10 秒から 1 分かかる場合があります。 その後、このソフトウェアはインターネットにアクセスしなくても動作します。",
+                    style: TextStyle(fontSize: 16),
                   ),
                 ),
                 const CircularProgressIndicator(),

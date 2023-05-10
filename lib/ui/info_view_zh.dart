@@ -20,7 +20,7 @@ class HanziInfoView extends StatelessWidget {
   String get pinyin => dictionary[hanzi]!["pinyin"]!;
   String get radicals => dictionary[hanzi]!["radicals"]!.split(",").join(', ');
   String get freq => dictionary[hanzi]!["freq"]!;
-  String get percentile => dictionary[hanzi]!["percentile"]!;
+  String get percentile => (double.parse(dictionary[hanzi]!["percentile"]!).toStringAsFixed(4).toString());
 
   // These _could_ be NULL
   String? get english => dictionary[hanzi]?["english"]?.split(",").join(', ');

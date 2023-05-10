@@ -15,7 +15,9 @@ class InkInput extends StatefulWidget {
 }
 
 class _InkInputState extends State<InkInput> {
-  final double canvasHeight = 330;
+  // set the height of the canvas to around 40% of the screen
+  double get screenHeight => MediaQuery.of(context).size.height;
+  double get canvasHeight => screenHeight * 0.4; // ORIGINAL VALUE = 330;
 
   final Ink _ink = Ink();
   List<StrokePoint> _points = [];
@@ -47,7 +49,6 @@ class _InkInputState extends State<InkInput> {
     return Stack(
       children: [
         Container(
-          // decoration: BoxDecoration(border: Border.all()),   // If use, can't use color:...
           width: width,
           height: canvasHeight,
           color: Colors.grey[300],

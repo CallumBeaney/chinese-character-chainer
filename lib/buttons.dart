@@ -63,6 +63,7 @@ class PunctuationButton extends StatelessWidget {
             fontSize: 42.5,
             color: Colors.grey[700],
             height: 0.333,
+            letterSpacing: 0, // align horizontal
           ),
         ),
       ),
