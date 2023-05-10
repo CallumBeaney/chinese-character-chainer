@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart' hide Ink;
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
-import 'package:rensou_flutter/cubit/recognition_manager_cubit.dart';
-import 'package:rensou_flutter/painter.dart';
+import 'package:character_chainer/cubit/recognition_manager_cubit.dart';
+import 'package:character_chainer/painter.dart';
 
 import 'ink_controls.dart';
 
@@ -15,12 +15,12 @@ class InkInput extends StatefulWidget {
 }
 
 class _InkInputState extends State<InkInput> {
-  final double canvasHeight = 300;
+  final double canvasHeight = 330;
 
   final Ink _ink = Ink();
   List<StrokePoint> _points = [];
 
-  // This stream-related code, as used in RecognitionManagerCubit, is used to clear the canvas once the user presses a button output by the ML-kit's handwriting recognitino operation. Without this, it won't work!
+  // This stream-related code, as used in RecognitionManagerCubit, is used to clear the canvas once the user presses a button output by the ML-kit's handwriting recognition operation. Without this, it won't work!
   late final StreamSubscription<bool> _clearTriggerSub;
 
   @override
@@ -44,7 +44,7 @@ class _InkInputState extends State<InkInput> {
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
-    return Column(
+    return Stack(
       children: [
         Container(
           // decoration: BoxDecoration(border: Border.all()),   // If use, can't use color:...
@@ -80,7 +80,14 @@ class _InkInputState extends State<InkInput> {
             ),
           ),
         ),
-        InkControls(onClear: _onClear)
+        SizedBox(
+          width: width,
+          height: canvasHeight,
+          child: Align(
+            alignment: Alignment.bottomLeft,
+            child: InkControls(onClear: _onClear),
+          ),
+        ),
       ],
     );
   }

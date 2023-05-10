@@ -49599,7 +49599,7 @@ const zh_simp_dict = {
     "radicals": "丶,幺",
     "alt_char": "么",
     "english":
-        "exclamatory final particle,interrogative final particle,suffix,used to form interrogative 甚麼|什么,what?,indefinite 這麼|这么 thus etc,exclamatory final particle,interrogative final particle,suffix,used to form interrogative 甚麼|什么,what?,indefinite 這麼|这么 thus etc"
+        "exclamatory final particle,interrogative final particle,suffix,used to form interrogative 甚麼|什么,what?"
   },
   "凇": {
     "index_jun": "4506",
@@ -54253,7 +54253,7 @@ const zh_simp_dict = {
     "zhuyin": "ㄐㄧ",
     "radicals": "艹,及,㇎,丿,㇏",
     "alt_char": "芨",
-    "english": "Bletilla hyacinthina (mucilaginous),Acronym for the Chinese Elder tree ?草"
+    "english": "Bletilla hyacinthina (mucilaginous),Acronym for the Chinese Elder tree 草"
   },
   "阕": {
     "index_jun": "4929",
@@ -57479,7 +57479,7 @@ const zh_simp_dict = {
     "pinyin": "guān",
     "jyutping": "gwaan1",
     "zhuyin": "ㄍㄨㄢ",
-    "radicals": "門,𢇇,?,丱",
+    "radicals": "門,𢇇,糹,糸,丱",
     "alt_char": "關",
     "english": "surname Guan,mountain pass,to close,to shut,to turn off,to concern,to involve"
   },
@@ -62037,7 +62037,7 @@ const zh_simp_dict = {
     "pinyin": "huī",
     "jyutping": "fai1",
     "zhuyin": "ㄏㄨㄟ",
-    "radicals": "隋,𠇍,阝,?,工,月,人,丨,㇒",
+    "radicals": "隋,𠇍,阝,工,月,人,丨,㇒",
     "alt_char": "隳",
     "english": "destroy,overthrow"
   },
@@ -77112,7 +77112,7 @@ const zh_simp_dict = {
     "pinyin": "lián",
     "jyutping": "lyun4",
     "zhuyin": "ㄌㄧㄢˊ",
-    "radicals": "耳,𢇇,?,丱",
+    "radicals": "耳,𢇇,糸,丱",
     "alt_char": "聯",
     "english": "to ally,to unite,to join"
   },

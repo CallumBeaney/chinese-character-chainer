@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:rensou_flutter/ui/app_theme_data.dart';
+import 'package:character_chainer/ui/app_theme_data.dart';
 import 'package:ruby_text/ruby_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -11,10 +11,10 @@ class AppInfoView extends StatelessWidget {
   Widget build(BuildContext context) => Theme(
       data: infoViewTheme,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text("INFO"),
-          toolbarHeight: 50,
-        ),
+        // appBar: AppBar(
+        //   title: const Text("INFO"),
+        //   toolbarHeight: 50,
+        // ),
         body: SafeArea(
             child: SingleChildScrollView(
                 child: Column(
@@ -34,16 +34,16 @@ class AppInfoView extends StatelessWidget {
                     ),
                     RubyTextData(
                       '連 ',
-                      ruby: 'lián',
+                      ruby: ' lián',
                     ),
                     RubyTextData(
                       '鎖 ',
-                      ruby: 'さ',
+                      ruby: 'サ',
                     ),
                   ],
                   rubyStyle: TextStyle(
                     height: 0.5,
-                    fontSize: 18,
+                    fontSize: 16,
                     letterSpacing: 1,
                   ),
                   style: TextStyle(fontSize: 50),
@@ -102,21 +102,22 @@ class AppInfoView extends StatelessWidget {
                 textAlign: TextAlign.justify,
               ),
             ),
-
-            // Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-            // Container(
-            //     width: 45,
-            //     height: 45,
-            //     color: Color.fromARGB(255, 129, 129, 129),
-            //     child: TextButton(
-            //       onPressed: () {
-            //         Navigator.pop(context);
-            //       },
-            //       child: const Icon(
-            //         Icons.arrow_back,
-            //         color: Color.fromARGB(255, 221, 221, 221),
-            //       ),
-            //     )),
+            const SizedBox(height: 35),
+            Container(
+              width: 66,
+              height: 66,
+              color: const Color.fromARGB(255, 108, 108, 108),
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Icon(
+                  Icons.arrow_back,
+                  color: Color.fromARGB(255, 221, 221, 221),
+                ),
+              ),
+            ),
+            const SizedBox(height: 50),
           ],
         ))),
       ));

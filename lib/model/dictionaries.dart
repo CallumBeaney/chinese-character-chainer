@@ -1,6 +1,6 @@
-import 'package:rensou_flutter/dict_jp.dart';
-import 'package:rensou_flutter/dict_zh_simp.dart';
-import 'package:rensou_flutter/dict_zh_trad.dart';
+import 'package:character_chainer/dict_jp.dart';
+import 'package:character_chainer/dict_zh_simp.dart';
+import 'package:character_chainer/dict_zh_trad.dart';
 
 class Dictionaries {
   static const jp = jp_dict;

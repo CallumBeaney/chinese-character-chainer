@@ -1,8 +1,10 @@
+import 'package:character_chainer/buttons.dart';
+import 'package:character_chainer/cubit/recognition_manager_cubit.dart';
+import 'package:character_chainer/model/language_config.dart';
+import 'package:character_chainer/model/placeholders.dart';
+import 'package:character_chainer/model/types.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rensou_flutter/buttons.dart';
-import 'package:rensou_flutter/cubit/recognition_manager_cubit.dart';
-import 'package:rensou_flutter/model/model.dart';
 
 import 'ink_input.dart';
 
@@ -26,7 +28,7 @@ class _DigitalInkViewState extends State<DigitalInkView> {
     super.dispose();
   }
 
-  // TODO: https://pub.dev/packages/number_to_words_chinese/install
+  // TODO ?: implement Chinese numbering for the score? (https://pub.dev/packages/number_to_words_chinese/install)
   int getScore(List<String> answers) {
     // TODO: reconfigure to check for repeats
     return answers.map((e) => dictionary.containsKey(e)).where((r) => (r == true)).length;
@@ -107,7 +109,7 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                               ],
                             ),
                           ),
-                          // BUTTONS AT TOP RIGHT HAND CORNER
+                          // SCORE COUNTER AT TOP RIGHT HAND CORNER
                           Align(
                             alignment: Alignment.topCenter,
                             child: _topRightButtons(score),

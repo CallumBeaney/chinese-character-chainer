@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rensou_flutter">
    <application
-        android:label="rensou_flutter"
+        android:label="漢字連鎖"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,8 +1,8 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:rensou_flutter/buttons.dart';
-import 'package:rensou_flutter/model/model.dart';
-import 'package:rensou_flutter/ui/app_theme_data.dart';
+import 'package:character_chainer/buttons.dart';
+import 'package:character_chainer/model/model.dart';
+import 'package:character_chainer/ui/app_theme_data.dart';
 
 class HanziInfoView extends StatelessWidget {
   final String hanzi;
@@ -32,7 +32,7 @@ class HanziInfoView extends StatelessWidget {
         data: infoViewTheme,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('漢字資訊'),
+            title: config.code == 'zh-Hani-CN' ? const Text('汉字资讯') : const Text('漢字資訊'),
             toolbarHeight: 50,
           ),
           body: SafeArea(

@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
-import 'package:rensou_flutter/model/model.dart';
+import 'package:character_chainer/model/model.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'recognition_manager_state.dart';
@@ -29,7 +29,7 @@ class RecognitionManagerCubit extends Cubit<RecognitionManagerState> {
           .toList(); // Strip that guess list of non-valid characters e.g. romaji, katakana, */!-# etc
       emit(state.copyWith(candidates: candidatesString));
     } catch (e) {
-      print('there is an error here $e \n'); // TODO: fix this up!
+      return;
     }
   }
 
