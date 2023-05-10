@@ -12,9 +12,18 @@ I originally prototyped a [JS/HMTL/CSS webapp](https://github.com/CallumBeaney/r
 <img style="width:650px;" src="https://raw.githubusercontent.com/CallumBeaney/kanji-hanzi-chainer/master/preview.png">
   
   
+# Installation
+See the `Releases` section.  
+Upon installation the Google ML kit language models will download.  
+These cannot be packaged natively because Google.  
+This will likely take ~10 seconds.  
+Thereafter the app is fully operable offline.  
+  
+<br>
+  
 # Dictionary information
   
-I hand-rolled these dictionary files out of a want to not rely on *any* internet connectivity with the exception of the first-time opening, where the Google ML Kit language models must be quickly downloaded.   
+I hand-rolled these dictionary files out of a want to not rely on any internet connectivity to use this app.
   
 Due to the vastness of their size and technical debt incurred by e.g. the ways that researchers broke characters down into radicals using unicode characters (e.g. 拆 => 扌 手 斥	才), very occasionally characters that should match will not, and characters that one wouldn't intuit to be matchable will be able to be matched. This will be cleared up through regular bugfixing by myself as I use these dictionaries.  
 
