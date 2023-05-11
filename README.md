@@ -15,7 +15,7 @@ I originally prototyped a [JS/HMTL/CSS webapp](https://github.com/CallumBeaney/r
 # Installation
 See the `Releases` section.  
 Upon installation the Google ML kit language models will download.  
-These cannot be packaged natively because Google.  
+These cannot be packaged natively [because Google](https://developers.google.com/ml-kit/tips/installation-paths#how_to_choose_between_bundled_and_unbundled).  
 This will likely take ~10 seconds.  
 Thereafter the app is fully operable offline.  
   
