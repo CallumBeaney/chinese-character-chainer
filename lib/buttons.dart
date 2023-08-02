@@ -161,12 +161,48 @@ class BlackComparisonCharacterButton extends StatelessWidget {
 
 // InfoRow is used in Infoviews.
 class InfoRow extends StatelessWidget {
-  const InfoRow({Key? key, required this.leftText, required this.rightText}) : super(key: key);
+  const InfoRow({Key? key, required this.leftText, required this.rightText, required this.languageCode}) : super(key: key);
 
+  final String languageCode;
   final String leftText;
   final String rightText;
-  int get length => rightText.length;
 
+  double get fontSize => rightText.length > 25 ? 17 : 20;
+
+  String get rightTextAmended {
+    /// This is a hack -- good fonts compatible with CJK Unified Ideographs Extension B are rare, and take up an unacceptable amount of space. Because the few `radical` characters unable to be displayed properly render as a [?]it is preferable to simply filter out problem characters as their absence does not meaningfully affect UX.
+    List<String> charsToRemove = [
+      '𢇇',
+      '㇒',
+      '𪜋',
+      '㇝',
+      '𠮛',
+      '㇒',
+      '㇗',
+      '𠁼',
+      '𢆶',
+      '𠓜',
+      '𠁣',
+      '𤽄',
+      '𤓯',
+      '㇙',
+      '𠃧',
+      '𣥂',
+      '㇕',
+      '㇖',
+      '𢎨',
+      '㇠',
+      '𣑦',
+      '𩾏',
+      '𠙽',
+      '𡱒'
+    ];
+    String insertORoperator = charsToRemove.map((char) => RegExp.escape(char)).join('|');
+    return rightText.replaceAll(RegExp(insertORoperator), '').replaceAll(RegExp(', ,'), ',');
+  }
+
+  /// TODO: implement TTS for appropriate buttons, based on (TTS == true) param & on languageCode above.
+  /// https://pub.dev/packages/flutter_tts
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -203,14 +239,10 @@ class InfoRow extends StatelessWidget {
                   strokeWidth: 1,
                   child: Center(
                     child: Text(
-                      rightText,
-                      style: length > 25
-                          ? const TextStyle(
-                              fontSize: 17,
-                            )
-                          : const TextStyle(
-                              fontSize: 20,
-                            ),
+                      rightTextAmended,
+                      style: TextStyle(
+                        fontSize: fontSize,
+                      ),
                     ),
                   ),
                 ),

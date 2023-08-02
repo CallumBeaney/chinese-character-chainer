@@ -57,29 +57,29 @@ class HanziInfoView extends StatelessWidget {
                   ),
 
                   if (english != null) ...[
-                    InfoRow(leftText: '英文', rightText: english!),
+                    InfoRow(leftText: '英文', rightText: english!, languageCode: config.code),
                   ],
 
-                  InfoRow(leftText: '拼音', rightText: pinyin),
+                  InfoRow(leftText: '拼音', rightText: pinyin, languageCode: config.code),
 
                   if (zhuyin != null) ...[
-                    InfoRow(leftText: '注音', rightText: zhuyin!),
+                    InfoRow(leftText: '注音', rightText: zhuyin!, languageCode: config.code),
                   ],
                   if (jyutping != null) ...[
-                    InfoRow(leftText: '粵拼', rightText: jyutping!),
+                    InfoRow(leftText: '粵拼', rightText: jyutping!, languageCode: config.code),
                   ],
 
                   if (config.code == "zh-Hani-CN" && hanzi != (dictionary[hanzi]!["alt_char"]!)) ...[
-                    InfoRow(leftText: '繁體字', rightText: dictionary[hanzi]!["alt_char"]!),
+                    InfoRow(leftText: '繁體字', rightText: dictionary[hanzi]!["alt_char"]!, languageCode: config.code),
                   ],
 
                   if (config.code == "zh-Hani-TW" && hanzi != (dictionary[hanzi]!["alt_char"]!)) ...[
-                    InfoRow(leftText: '簡體字', rightText: dictionary[hanzi]!["alt_char"]!),
+                    InfoRow(leftText: '簡體字', rightText: dictionary[hanzi]!["alt_char"]!, languageCode: config.code),
                   ],
 
-                  InfoRow(leftText: '部首', rightText: radicals),
-                  InfoRow(leftText: '频率', rightText: freq),
-                  InfoRow(leftText: '累计\n频率', rightText: percentile),
+                  InfoRow(leftText: '部首', rightText: radicals, languageCode: config.code),
+                  InfoRow(leftText: '频率', rightText: freq, languageCode: config.code),
+                  InfoRow(leftText: '累计\n频率', rightText: percentile, languageCode: config.code),
 
                   const Padding(padding: EdgeInsets.only(top: 25)),
                 ],

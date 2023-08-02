@@ -6,6 +6,7 @@ import 'package:character_chainer/model/types.dart';
 import 'package:character_chainer/ui/fade_mask.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:number_to_words_chinese/number_to_words_chinese.dart';
 
 import 'ink_input.dart';
 
@@ -29,10 +30,13 @@ class _DigitalInkViewState extends State<DigitalInkView> {
     super.dispose();
   }
 
-  // TODO ?: implement Chinese numbering for the score? (https://pub.dev/packages/number_to_words_chinese/install)
-  int getScore(List<String> answers) {
+  int getScoreAsInteger(List<String> answers) {
     return Set.from(answers).where((e) => dictionary.containsKey(e)).length;
   }
+
+  // String getScoreAsChineseNumerals(List<String> answers) {
+  //   return NumberToWordsChinese.convert(Set.from(answers).where((e) => dictionary.containsKey(e)).length);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +48,8 @@ class _DigitalInkViewState extends State<DigitalInkView> {
             // If there are no results yet, display the name.
             final results = state.results.isEmpty ? placeholders.charList : state.results;
             final mostRecent = state.comparator == null ? '字' : state.comparator.toString();
-            final int score = getScore(state.results);
+            final int scoreNum = getScoreAsInteger(state.results);
+            // final String scoreChinese = getScoreAsChineseNumerals(state.results);
 
             return Column(
               children: [
@@ -111,7 +116,8 @@ class _DigitalInkViewState extends State<DigitalInkView> {
                           // SCORE COUNTER AT TOP RIGHT HAND CORNER
                           Align(
                             alignment: Alignment.topCenter,
-                            child: _topRightButtons(score),
+                            // child: _topRightButtons(scoreNum, scoreChinese),
+                            child: _topRightButtons(scoreNum),
                           ),
                         ],
                       ),
@@ -173,6 +179,7 @@ class _DigitalInkViewState extends State<DigitalInkView> {
   }
 
   Widget _topRightButtons(int score) => Column(
+        // Widget _topRightButtons(int score, String scoreChineseNumerals) => Column(
         children: [
           Opacity(
             opacity: score == 0 ? 0 : 1,
@@ -183,6 +190,7 @@ class _DigitalInkViewState extends State<DigitalInkView> {
               child: TextButton(
                 onPressed: () {},
                 child: Text(
+                  // scoreChineseNumerals,
                   score.toString(),
                   style: TextStyle(
                     fontSize: (score > 99) ? 15 : 25,

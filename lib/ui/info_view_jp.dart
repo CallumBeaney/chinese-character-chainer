@@ -69,20 +69,20 @@ class KanjiInfoView extends StatelessWidget {
                     ),
                   ),
 
-                  InfoRow(leftText: '発音', rightText: readings),
-                  InfoRow(leftText: '英語', rightText: english),
-                  InfoRow(leftText: '部首', rightText: radicals),
-                  InfoRow(leftText: '字画', rightText: strokes),
+                  InfoRow(leftText: '発音', rightText: readings, languageCode: config.code),
+                  InfoRow(leftText: '英語', rightText: english, languageCode: config.code),
+                  InfoRow(leftText: '部首', rightText: radicals, languageCode: config.code),
+                  InfoRow(leftText: '字画', rightText: strokes, languageCode: config.code),
 
                   if (newsFreq != null) ...[
-                    InfoRow(leftText: '頻度', rightText: "$newsFreq 百分位数"),
+                    InfoRow(leftText: '頻度', rightText: "$newsFreq 百分位数", languageCode: config.code),
                   ],
                   if (wikiFreq != null) ...[
-                    InfoRow(leftText: 'ウィキ', rightText: "$wikiFreq 回出現する"),
+                    InfoRow(leftText: 'ウィキ', rightText: "$wikiFreq 回出現する", languageCode: config.code),
                   ],
 
                   if (heisig != null) ...[
-                    InfoRow(leftText: 'RTK', rightText: heisig!),
+                    InfoRow(leftText: 'RTK', rightText: heisig!, languageCode: config.code),
                   ],
 
                   if (onyomiKanji != null && onyomiKana != null) ...[

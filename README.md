@@ -21,7 +21,7 @@ Thereafter the app is fully operable offline.
   
 <br>
   
-# Dictionary information
+# Dictionary information & Acknowledgements
   
 I hand-rolled these dictionary files out of a want to not rely on any internet connectivity to use this app.
   
@@ -54,7 +54,7 @@ kanji_readings  = 漢字の発音、読み方  = The entry kanji's pronunciation
   
  - Jun Da 笪骏's [Hanzi Frequency List](https://lingua.mtsu.edu/chinese-computing/statistics/char/list.php?Which=MO).  
  - Denisowski's [CEDICT](https://cc-cedict.org/wiki/).  
- - 開放詞典 (KFCD)'s [Chaizi](https://github.com/kfcd/chaizi).  
+ - 開放詞典 (KFCD)'s [Chaizi](https://github.com/kfcd/chaizi). 
    
 ```
 index_jun  = 序号       =  The entry hanzi's serial number as per Jun's index

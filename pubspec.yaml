@@ -19,6 +19,9 @@ dependencies:
   dotted_border: ^2.0.0+3
   ruby_text: ^3.0.1
   url_launcher: ^6.1.10
+  google_fonts: ^5.1.0
+  flutter_tts: ^3.7.0
+  number_to_words_chinese: ^0.0.1
 
 dev_dependencies:
   flutter_test:

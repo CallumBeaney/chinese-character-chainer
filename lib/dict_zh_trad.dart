@@ -49508,8 +49508,7 @@ const zh_trad_dict = {
     "zhuyin": "ㄇㄜ˙",
     "radicals": "么,丿,厶",
     "alt_char": "幺",
-    "english":
-        "exclamatory final particle,interrogative final particle,suffix,used to form interrogative 甚麼|什么,what?"
+    "english": "exclamatory final particle,interrogative final particle,suffix,used to form interrogative 甚麼|什么,what?"
   },
   "凇": {
     "index_jun": "4506",
