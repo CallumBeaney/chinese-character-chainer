@@ -13,7 +13,7 @@ I originally prototyped a [JS/HMTL/CSS webapp](https://github.com/CallumBeaney/r
   
   
 # Installation
-See the `Releases` section.  
+Download and install the APK file from the [Releases](https://github.com/CallumBeaney/kanji-hanzi-chainer/releases/tag/v1.0.0) section.  
 Upon installation the Google ML kit language models will download.  
 These cannot be packaged natively [because Google](https://developers.google.com/ml-kit/tips/installation-paths#how_to_choose_between_bundled_and_unbundled).  
 This will likely take ~10 seconds.  
