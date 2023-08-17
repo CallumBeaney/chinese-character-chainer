@@ -1,11 +1,12 @@
 import 'dart:async';
+import 'package:chinese_character_chainer/ui/app_info_view.dart';
+import 'package:chinese_character_chainer/ui/ink_view.dart';
+import 'package:chinese_character_chainer/ui/setup_view.dart';
 import 'package:flutter/material.dart' hide Ink; // prevent clashes with ML Kit class
 import 'package:flutter/services.dart'; // SystemChrome
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
-import 'package:character_chainer/ui/app_info_view.dart';
-import 'package:character_chainer/ui/ink_view.dart';
-import 'package:character_chainer/ui/setup_view.dart';
+
 import 'locator.dart'; // Singleton
 import 'model/model.dart'; // Language config for switching dictionaries
 

@@ -94,7 +94,7 @@ BEGIN
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "漢字連鎖" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "rensou_flutter.exe" "\0"
+            VALUE "OriginalFilename", "chinese_character_chainer.exe" "\0"
             VALUE "ProductName", "漢字連鎖" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END

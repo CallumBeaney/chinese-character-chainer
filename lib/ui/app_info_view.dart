@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:character_chainer/ui/app_theme_data.dart';
+import 'package:chinese_character_chainer/ui/app_theme_data.dart';
 import 'package:ruby_text/ruby_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 

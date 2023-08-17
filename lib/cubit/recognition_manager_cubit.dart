@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
-import 'package:character_chainer/model/model.dart';
+import 'package:chinese_character_chainer/model/model.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'recognition_manager_state.dart';

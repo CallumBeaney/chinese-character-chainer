@@ -2,9 +2,9 @@
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:character_chainer/buttons.dart';
-import 'package:character_chainer/model/model.dart';
-import 'package:character_chainer/ui/app_theme_data.dart';
+import 'package:chinese_character_chainer/buttons.dart';
+import 'package:chinese_character_chainer/model/model.dart';
+import 'package:chinese_character_chainer/ui/app_theme_data.dart';
 
 class KanjiInfoView extends StatelessWidget {
   final String kanji;

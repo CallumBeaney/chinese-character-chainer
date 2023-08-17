@@ -1,6 +1,6 @@
 {
-    "name": "rensou_flutter",
-    "short_name": "rensou_flutter",
+    "name": "chinese_character_chainer",
+    "short_name": "chinese_character_chainer",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

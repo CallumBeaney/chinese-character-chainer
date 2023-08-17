@@ -1,9 +1,9 @@
-import 'package:character_chainer/buttons.dart';
-import 'package:character_chainer/cubit/recognition_manager_cubit.dart';
-import 'package:character_chainer/model/language_config.dart';
-import 'package:character_chainer/model/placeholders.dart';
-import 'package:character_chainer/model/types.dart';
-import 'package:character_chainer/ui/fade_mask.dart';
+import 'package:chinese_character_chainer/buttons.dart';
+import 'package:chinese_character_chainer/cubit/recognition_manager_cubit.dart';
+import 'package:chinese_character_chainer/model/language_config.dart';
+import 'package:chinese_character_chainer/model/placeholders.dart';
+import 'package:chinese_character_chainer/model/types.dart';
+import 'package:chinese_character_chainer/ui/fade_mask.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:number_to_words_chinese/number_to_words_chinese.dart';

@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart' hide Ink;
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
-import 'package:character_chainer/cubit/recognition_manager_cubit.dart';
-import 'package:character_chainer/painter.dart';
+import 'package:chinese_character_chainer/cubit/recognition_manager_cubit.dart';
+import 'package:chinese_character_chainer/painter.dart';
 
 import 'ink_controls.dart';
 

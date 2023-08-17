@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:character_chainer/model/model.dart';
-import 'package:character_chainer/ui/info_view_jp.dart';
-import 'package:character_chainer/ui/info_view_zh.dart';
+import 'package:chinese_character_chainer/model/model.dart';
+import 'package:chinese_character_chainer/ui/info_view_jp.dart';
+import 'package:chinese_character_chainer/ui/info_view_zh.dart';
 
 // This class checks the current state of language config (see: model/language_config.dart) and opens a Chinese character information screen corresponding with the dictionary in use.
 // Because the Traditional & Simplified dictionaries both have the same structure, it is only necessary to define two info-views.
